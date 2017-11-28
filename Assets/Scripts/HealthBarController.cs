@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class HealthBarController : MonoBehaviour {
 
-	private int startingHealth;
-	private int currentHealth;
+	private float startingHealth;
+	private float currentHealth;
 
 	public PlayerController player;
 	private PlayerHealthManager healthManager;

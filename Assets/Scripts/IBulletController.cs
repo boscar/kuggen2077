@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class IBulletController : MonoBehaviour {
 
     public float speed;
-    public int damageToGive;
+    public float damageToGive;
+    public float duration = 5;
 
 }

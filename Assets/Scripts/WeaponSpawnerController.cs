@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class WeaponSpawnerController : MonoBehaviour {
 
@@ -22,7 +23,13 @@ public class WeaponSpawnerController : MonoBehaviour {
 				GameObject newPickup = Instantiate (weapon, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
 				newPickup.transform.parent = gameObject.transform;
 
-				spawnCount = spawnRate;
+                PickupController puc = newPickup.GetComponent<PickupController>();
+                Array weapontypes = Enum.GetValues(typeof(PickupController.PickupType));
+                System.Random random = new System.Random();
+                PickupController.PickupType type = (PickupController.PickupType)weapontypes.GetValue(random.Next(weapontypes.Length));
+                puc.pickupType = type;
+
+                spawnCount = spawnRate;
 			}
 		}
 	}

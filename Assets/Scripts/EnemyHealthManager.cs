@@ -5,8 +5,8 @@ using UnityEngine;
 public class EnemyHealthManager : MonoBehaviour {
 
 
-	public int health;
-	private int currentHealth;
+	public float health;
+	private float currentHealth;
     public GameObject corpse;
 
 	// Use this for initialization
@@ -27,7 +27,7 @@ public class EnemyHealthManager : MonoBehaviour {
         }
 	}
 
-	public void HurtEnemy(int damage){
+	public void HurtEnemy(float damage){
 		currentHealth -= damage;
 	}
 }

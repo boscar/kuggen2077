@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour {
 
 	private Camera mainCamera;
 
-	public GunController theGun;
+	public IGun theGun;
 
     private bool spaceDown = false;
     private bool dashing = false;
