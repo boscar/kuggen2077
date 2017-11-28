@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 33374859471465580}
   - component: {fileID: 65301476100855116}
   - component: {fileID: 23269293139624342}
-  - component: {fileID: 114121661397976090}
-  m_Layer: 0
-  m_Name: Bullet
+  - component: {fileID: 114553695059328330}
+  m_Layer: 8
+  m_Name: EnemyBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38,7 +38,7 @@ Transform:
   m_GameObject: {fileID: 1287367190892796}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.116, y: 1.193, z: 1.036}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -57,7 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 96e8f2a511bc345eeb2b28c226eb9d24, type: 2}
+  - {fileID: 2100000, guid: f507b3985fe3ae544a55c7f38834b0e8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -96,7 +96,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114121661397976090
+--- !u!114 &114553695059328330
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -104,8 +104,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1287367190892796}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5a48e966c0b4465b8cf5f993d267ca4, type: 3}
+  m_Script: {fileID: 11500000, guid: 884fd948ebed8fa4c9cd6a68b9ea746d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  damageToGive: 1
+  speed: 0
+  damageToGive: 0

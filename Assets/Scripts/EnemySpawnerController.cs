@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawnerController : MonoBehaviour {
 
-	public EnemyController enemy;
+	public AbstractEnemy enemy;
 
 	public float spawnRate;
 	private float spawnCount;
@@ -23,7 +23,7 @@ public class EnemySpawnerController : MonoBehaviour {
         }
 		spawnCount -= Time.deltaTime;
 		if (spawnCount <= 0) {
-			EnemyController newEnemy = Instantiate (enemy, gameObject.transform.position, gameObject.transform.rotation) as EnemyController;
+			AbstractEnemy newEnemy = Instantiate<AbstractEnemy> (enemy, gameObject.transform.position, gameObject.transform.rotation);
 			spawnCount = spawnRate;
 		}
 	}

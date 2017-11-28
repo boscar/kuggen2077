@@ -5,7 +5,7 @@ using UnityEngine;
 public class GunController : MonoBehaviour {
 
 	public bool isFiring;
-	public BulletController bullet;
+	public IBulletController bullet;
 	public float bulletSpeed;
 	public float timeBetweenShot;
 	public int damageToGive;
@@ -27,7 +27,7 @@ public class GunController : MonoBehaviour {
 		shotCounter -= Time.deltaTime;
 		if (shotCounter <= 0) {
 			shotCounter = timeBetweenShot;
-			BulletController newBullet = Instantiate (bullet, firePoint.position, firePoint.rotation) as BulletController;
+			IBulletController newBullet = Instantiate<IBulletController> (bullet, firePoint.position, firePoint.rotation);
 			newBullet.speed = bulletSpeed;
 			newBullet.damageToGive = damageToGive;
 
