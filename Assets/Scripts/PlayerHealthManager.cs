@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerHealthManager : MonoBehaviour {
 
 
-	public int startingHealth;
-	private int currentHealth;
+	public float startingHealth;
+	private float currentHealth;
 
 	private Renderer rend;
 	private Color defaultColor;
@@ -26,7 +26,7 @@ public class PlayerHealthManager : MonoBehaviour {
 		}
 	}
 
-	public void HurtPlayer(int damage){
+	public void HurtPlayer(float damage){
 		
 		currentHealth -= damage;
 		setColorWhite ();
@@ -41,11 +41,11 @@ public class PlayerHealthManager : MonoBehaviour {
 		rend.material.SetColor ("_Color", defaultColor);
 	}
 
-	public int getStartingHealth(){
+	public float getStartingHealth(){
 		return startingHealth;
 	}
 
-	public int getCurrentHealth(){
+	public float getCurrentHealth(){
 		return currentHealth;
 	}
 }

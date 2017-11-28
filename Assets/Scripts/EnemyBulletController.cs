@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletController : IBulletController {
+public class EnemyBulletController : IBulletController {
 
 	// Use this for initialization
 	void Start () {
@@ -15,10 +15,10 @@ public class BulletController : IBulletController {
 	}
 
 	void OnCollisionEnter(Collision other){
-		if (other.gameObject.tag == "Enemy") {
-			EnemyHealthManager healthManager = other.gameObject.GetComponent<EnemyHealthManager> ();
+		if (other.gameObject.tag == "Player") {
+			PlayerHealthManager healthManager = other.gameObject.GetComponent<PlayerHealthManager> ();
 			Debug.Log (damageToGive);
-			healthManager.HurtEnemy (damageToGive);
+			healthManager.HurtPlayer (damageToGive);
 		}
 
 		Destroy (gameObject,0.02f);
