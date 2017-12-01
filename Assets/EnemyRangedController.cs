@@ -25,13 +25,13 @@ public class EnemyRangedController : AbstractEnemy {
     // Update is called once per frame
     void Update() {
         if (target != null) {
-            target = thePlayers[Random.Range(0, thePlayers.Length)].transform;
+            transform.LookAt(target.position);
         }
 
     }
 
     void FixedUpdate() {
-        if (Vector3.Distance(transform.position, target.position) > 10) {
+        if (target != null && Vector3.Distance(transform.position, target.position) > 10) {
             myRb.velocity = (transform.forward * moveSpeed);
         }
     }

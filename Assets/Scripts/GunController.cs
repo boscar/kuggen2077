@@ -8,7 +8,6 @@ public class GunController : IGun {
 
 	void Start () {
 		source = GetComponent<AudioSource> ();
-		Debug.Log (source.ToString ());
 	}
 	
 	// Update is called once per frame

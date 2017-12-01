@@ -17,7 +17,6 @@ public class EnemyBulletController : IBulletController {
 	void OnCollisionEnter(Collision other){
 		if (other.gameObject.tag == "Player") {
 			PlayerHealthManager healthManager = other.gameObject.GetComponent<PlayerHealthManager> ();
-			Debug.Log (damageToGive);
 			healthManager.HurtPlayer (damageToGive);
 		}
 

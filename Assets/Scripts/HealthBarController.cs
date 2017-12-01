@@ -21,8 +21,6 @@ public class HealthBarController : MonoBehaviour {
 		currentHealth = startingHealth;
 	
 		currentHealthBar = transform.Find("current").gameObject;
-
-        Debug.Log (currentHealthBar.ToString ());
 	}
 	
 	// Update is called once per frame

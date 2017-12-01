@@ -15,7 +15,9 @@ public class EnemyController : AbstractEnemy {
 	void Start () {
 		myRb = GetComponent<Rigidbody> ();
 		thePlayers = FindObjectsOfType<IPlayerController> ();
-        target = thePlayers[Random.Range(0, thePlayers.Length)].transform;
+        if(thePlayers.Length > 0) {
+            target = thePlayers[Random.Range(0, thePlayers.Length)].transform;
+        }
 	}
 	
 	// Update is called once per frame
