@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour {
     public float dashDuration = 0.3f;
     private float dashTimer = 0;
 
+    public bool useController;
+
 	// Use this for initialization
 	void Start () {
 		myRigidBody = GetComponent<Rigidbody> ();
@@ -32,32 +34,10 @@ public class PlayerController : MonoBehaviour {
 		moveInput = new Vector3 (Input.GetAxisRaw ("Horizontal"), 0f, Input.GetAxisRaw ("Vertical"));
 		moveVelocity = moveInput * moveSpeed;
 
-		Ray cameraRay = mainCamera.ScreenPointToRay (Input.mousePosition);
-		Plane groundPlane = new Plane (Vector3.up, Vector3.zero);
-		float rayLength;
-
-		if (groundPlane.Raycast (cameraRay, out rayLength)) {
-			Vector3 pointToLook = cameraRay.GetPoint (rayLength);
-
-			transform.LookAt (new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
-		}
-
-		if (Input.GetMouseButtonDown (0)) {
-			theGun.isFiring = true;
-		}
-
-		if (Input.GetMouseButtonUp(0)){
-			theGun.isFiring = false;
-		}
-
-        if(Input.GetKeyDown(KeyCode.Space) && !spaceDown && !dashing) {
-            spaceDown = true;
-            dashing = true;
-            dashVelocity = moveInput * dashSpeed;
-        }
-
-        if(Input.GetKeyUp(KeyCode.Space) && spaceDown) {
-            spaceDown = false;
+        if (!useController) {
+            HandleKeyboardControls();
+        } else {
+            HandleControllerControls();
         }
 	}
 
@@ -85,5 +65,63 @@ public class PlayerController : MonoBehaviour {
 		theGun.timeBetweenShot = timeBetweenShot;
 		theGun.damageToGive = (int)damageToGive;
 	}
+
+    private void HandleKeyboardControls() {
+        Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
+        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+        float rayLength;
+
+        if (groundPlane.Raycast(cameraRay, out rayLength)) {
+            Vector3 pointToLook = cameraRay.GetPoint(rayLength);
+
+            transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
+        }
+
+        if (Input.GetMouseButtonDown(0)) {
+            theGun.isFiring = true;
+        }
+
+        if (Input.GetMouseButtonUp(0)) {
+            theGun.isFiring = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && !spaceDown && !dashing) {
+            spaceDown = true;
+            dashing = true;
+            dashVelocity = moveInput * dashSpeed;
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space) && spaceDown) {
+            spaceDown = false;
+        }
+    }
+
+    private void HandleControllerControls() {
+        Vector3 playerDirection = Vector3.right * Input.GetAxisRaw("RHorizontal") + Vector3.forward * -Input.GetAxisRaw("RVertical");
+        if (playerDirection.sqrMagnitude > 0.0f) {
+            transform.rotation = Quaternion.LookRotation(playerDirection, Vector3.up);
+            theGun.isFiring = true;
+        } else {
+            theGun.isFiring = false;
+        }
+
+        /*if (Input.GetAxis("RAxis") > 0) {
+            theGun.isFiring = true;
+        }
+
+        if (Input.GetAxis("RAxis") <= 0) {
+            theGun.isFiring = false;
+        }*/
+
+        if (Input.GetAxis("LAxis") > 0 && !spaceDown && !dashing) {
+            spaceDown = true;
+            dashing = true;
+            dashVelocity = moveInput * dashSpeed;
+        }
+
+        if (Input.GetAxis("LAxis") <= 0 && spaceDown) {
+            spaceDown = false;
+        }
+    }
 		
 }
