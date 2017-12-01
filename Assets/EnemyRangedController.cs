@@ -7,7 +7,9 @@ public class EnemyRangedController : AbstractEnemy {
     private Rigidbody myRb;
     public float moveSpeed;
 
-    public PlayerController thePlayer;
+    public IPlayerController[] thePlayers;
+
+    private Transform target;
 
     public GunController theGun;
 
@@ -15,20 +17,21 @@ public class EnemyRangedController : AbstractEnemy {
     // Use this for initialization
     void Start() {
         myRb = GetComponent<Rigidbody>();
-        thePlayer = FindObjectOfType<PlayerController>();
+		thePlayers = FindObjectsOfType<IPlayerController> ();
         theGun.isFiring = true;
+        target = thePlayers[Random.Range(0, thePlayers.Length)].transform;
     }
 
     // Update is called once per frame
     void Update() {
-        if (thePlayer != null) {
-            transform.LookAt(thePlayer.transform.position);
+        if (target != null) {
+            target = thePlayers[Random.Range(0, thePlayers.Length)].transform;
         }
 
     }
 
     void FixedUpdate() {
-        if (Vector3.Distance(transform.position, thePlayer.transform.position) > 10) {
+        if (Vector3.Distance(transform.position, target.position) > 10) {
             myRb.velocity = (transform.forward * moveSpeed);
         }
     }

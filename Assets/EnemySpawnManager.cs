@@ -17,7 +17,7 @@ public class EnemySpawnManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         timer += Time.deltaTime;
-        if (timer >= switchSpawnInterval) {
+        if (timer >= switchSpawnInterval / ((30 + Time.time) / 30)) {
             foreach(EnemySpawnerController e in enemySpawnerControllers) {
                 e.Active = false;
             }

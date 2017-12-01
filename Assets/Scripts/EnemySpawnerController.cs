@@ -24,7 +24,7 @@ public class EnemySpawnerController : MonoBehaviour {
 		spawnCount -= Time.deltaTime;
 		if (spawnCount <= 0) {
 			AbstractEnemy newEnemy = Instantiate<AbstractEnemy> (enemy, gameObject.transform.position, gameObject.transform.rotation);
-			spawnCount = spawnRate;
+			spawnCount = (spawnRate / ((30 + Time.time) / 30));
 		}
 	}
 }

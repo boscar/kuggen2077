@@ -9,10 +9,15 @@ public class EnemyHealthManager : MonoBehaviour {
 	private float currentHealth;
     public GameObject corpse;
 
-	// Use this for initialization
-	void Start () {
+    private Renderer rend;
+    private Color defaultColor;
+
+    // Use this for initialization
+    void Start () {
 		currentHealth = health;
-	}
+        rend = GetComponent<Renderer>();
+        defaultColor = rend.material.GetColor("_Color");
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -29,5 +34,15 @@ public class EnemyHealthManager : MonoBehaviour {
 
 	public void HurtEnemy(float damage){
 		currentHealth -= damage;
-	}
+        setColorWhite();
+        Invoke("setColorDefault", 0.1f);
+    }
+
+    void setColorWhite() {
+        rend.material.SetColor("_Color", Color.white);
+    }
+
+    void setColorDefault() {
+        rend.material.SetColor("_Color", defaultColor);
+    }
 }
