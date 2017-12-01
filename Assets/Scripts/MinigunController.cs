@@ -7,10 +7,10 @@ public class MinigunController : IGun {
 	private AudioSource source;
 
     void Start() {
-        spread = 2;
+        spread = 2.5f;
         bulletSpeed = 20f;
         timeBetweenShot = 0.05f;
-        damageToGive = 0.2f;
+        damageToGive = 0.3f;
 
 		source = GetComponent<AudioSource> ();
     }

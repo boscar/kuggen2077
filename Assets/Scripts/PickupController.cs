@@ -8,8 +8,24 @@ public class PickupController : MonoBehaviour {
 
     public PickupType pickupType;
 
+    public void Start() {
+        Destroy(gameObject, 10);
+        switch (pickupType) {
+            case PickupType.MINIGUN:
+                GetComponent<Renderer>().material.SetColor("_Color", Color.black);
+                break;
+            case PickupType.SHOTGUN:
+                GetComponent<Renderer>().material.SetColor("_Color", Color.gray);
+                break;
+            default:
+                GetComponent<Renderer>().material.SetColor("_Color", Color.white);
+                break;
+        }
+    }
+
     public void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag == "Player") {
+            HealPlayer(other.GetComponent<PlayerHealthManager>(), 1.0f);
             Destroy(gameObject);
             switch (pickupType) {
                 case PickupType.MINIGUN:
@@ -20,6 +36,10 @@ public class PickupController : MonoBehaviour {
                 default: break;
             }
         }
+    }
+
+    private void HealPlayer(PlayerHealthManager healthManager, float amount) {
+        healthManager.HurtPlayer(-amount);
     }
 
 

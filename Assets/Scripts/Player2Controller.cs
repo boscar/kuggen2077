@@ -30,7 +30,7 @@ public class Player2Controller : IPlayerController {
 	// Update is called once per frame
 	void Update () {
 		moveInput = new Vector3 (Input.GetAxisRaw ("Horizontal2"), 0f, -Input.GetAxisRaw ("Vertical2"));
-		moveVelocity = moveInput * moveSpeed;
+		moveVelocity = GetMovementVector(moveInput * moveSpeed * (theGun.isFiring ? 0.4f : 1), Time.deltaTime);
 
         if (!useController) {
             HandleKeyboardControls();
@@ -58,7 +58,6 @@ public class Player2Controller : IPlayerController {
     }
 
 	public void changeGun(float bulletSpeed, float timeBetweenShot, float damageToGive){
-		Debug.Log ("changeGun");
 		theGun.bulletSpeed = bulletSpeed;
 		theGun.timeBetweenShot = timeBetweenShot;
 		theGun.damageToGive = (int)damageToGive;

@@ -13,7 +13,6 @@ public class ScoreManager : MonoBehaviour {
 
 	void Start(){
 		scoreText = scoreObject.GetComponent<Text> ();
-		Debug.Log (scoreText);
 
 	}
 

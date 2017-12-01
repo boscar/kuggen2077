@@ -17,11 +17,10 @@ public class BulletController : IBulletController {
 	void OnCollisionEnter(Collision other){
 		if (other.gameObject.tag == "Enemy") {
 			EnemyHealthManager healthManager = other.gameObject.GetComponent<EnemyHealthManager> ();
-			Debug.Log (damageToGive);
 			healthManager.HurtEnemy (damageToGive);
 		}
 
-		Destroy (gameObject,0.02f);
+		Destroy (gameObject);
 	}
 
 }

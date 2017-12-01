@@ -11,13 +11,12 @@ public class EnemySpawnManager : MonoBehaviour {
 
     void Start () {
         enemySpawnerControllers = transform.GetComponentsInChildren<EnemySpawnerController>();
-        Debug.Log(enemySpawnerControllers.Length);
 	}
 	
 	// Update is called once per frame
 	void Update () {
         timer += Time.deltaTime;
-        if (timer >= switchSpawnInterval) {
+        if (timer >= switchSpawnInterval / ((60 + Time.time) / 60)) {
             foreach(EnemySpawnerController e in enemySpawnerControllers) {
                 e.Active = false;
             }

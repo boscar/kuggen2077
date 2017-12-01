@@ -8,6 +8,7 @@ public class WeaponSpawnerController : MonoBehaviour {
 	public GameObject weapon;
 
 	public float spawnRate;
+    public float spawnChance = 0.1f;
 	private float spawnCount;
 
 	// Use this for initialization
@@ -19,7 +20,7 @@ public class WeaponSpawnerController : MonoBehaviour {
 	void Update () {
 		if (shouldSpawnPickup ()) {
 			spawnCount -= Time.deltaTime;
-			if (spawnCount <= 0) {
+			if (spawnCount <= 0 && (UnityEngine.Random.value < spawnChance * Time.deltaTime)) {
 				GameObject newPickup = Instantiate (weapon, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
 				newPickup.transform.parent = gameObject.transform;
 
