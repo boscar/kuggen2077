@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GunController : IGun {
+
+	private AudioSource source;
+
+	void Start () {
+		source = GetComponent<AudioSource> ();
+		Debug.Log (source.ToString ());
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -19,6 +26,9 @@ public class GunController : IGun {
 			IBulletController newBullet = Instantiate<IBulletController> (bullet, firePoint.position, bulletRotation);
             newBullet.speed = bulletSpeed;
 			newBullet.damageToGive = damageToGive;
+
+			source.pitch = 0.9f + (Random.value * 0.2f);
+			source.Play ();
 		}
 	}
 }
