@@ -7,7 +7,7 @@ public class HealthBarController : MonoBehaviour {
 	private float startingHealth;
 	private float currentHealth;
 
-	public PlayerController player;
+	public IPlayerController player;
 	private PlayerHealthManager healthManager;
 
 	private GameObject currentHealthBar;
@@ -20,9 +20,9 @@ public class HealthBarController : MonoBehaviour {
 		startingHealth = healthManager.getStartingHealth();
 		currentHealth = startingHealth;
 	
-		currentHealthBar = GameObject.Find ("current");
+		currentHealthBar = transform.Find("current").gameObject;
 
-		Debug.Log (currentHealthBar.ToString ());
+        Debug.Log (currentHealthBar.ToString ());
 	}
 	
 	// Update is called once per frame

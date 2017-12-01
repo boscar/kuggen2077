@@ -13,9 +13,9 @@ public class PickupController : MonoBehaviour {
             Destroy(gameObject);
             switch (pickupType) {
                 case PickupType.MINIGUN:
-                    PickupMinigun(other.GetComponent<PlayerController>()); break;
+                    PickupMinigun(other.GetComponent<IPlayerController>()); break;
                 case PickupType.SHOTGUN:
-                    PickupShotgun(other.GetComponent<PlayerController>());
+                    PickupShotgun(other.GetComponent<IPlayerController>());
                     break;
                 default: break;
             }
@@ -23,7 +23,7 @@ public class PickupController : MonoBehaviour {
     }
 
 
-    public void PickupMinigun(PlayerController playerController) {
+    public void PickupMinigun(IPlayerController playerController) {
         MinigunController mgc = Instantiate<MinigunController>(Resources.Load<MinigunController>("MiniGun"), playerController.theGun.transform.position, playerController.theGun.transform.rotation, playerController.transform);
         Destroy(playerController.theGun);
         playerController.theGun = mgc;
@@ -31,7 +31,7 @@ public class PickupController : MonoBehaviour {
     }
 
 
-    public void PickupShotgun(PlayerController playerController) {
+    public void PickupShotgun(IPlayerController playerController) {
         ShotgunController sgc = Instantiate<ShotgunController>(Resources.Load<ShotgunController>("Shotgun"), playerController.theGun.transform.position, playerController.theGun.transform.rotation, playerController.transform);
         Destroy(playerController.theGun);
         playerController.theGun = sgc;

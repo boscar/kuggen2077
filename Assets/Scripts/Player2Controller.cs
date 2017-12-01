@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : IPlayerController {
+public class Player2Controller : IPlayerController {
 
 	public float moveSpeed;
 	private Rigidbody myRigidBody;
@@ -29,7 +29,7 @@ public class PlayerController : IPlayerController {
 	
 	// Update is called once per frame
 	void Update () {
-		moveInput = new Vector3 (Input.GetAxisRaw ("Horizontal"), 0f, Input.GetAxisRaw ("Vertical"));
+		moveInput = new Vector3 (Input.GetAxisRaw ("Horizontal2"), 0f, -Input.GetAxisRaw ("Vertical2"));
 		moveVelocity = moveInput * moveSpeed;
 
         if (!useController) {
@@ -95,7 +95,7 @@ public class PlayerController : IPlayerController {
     }
 
     private void HandleControllerControls() {
-        Vector3 playerDirection = Vector3.right * Input.GetAxisRaw("RHorizontal") + Vector3.forward * -Input.GetAxisRaw("RVertical");
+        Vector3 playerDirection = Vector3.right * Input.GetAxisRaw("RHorizontal2") + Vector3.forward * -Input.GetAxisRaw("RVertical2");
         if (playerDirection.sqrMagnitude > 0.0f) {
             transform.rotation = Quaternion.LookRotation(playerDirection, Vector3.up);
             theGun.isFiring = true;
@@ -104,21 +104,21 @@ public class PlayerController : IPlayerController {
             theGun.isFiring = false;
         }
 
-        //if (Input.GetAxis("RAxis") > 0) {
-        //    theGun.isFiring = true;
-        //}
+        /*if (Input.GetAxis("RAxis2") > 0) {
+            theGun.isFiring = true;
+        }
 
-        //if (Input.GetAxis("RAxis") <= 0) {
-        //    theGun.isFiring = false;
-        //}
+        if (Input.GetAxis("RAxis2") <= 0) {
+            theGun.isFiring = false;
+        }*/
 
-        if (Input.GetAxis("LAxis") > 0 && !spaceDown && !dashing) {
+        if (Input.GetAxis("LAxis2") > 0 && !spaceDown && !dashing) {
             spaceDown = true;
             dashing = true;
             dashVelocity = moveInput * dashSpeed;
         }
 
-        if (Input.GetAxis("LAxis") <= 0 && spaceDown) {
+        if (Input.GetAxis("LAxis2") <= 0 && spaceDown) {
             spaceDown = false;
         }
     }
