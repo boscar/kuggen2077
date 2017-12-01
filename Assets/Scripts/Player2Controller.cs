@@ -30,7 +30,7 @@ public class Player2Controller : IPlayerController {
 	// Update is called once per frame
 	void Update () {
 		moveInput = new Vector3 (Input.GetAxisRaw ("Horizontal2"), 0f, -Input.GetAxisRaw ("Vertical2"));
-		moveVelocity = moveInput * moveSpeed;
+		moveVelocity = moveInput * moveSpeed * (theGun.isFiring ? 0.5f : 1);
 
         if (!useController) {
             HandleKeyboardControls();
