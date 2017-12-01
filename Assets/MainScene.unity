@@ -404,6 +404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   theGun: {fileID: 788983590}
+  floatiness: 8
   moveSpeed: 5
   dashSpeed: 40
   dashDuration: 0.3
@@ -3222,6 +3223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   theGun: {fileID: 1385526997}
+  floatiness: 8
   moveSpeed: 5
   dashSpeed: 40
   dashDuration: 0.3
