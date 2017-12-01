@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class MinigunController : IGun {
 
+	private AudioSource source;
+
     void Start() {
         spread = 2;
         bulletSpeed = 20f;
         timeBetweenShot = 0.05f;
         damageToGive = 0.2f;
+
+		source = GetComponent<AudioSource> ();
     }
 
     // Update is called once per frame
@@ -24,6 +28,9 @@ public class MinigunController : IGun {
             for(int i = 0; i < amount; ++i) {
                 SpawnBullet();
             }
+
+			source.pitch = 0.95f + (Random.value * 0.1f);
+			source.Play ();
         }
     }
 

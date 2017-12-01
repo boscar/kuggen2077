@@ -6,11 +6,15 @@ public class ShotgunController : IGun {
 
     public int amountOfBullets = 10;
 
+	private AudioSource source;
+
     void Start() {
         spread = 30;
         bulletSpeed = 20f;
         timeBetweenShot = 1;
         damageToGive = 1;
+
+		source = GetComponent<AudioSource> ();
     }
 
     // Update is called once per frame
@@ -25,6 +29,9 @@ public class ShotgunController : IGun {
             for(int i = 0; i < amountOfBullets; ++i) {
                 Invoke("SpawnBullet", Random.value * 0.05f);
             }
+
+			source.pitch = 0.9f + (Random.value * 0.2f);
+			source.Play ();
         }
     }
 
