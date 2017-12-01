@@ -21,7 +21,7 @@ public class BulletController : IBulletController {
 			healthManager.HurtEnemy (damageToGive);
 		}
 
-		Destroy (gameObject,0.02f);
+		Destroy (gameObject);
 	}
 
 }
