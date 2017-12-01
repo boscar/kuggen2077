@@ -100,18 +100,19 @@ public class PlayerController : MonoBehaviour {
         Vector3 playerDirection = Vector3.right * Input.GetAxisRaw("RHorizontal") + Vector3.forward * -Input.GetAxisRaw("RVertical");
         if (playerDirection.sqrMagnitude > 0.0f) {
             transform.rotation = Quaternion.LookRotation(playerDirection, Vector3.up);
-            theGun.isFiring = true;
-        } else {
-            theGun.isFiring = false;
-        }
+        //    theGun.isFiring = true;
+        } 
+        //else {
+        //    theGun.isFiring = false;
+        //}
 
-        /*if (Input.GetAxis("RAxis") > 0) {
+        if (Input.GetAxis("RAxis") > 0) {
             theGun.isFiring = true;
         }
 
         if (Input.GetAxis("RAxis") <= 0) {
             theGun.isFiring = false;
-        }*/
+        }
 
         if (Input.GetAxis("LAxis") > 0 && !spaceDown && !dashing) {
             spaceDown = true;
