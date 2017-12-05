@@ -254,7 +254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 1168165763264090, guid: 202355d00c2584128ae3a7a5332a6c1e, type: 2}
   spawnRate: 10
-  spawnChance: 0.1
+  spawnChance: 0.05
 --- !u!1 &103918732
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,7 +369,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &128839661
 Transform:
   m_ObjectHideFlags: 0
@@ -488,7 +488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 1168165763264090, guid: 202355d00c2584128ae3a7a5332a6c1e, type: 2}
   spawnRate: 10
-  spawnChance: 0.1
+  spawnChance: 0.05
 --- !u!1 &247886577
 GameObject:
   m_ObjectHideFlags: 0
@@ -2017,7 +2017,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 1168165763264090, guid: 202355d00c2584128ae3a7a5332a6c1e, type: 2}
   spawnRate: 10
-  spawnChance: 0.1
+  spawnChance: 0.05
 --- !u!1 &894465822
 GameObject:
   m_ObjectHideFlags: 0
@@ -2256,7 +2256,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1023434029}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -3.31, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 213602063}
@@ -2275,7 +2275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 1168165763264090, guid: 202355d00c2584128ae3a7a5332a6c1e, type: 2}
   spawnRate: 10
-  spawnChance: 0.1
+  spawnChance: 0.05
 --- !u!1 &1029553089
 GameObject:
   m_ObjectHideFlags: 0
@@ -3263,7 +3263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 1168165763264090, guid: 202355d00c2584128ae3a7a5332a6c1e, type: 2}
   spawnRate: 10
-  spawnChance: 0.1
+  spawnChance: 0.05
 --- !u!1 &1574923205
 GameObject:
   m_ObjectHideFlags: 0
@@ -3433,7 +3433,7 @@ MonoBehaviour:
   moveSpeed: 6
   dashSpeed: 40
   dashDuration: 0.3
-  useController: 1
+  useController: 0
 --- !u!54 &1649142402
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -25,7 +25,7 @@ public class PickupController : MonoBehaviour {
 
     public void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag == "Player") {
-            HealPlayer(other.GetComponent<PlayerHealthManager>(), 1.0f);
+            HealPlayer(other.GetComponent<PlayerHealthManager>(), 2.0f);
             Destroy(gameObject);
             switch (pickupType) {
                 case PickupType.MINIGUN:
