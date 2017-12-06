@@ -369,7 +369,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &128839661
 Transform:
   m_ObjectHideFlags: 0
@@ -1447,7 +1447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 114488677073314070, guid: 9d955058646b4e747b285072aa52659b, type: 2}
-  spawnRate: 12
+  spawnRate: 24
 --- !u!4 &517008339
 Transform:
   m_ObjectHideFlags: 0
@@ -1489,7 +1489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 114488677073314070, guid: 9d955058646b4e747b285072aa52659b, type: 2}
-  spawnRate: 12
+  spawnRate: 24
 --- !u!4 &531772943
 Transform:
   m_ObjectHideFlags: 0
@@ -1531,7 +1531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 114583358214659700, guid: 0b4a1bc425d0f374eb9d686dc93673cf, type: 2}
-  spawnRate: 7
+  spawnRate: 14
 --- !u!4 &582650886
 Transform:
   m_ObjectHideFlags: 0
@@ -2736,7 +2736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 114488677073314070, guid: ce56f451358ca4a358fc7c743a93e095, type: 2}
-  spawnRate: 3
+  spawnRate: 7
 --- !u!4 &1300135203
 Transform:
   m_ObjectHideFlags: 0
@@ -3291,7 +3291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66a95e8b16955fe4ab8ec110aeb7ea03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  switchSpawnInterval: 15
+  switchSpawnInterval: 20
 --- !u!4 &1574923207
 Transform:
   m_ObjectHideFlags: 0
@@ -3433,7 +3433,7 @@ MonoBehaviour:
   moveSpeed: 6
   dashSpeed: 40
   dashDuration: 0.3
-  useController: 0
+  useController: 1
 --- !u!54 &1649142402
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3665,7 +3665,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 114488677073314070, guid: ce56f451358ca4a358fc7c743a93e095, type: 2}
-  spawnRate: 3
+  spawnRate: 7
 --- !u!4 &1664973214
 Transform:
   m_ObjectHideFlags: 0
@@ -4331,7 +4331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 114583358214659700, guid: 0b4a1bc425d0f374eb9d686dc93673cf, type: 2}
-  spawnRate: 7
+  spawnRate: 14
 --- !u!4 &2070683015
 Transform:
   m_ObjectHideFlags: 0

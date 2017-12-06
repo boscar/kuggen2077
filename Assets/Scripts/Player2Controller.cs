@@ -97,20 +97,20 @@ public class Player2Controller : IPlayerController {
         Vector3 playerDirection = Vector3.right * Input.GetAxisRaw("RHorizontal2") + Vector3.forward * -Input.GetAxisRaw("RVertical2");
         if (playerDirection.sqrMagnitude > 0.0f) {
             transform.rotation = Quaternion.LookRotation(playerDirection, Vector3.up);
-            theGun.isFiring = true;
+//            theGun.isFiring = true;
         } 
         else {
-            theGun.isFiring = false;
+//            theGun.isFiring = false;
         }
-
-        /*if (Input.GetAxis("RAxis2") > 0) {
+      
+        if (Input.GetAxis("RAxis2") > 0) {
             theGun.isFiring = true;
         }
 
         if (Input.GetAxis("RAxis2") <= 0) {
             theGun.isFiring = false;
-        }*/
-
+        }
+        
         if (Input.GetAxis("LAxis2") > 0 && !spaceDown && !dashing) {
             spaceDown = true;
             dashing = true;
