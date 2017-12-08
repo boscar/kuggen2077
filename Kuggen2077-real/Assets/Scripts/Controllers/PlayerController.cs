@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour {
 
     private ControllKeyBindings KeyBindings { get; set; }
     private Vector3 movementInput;
+    private Vector3 direction = Vector3.zero;
 
     protected void Start() {
         InitComponents();
@@ -36,16 +37,7 @@ public class PlayerController : MonoBehaviour {
 
     protected void Update() {
         movementInput = new Vector3(Input.GetAxisRaw(KeyBindings.HoriszontalAxisID), 0f, Input.GetAxisRaw(KeyBindings.VerticalAxisID));
-
-        Ray cameraRay = MainCamera.Instance.Camera.ScreenPointToRay(Input.mousePosition);
-        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
-        float rayLength;
-
-        if (groundPlane.Raycast(cameraRay, out rayLength)) {
-            Vector3 pointToLook = cameraRay.GetPoint(rayLength);
-
-            transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
-        }
+        direction = KeyBindings.GetDirection(transform);
     }
 
     protected void FixedUpdate() {
@@ -53,6 +45,8 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void HandleMovement(float deltaTime) {
+        transform.LookAt(direction);
+
         if (player.MovementHandler == null) {
             return;
         }
