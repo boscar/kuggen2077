@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour {
 
     private ControllKeyBindings KeyBindings { get; set; }
     private Vector3 movementInput;
-    private DashAbility dashEffect = new DashAbility();
+    private Vector3 direction = Vector3.zero;
 
     protected void Start() {
         InitComponents();
@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour {
 
     protected void Update() {
         movementInput = new Vector3(Input.GetAxisRaw(KeyBindings.HoriszontalAxisID), 0f, Input.GetAxisRaw(KeyBindings.VerticalAxisID));
+        direction = KeyBindings.GetDirection(transform);
     }
 
     protected void FixedUpdate() {
@@ -44,6 +45,8 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void HandleMovement(float deltaTime) {
+        transform.LookAt(direction);
+
         if (player.MovementHandler == null) {
             return;
         }
