@@ -26,14 +26,24 @@ public class Player : GameEntity, IMovable {
 
     public Rigidbody Rigidbody { get; set; }
 
-    void Start () {
+    public DashAbility DashAbility { get; private set; }
+
+    void Awake () {
+        DashAbility = new DashAbility();
+        InitHandlers();
+    }
+
+    void Start() {
         InitComponents();
-        MovementHandler = new MovementHandler(this);
     }
 
     protected new void FixedUpdate() {
         base.FixedUpdate();
         MovementHandler.Update(Time.fixedDeltaTime);
+    }
+
+    private void InitHandlers() {
+        MovementHandler = new MovementHandler(this);
     }
 
     private void InitComponents() {

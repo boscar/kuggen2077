@@ -3,14 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DashEffectCreator {
+public class DashAbility {
 
     public const string DASH_MOVEMENT_ID = "dash";
-    public const float DEFUALT_DASH_DURATION = 0.1f;
-    public const float DEFUALT_DASH_SPEED = 7;
+    public const float DEFUALT_DASH_DURATION = 0.08f;
+    public const float DEFUALT_DASH_SPEED = 9;
 
     private bool hasCooldown = false;
     private float cooldown = 2.0f;
+
+    public float Cooldown {
+        get { return cooldown; }
+        set { cooldown = value; }
+    }
 
     public void Activate (GameEntity gameEntity, IMovable movable, Vector3 direction) {
         if(hasCooldown) {
