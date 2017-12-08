@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour {
 
     private ControllKeyBindings KeyBindings { get; set; }
     private Vector3 movementInput;
-    private DashAbility dashEffect = new DashAbility();
 
     protected void Start() {
         InitComponents();
@@ -37,6 +36,16 @@ public class PlayerController : MonoBehaviour {
 
     protected void Update() {
         movementInput = new Vector3(Input.GetAxisRaw(KeyBindings.HoriszontalAxisID), 0f, Input.GetAxisRaw(KeyBindings.VerticalAxisID));
+
+        Ray cameraRay = MainCamera.Instance.Camera.ScreenPointToRay(Input.mousePosition);
+        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+        float rayLength;
+
+        if (groundPlane.Raycast(cameraRay, out rayLength)) {
+            Vector3 pointToLook = cameraRay.GetPoint(rayLength);
+
+            transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
+        }
     }
 
     protected void FixedUpdate() {
