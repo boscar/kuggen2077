@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     protected void Update() {
-        movementInput = new Vector3(Input.GetAxisRaw(KeyBindings.HoriszontalAxisID), 0f, Input.GetAxisRaw(KeyBindings.VerticalAxisID));
+        movementInput = new Vector3(Input.GetAxisRaw(KeyBindings.HoriszontalAxisID), 0f, Input.GetAxisRaw(KeyBindings.VerticalAxisID)).normalized;
         direction = KeyBindings.GetDirection(transform);
     }
 
