@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public abstract class ControllKeyBindings {
+public abstract class ControlKeyBindings {
 
-    public enum ControllScheme { KEYBOARD, GAMEPAD0, GAMEPAD1 };
+    public enum ControlScheme { KEYBOARD, GAMEPAD0, GAMEPAD1 };
 
     public abstract string VerticalAxisID { get; }
     public abstract string HoriszontalAxisID { get; }

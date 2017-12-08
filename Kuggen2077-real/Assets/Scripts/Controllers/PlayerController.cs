@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    public ControllKeyBindings.ControllScheme controllScheme = ControllKeyBindings.ControllScheme.KEYBOARD;
+    public ControlKeyBindings.ControlScheme controlScheme = ControlKeyBindings.ControlScheme.KEYBOARD;
     public Player player;
 
-    private ControllKeyBindings KeyBindings { get; set; }
+    private ControlKeyBindings KeyBindings { get; set; }
     private Vector3 movementInput;
     private Vector3 direction = Vector3.zero;
 
     protected void Start() {
         InitComponents();
-        AssignKeyBindings(controllScheme);
+        AssignKeyBindings(controlScheme);
     }
 
     private void InitComponents() {
@@ -25,10 +25,13 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    public void AssignKeyBindings(ControllKeyBindings.ControllScheme controllScheme) {
-        switch (controllScheme) {
-            case ControllKeyBindings.ControllScheme.KEYBOARD :
-                KeyBindings = new KeyboardControllKeyBindings();
+    public void AssignKeyBindings(ControlKeyBindings.ControlScheme controlScheme) {
+        switch (controlScheme) {
+            case ControlKeyBindings.ControlScheme.KEYBOARD :
+                KeyBindings = new KeyboardControlKeyBindings();
+                break;
+            case ControlKeyBindings.ControlScheme.GAMEPAD0:
+                KeyBindings = new GamepadOneControlKeyBindings();
                 break;
             default : break;
         }

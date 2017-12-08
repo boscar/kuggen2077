@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KeyboardControllKeyBindings : ControllKeyBindings {
+public class KeyboardControlKeyBindings : ControlKeyBindings {
     
     public override string HoriszontalAxisID {
         get {
@@ -20,7 +20,7 @@ public class KeyboardControllKeyBindings : ControllKeyBindings {
 
     public override KeyCode PrimaryAbility {
         get {
-            return KeyCode.Space;
+            return KeyCode.Joystick1Button5;
         }
     }
 
