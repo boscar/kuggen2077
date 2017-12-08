@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
+    public ControllKeyBindings.ControllScheme controllScheme = ControllKeyBindings.ControllScheme.KEYBOARD;
     public Player player;
 
+    private ControllKeyBindings KeyBindings { get; set; }
     private Vector3 movementInput;
-    private DashEffectCreator dashEffect = new DashEffectCreator();
+    private DashAbility dashEffect = new DashAbility();
 
     protected void Start() {
-        if (player == null) {
-            player = GetComponent<Player>();
-        }
+        InitComponents();
+        AssignKeyBindings(controllScheme);
     }
 
     private void InitComponents() {
@@ -24,15 +25,33 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    public void AssignKeyBindings(ControllKeyBindings.ControllScheme controllScheme) {
+        switch (controllScheme) {
+            case ControllKeyBindings.ControllScheme.KEYBOARD :
+                KeyBindings = new KeyboardControllKeyBindings();
+                break;
+            default : break;
+        }
+
+    }
+
     protected void Update() {
-        movementInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
+        movementInput = new Vector3(Input.GetAxisRaw(KeyBindings.HoriszontalAxisID), 0f, Input.GetAxisRaw(KeyBindings.VerticalAxisID));
     }
 
     protected void FixedUpdate() {
+        HandleMovement(Time.fixedDeltaTime);
+    }
+
+    private void HandleMovement(float deltaTime) {
+        if (player.MovementHandler == null) {
+            return;
+        }
+
         player.MovementHandler.BasicMove(movementInput);
 
-        if(Input.GetKeyUp(KeyCode.Space)) {
-            dashEffect.Activate(player, player, movementInput);
+        if (Input.GetKey(KeyBindings.PrimaryAbility)) {
+            player.DashAbility.Activate(player, player, movementInput);
         }
     }
 
