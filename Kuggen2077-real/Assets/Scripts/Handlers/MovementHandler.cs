@@ -20,15 +20,15 @@ public class MovementHandler {
         this.movable = movable;
     }
 
-    public void BasicMove(Vector3 direction) {
-        Move(direction.normalized * movable.MovementSpeed, BASIC_MOVEMENT_ID, true);
+    public void BasicMove(Vector3 movementDirection) {
+        Move(movementDirection.normalized * movable.MovementSpeed, BASIC_MOVEMENT_ID, true);
     }
 
     public void Move(Vector3 velocity, string id, bool useFloatiness) {
         Dictionary<string, Vector3> velocities = useFloatiness ? floatyVelocities : this.velocities;
         if (velocities.ContainsKey(id)) {
             velocities[id] = velocity;
-        }else {
+        } else {
             velocities.Add(id, velocity);
         }
     }
