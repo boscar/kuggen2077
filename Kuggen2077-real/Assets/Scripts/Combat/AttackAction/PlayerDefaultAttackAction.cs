@@ -3,15 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDefaultAttack : AttackAction {
+public class PlayerDefaultAttack : RangedAttackAction {
 
     private Bullet bulletObject;
     private GameEntity gameEntity;
     private bool hasCooldown = false;
-
-    public new float Cooldown { get; set; }
-    public float Spread { get; set; }
-    public float ProjectileSpeed { get; set; }
 
     public PlayerDefaultAttack (GameEntity gameEntity) {
         this.gameEntity = gameEntity;
