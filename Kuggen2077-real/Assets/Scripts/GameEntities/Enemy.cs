@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : GameEntity, IMovable {
+public class Enemy : GameEntity, IMovable, IAttacker {
 
 	public const float DEFAULT_ENEMY_MOVEMENT_SPEED = 6;
 	public const float DEFAULT_ENEMY_MOVEMENT_FLOATINESS = 7;
 
 	public float movementSpeed = DEFAULT_ENEMY_MOVEMENT_SPEED;
+
+	public const string ATTACK_PRIMARY = "attack_primary";
 
 	public float MovementSpeed {
 		get { return movementSpeed; }
@@ -22,11 +24,23 @@ public class Enemy : GameEntity, IMovable {
 	}
 
 	public MovementHandler MovementHandler { get; set; }
+	public AttackHandler AttackHandler { get; set; }
 
 	public Rigidbody Rigidbody { get; set; }
 
+	public Transform Transform {
+		get { return transform; }
+	}
+
+	private Dictionary<string, AttackAction> attackActions = new Dictionary<string, AttackAction>();
+
+	public Dictionary<string, AttackAction> AttackActions {
+		get { return attackActions;  }
+	}
+
 	void Awake () {
 		InitHandlers();
+		AttackActions.Add(ATTACK_PRIMARY, new EnemyDefaultAttack());
 	}
 
 	void Start() {
