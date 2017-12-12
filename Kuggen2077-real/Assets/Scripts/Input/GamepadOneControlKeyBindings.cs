@@ -20,22 +20,22 @@ public class GamepadOneControlKeyBindings : ControlKeyBindings {
 
     public override KeyCode PrimaryAbility {
         get {
-            return KeyCode.Space;
+            return KeyCode.Joystick1Button5;
         }
     }
 
     public override Func<Transform, Vector3> GetDirection {
         get {
             return (transform) => {
-              //  Vector3 direction = transform.rotation.eulerAngles;
-
                 Vector3 direction = Vector3.right * Input.GetAxisRaw("RHorizontal") + Vector3.forward * -Input.GetAxisRaw("RVertical");
                 
                 if(direction.sqrMagnitude > 0.0f)
                 {
                     transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
+                    return direction;
+                } else {
+                    return transform.localRotation.eulerAngles;
                 }
-                return direction;
             };
         }
     }

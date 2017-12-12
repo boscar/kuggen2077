@@ -11,7 +11,10 @@ public class PlayerDefaultAttack : AttackAction {
     }
 
     public override void Activate(IAttacker attacker) {
-        Attack attack = new AttackBuilder().Attacker(attacker).Damage(Damage).Build();
+        Attack attack = new AttackBuilder()
+            .Attacker(attacker)
+            .AttackableLayers(new string[] { LayerConstants.ENEMY, LayerConstants.WALLS})
+            .Damage(Damage).Build();
         //Create projectile
     }
 

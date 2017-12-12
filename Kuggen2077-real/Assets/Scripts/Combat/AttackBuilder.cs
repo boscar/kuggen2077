@@ -6,9 +6,15 @@ public class AttackBuilder {
 
     private IAttacker attacker;
     private int damage = 0;
+    private string[] attackableLayers;
 
     public AttackBuilder Attacker(IAttacker attacker) {
         this.attacker = attacker;
+        return this;
+    }
+
+    public AttackBuilder AttackableLayers(string[] attackableLayers) {
+        this.attackableLayers = attackableLayers;
         return this;
     }
 
@@ -18,6 +24,6 @@ public class AttackBuilder {
     }
 
     public Attack Build () {
-        return new Attack(attacker, damage);
+        return new Attack(attacker, attackableLayers, damage);
     }
 }

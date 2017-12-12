@@ -24,7 +24,6 @@ public class MovementHandler {
         Move(direction.normalized * movable.MovementSpeed, BASIC_MOVEMENT_ID, true);
     }
 
-
     public void Move(Vector3 velocity, string id, bool useFloatiness) {
         Dictionary<string, Vector3> velocities = useFloatiness ? floatyVelocities : this.velocities;
         if (velocities.ContainsKey(id)) {
