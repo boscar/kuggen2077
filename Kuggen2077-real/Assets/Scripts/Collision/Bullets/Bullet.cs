@@ -18,11 +18,16 @@ public class Bullet : MonoBehaviour {
 
     private void TryImpact(Collider collider) {
         if(Utils.Contains(Attack.AttackableLayers, LayerMask.LayerToName(collider.gameObject.layer))) {
-            Impact(collider.gameObject);
+            Impact(collider);
         }
     }
 
-    protected void Impact(GameObject colliderGameObject) {
+    protected void Impact(Collider collider) {
+        Debug.Log("Hit " + collider.gameObject);
+        GameEntity entity = ComponentDictionary.GetEntity(collider);
+        if(entity != null) {
+            Debug.Log("Hit " + entity);
+        }
         Destroy(this.gameObject);
     }
 }
