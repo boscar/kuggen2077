@@ -6,4 +6,6 @@ public interface IAttacker {
 
     Dictionary<string, AttackAction> AttackActions { get; }
 
+    Transform Transform { get; }
+
 }

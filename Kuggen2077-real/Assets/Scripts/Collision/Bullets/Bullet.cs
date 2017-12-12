@@ -5,6 +5,24 @@ using UnityEngine;
 public class Bullet : MonoBehaviour {
 
     public Attack Attack { get; set; }
+    public float Speed { get; set; }
+
+    private Rigidbody Rigidbody { get; set; }
+
+    protected void Start() {
+        Rigidbody = GetComponent<Rigidbody>();
+        if (Rigidbody == null) {
+            throw new KuggenException("Rigidbody can not be null for " + this);
+        }
+    }
+
+    public void FixedUpdate() {
+        MoveProjectile(Time.fixedDeltaTime);
+    }
+
+    protected void MoveProjectile(float deltaTime) {
+        Rigidbody.velocity = Vector3.forward * Speed;
+    }
     
     public void OnTriggerEnter(Collider collider) {
         TryImpact(collider);

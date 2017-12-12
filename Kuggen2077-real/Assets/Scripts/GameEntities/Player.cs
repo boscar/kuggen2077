@@ -26,6 +26,10 @@ public class Player : GameEntity, IMovable, IAttacker {
 
     public Rigidbody Rigidbody { get; set; }
 
+    public Transform Transform {
+        get { return transform; }
+    }
+
     public DashAbility DashAbility { get; private set; }
 
     private Dictionary<string, AttackAction> attackActions = new Dictionary<string, AttackAction>();

@@ -5,8 +5,9 @@ using UnityEngine;
 public class AttackBuilder {
 
     private IAttacker attacker;
-    private int damage = 0;
     private string[] attackableLayers;
+    private int damage = 0;
+    private float projectileSpeed = 0;
 
     public AttackBuilder Attacker(IAttacker attacker) {
         this.attacker = attacker;
@@ -23,7 +24,12 @@ public class AttackBuilder {
         return this;
     }
 
+    public AttackBuilder ProjectileSpeed(float projectileSpeed) {
+        this.projectileSpeed = projectileSpeed;
+        return this;
+    }
+
     public Attack Build () {
-        return new Attack(attacker, attackableLayers, damage);
+        return new Attack(attacker, attackableLayers, damage, projectileSpeed);
     }
 }
