@@ -13,7 +13,7 @@ public class PlayerDefaultAttack : RangedAttackAction {
         this.gameEntity = gameEntity;
         Damage = 10;
         Cooldown = 0.2f;
-        ProjectileSpeed = 10;
+        ProjectileSpeed = 18;
         Spread = 3;
         bulletObject = Resources.Load<Bullet>("simple_bullet");
     }
