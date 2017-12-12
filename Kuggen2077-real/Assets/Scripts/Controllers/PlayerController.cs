@@ -59,6 +59,10 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKey(KeyBindings.PrimaryAbility)) {
             player.DashAbility.Activate(player, player, movementInput);
         }
+
+        if (Input.GetKey(KeyBindings.PrimaryAttack)) {
+            player.AttackHandler.Attack(Player.ATTACK_PRIMARY);
+        }
     }
 
 }

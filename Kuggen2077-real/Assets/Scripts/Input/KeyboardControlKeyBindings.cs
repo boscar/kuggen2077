@@ -17,6 +17,11 @@ public class KeyboardControlKeyBindings : ControlKeyBindings {
         }
     }
 
+    public override KeyCode PrimaryAttack {
+        get {
+            return KeyCode.Mouse0;
+        }
+    }
 
     public override KeyCode PrimaryAbility {
         get {

@@ -17,6 +17,11 @@ public class GamepadOneControlKeyBindings : ControlKeyBindings {
         }
     }
 
+    public override KeyCode PrimaryAttack {
+        get {
+            return KeyCode.Joystick1Button9;
+        }
+    }
 
     public override KeyCode PrimaryAbility {
         get {

@@ -8,6 +8,8 @@ public class Player : GameEntity, IMovable, IAttacker {
     public const float DEFAULT_PLAYER_MOVEMENT_SPEED = 6;
     public const float DEFAULT_PLAYER_MOVEMENT_FLOATINESS = 7;
 
+    public const string ATTACK_PRIMARY = "attack_primary";
+
     public float movementSpeed = DEFAULT_PLAYER_MOVEMENT_SPEED;
 
     public float MovementSpeed {
@@ -23,6 +25,7 @@ public class Player : GameEntity, IMovable, IAttacker {
     }
 
     public MovementHandler MovementHandler { get; set; }
+    public AttackHandler AttackHandler { get; set; }
 
     public Rigidbody Rigidbody { get; set; }
 
@@ -40,6 +43,7 @@ public class Player : GameEntity, IMovable, IAttacker {
 
     void Awake () {
         DashAbility = new DashAbility();
+        AttackActions.Add(ATTACK_PRIMARY, new PlayerDefaultAttack());
         InitHandlers();
     }
 
@@ -54,6 +58,7 @@ public class Player : GameEntity, IMovable, IAttacker {
 
     private void InitHandlers() {
         MovementHandler = new MovementHandler(this);
+        AttackHandler = new AttackHandler(this);
     }
 
     private void InitComponents() {
