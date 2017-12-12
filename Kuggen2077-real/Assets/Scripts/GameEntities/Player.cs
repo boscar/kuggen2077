@@ -43,7 +43,7 @@ public class Player : GameEntity, IMovable, IAttacker {
 
     void Awake () {
         DashAbility = new DashAbility();
-        AttackActions.Add(ATTACK_PRIMARY, new PlayerDefaultAttack());
+        AttackActions.Add(ATTACK_PRIMARY, new PlayerDefaultAttack(this));
         InitHandlers();
     }
 
