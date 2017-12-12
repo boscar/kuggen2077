@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     protected void Update() {
-        movementInput = new Vector3(Input.GetAxisRaw(KeyBindings.HoriszontalAxisID), 0f, Input.GetAxisRaw(KeyBindings.VerticalAxisID));
+        movementInput = new Vector3(Input.GetAxisRaw(KeyBindings.HoriszontalAxisID), 0f, Input.GetAxisRaw(KeyBindings.VerticalAxisID)).normalized;
         direction = KeyBindings.GetDirection(transform);
     }
 
@@ -58,6 +58,10 @@ public class PlayerController : MonoBehaviour {
 
         if (Input.GetKey(KeyBindings.PrimaryAbility)) {
             player.DashAbility.Activate(player, player, movementInput);
+        }
+
+        if (Input.GetKey(KeyBindings.PrimaryAttack)) {
+            player.AttackHandler.Attack(Player.ATTACK_PRIMARY);
         }
     }
 

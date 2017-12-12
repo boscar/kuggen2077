@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4397555, g: 0.48817986, b: 0.56839603, a: 1}
+  m_IndirectSpecularColor: {r: 0.43975532, g: 0.48817974, b: 0.5683958, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 2171233}
   - component: {fileID: 2171232}
   - component: {fileID: 2171231}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wall-west
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 145271420}
   - component: {fileID: 145271419}
   - component: {fileID: 145271418}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wall-south
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -321,7 +321,7 @@ GameObject:
   - component: {fileID: 607654601}
   - component: {fileID: 607654600}
   - component: {fileID: 607654599}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wall-east
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -503,7 +503,7 @@ GameObject:
   - component: {fileID: 1463598183}
   - component: {fileID: 1463598182}
   - component: {fileID: 1463598181}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Basic Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -833,7 +833,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1770952529}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -926,7 +926,7 @@ GameObject:
   - component: {fileID: 2032934485}
   - component: {fileID: 2032934484}
   - component: {fileID: 2032934483}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wall-north
   m_TagString: Untagged
   m_Icon: {fileID: 0}

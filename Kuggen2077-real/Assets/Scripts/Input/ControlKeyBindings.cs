@@ -10,6 +10,7 @@ public abstract class ControlKeyBindings {
     public abstract string VerticalAxisID { get; }
     public abstract string HoriszontalAxisID { get; }
 
+    public abstract KeyCode PrimaryAttack { get; }
     public abstract KeyCode PrimaryAbility { get; }
 
     public abstract Func<Transform, Vector3> GetDirection { get; }
