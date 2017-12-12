@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface IAttacker {
 
-    Dictionary<string, Attack> Attacks { get; }
+    Dictionary<string, AttackAction> AttackActions { get; }
 
 }

@@ -20,7 +20,7 @@ public class KeyboardControlKeyBindings : ControlKeyBindings {
 
     public override KeyCode PrimaryAbility {
         get {
-            return KeyCode.Joystick1Button5;
+            return KeyCode.Space;
         }
     }
 

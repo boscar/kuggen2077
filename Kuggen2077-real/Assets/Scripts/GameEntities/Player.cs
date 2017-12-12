@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : GameEntity, IMovable {
+public class Player : GameEntity, IMovable, IAttacker {
 
     public const float DEFAULT_PLAYER_MOVEMENT_SPEED = 6;
     public const float DEFAULT_PLAYER_MOVEMENT_FLOATINESS = 7;
@@ -27,6 +27,12 @@ public class Player : GameEntity, IMovable {
     public Rigidbody Rigidbody { get; set; }
 
     public DashAbility DashAbility { get; private set; }
+
+    private Dictionary<string, AttackAction> attackActions = new Dictionary<string, AttackAction>();
+
+    public Dictionary<string, AttackAction> AttackActions {
+        get { return attackActions;  }
+    }
 
     void Awake () {
         DashAbility = new DashAbility();

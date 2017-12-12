@@ -14,9 +14,9 @@ public class AttackHandler {
     }
 
     public void Attack(string id) {
-        Attack attack = Attacker.Attacks[id];
-        if (attack != null) {
-            attack.Activate(Attacker);
+        AttackAction attackAction = Attacker.AttackActions[id];
+        if (attackAction != null) {
+            attackAction.Activate(Attacker);
         }
     }
 

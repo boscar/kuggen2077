@@ -21,7 +21,7 @@ public class MovementHandler {
     }
 
     public void BasicMove(Vector3 direction) {
-        Move(direction * movable.MovementSpeed, BASIC_MOVEMENT_ID, true);
+        Move(direction.normalized * movable.MovementSpeed, BASIC_MOVEMENT_ID, true);
     }
 
 
