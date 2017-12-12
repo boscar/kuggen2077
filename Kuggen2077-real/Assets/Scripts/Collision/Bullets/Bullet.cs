@@ -41,10 +41,9 @@ public class Bullet : MonoBehaviour {
     }
 
     protected void Impact(Collider collider) {
-        Debug.Log("Hit " + collider.gameObject);
         GameEntity entity = ComponentDictionary.GetEntity(collider);
-        if(entity != null) {
-            Debug.Log("Hit " + entity);
+        if(entity != null && entity is IAttackable) {
+            ((IAttackable)entity).RecieveAttackHandler.RecieveAttack(Attack);
         }
         Destroy(this.gameObject);
     }
