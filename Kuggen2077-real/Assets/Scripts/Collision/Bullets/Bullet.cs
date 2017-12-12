@@ -21,7 +21,7 @@ public class Bullet : MonoBehaviour {
     }
 
     protected void MoveProjectile(float deltaTime) {
-        Rigidbody.velocity = Vector3.forward * Speed;
+        transform.Translate(Vector3.forward * Speed * Time.deltaTime);
     }
     
     public void OnTriggerEnter(Collider collider) {
