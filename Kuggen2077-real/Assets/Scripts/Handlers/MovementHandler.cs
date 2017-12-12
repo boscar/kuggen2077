@@ -20,8 +20,8 @@ public class MovementHandler {
         this.movable = movable;
     }
 
-    public void BasicMove(Vector3 direction) {
-        Move(direction * movable.MovementSpeed, BASIC_MOVEMENT_ID, true);
+    public void BasicMove(Vector3 movementDirection) {
+		Move(movementDirection * movable.MovementSpeed, BASIC_MOVEMENT_ID, true);
     }
 
 
