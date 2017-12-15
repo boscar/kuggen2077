@@ -61,7 +61,10 @@ public class PlayerController : MonoBehaviour {
         }
 
         if (Input.GetKey(KeyBindings.PrimaryAttack)) {
-            player.AttackHandler.Attack(Player.ATTACK_PRIMARY);
+            AttackAction primaryAttackAction = player.AttackActions[Player.ATTACK_PRIMARY];
+            if(primaryAttackAction != null) {
+                primaryAttackAction.InitAttack();
+            }
         }
     }
 

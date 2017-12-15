@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
-    public Attack Attack { get; set; }
+    public AttackAction AttackAction { get; set; }
+
     public float Speed { get; set; }
+    public string[] AttackableLayers { get; set; }
 
     private Rigidbody Rigidbody { get; set; }
 
@@ -35,7 +37,7 @@ public class Bullet : MonoBehaviour {
     */
 
     private void TryImpact(Collider collider) {
-        if(Utils.Contains(Attack.AttackableLayers, LayerMask.LayerToName(collider.gameObject.layer))) {
+        if(Utils.Contains(AttackableLayers, LayerMask.LayerToName(collider.gameObject.layer))) {
             Impact(collider);
         }
     }
@@ -43,7 +45,7 @@ public class Bullet : MonoBehaviour {
     protected void Impact(Collider collider) {
         GameEntity entity = ComponentDictionary.GetEntity(collider);
         if(entity != null && entity is IAttackable) {
-            ((IAttackable)entity).RecieveAttackHandler.RecieveAttack(Attack);
+            AttackAction.Hit((IAttackable)entity);
         }
         Destroy(this.gameObject);
     }

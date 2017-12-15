@@ -25,7 +25,6 @@ public class Player : GameEntity, IMovable, IAttacker {
     }
 
     public MovementHandler MovementHandler { get; set; }
-    public AttackHandler AttackHandler { get; set; }
 
     public Rigidbody Rigidbody { get; set; }
 
@@ -58,7 +57,6 @@ public class Player : GameEntity, IMovable, IAttacker {
 
     private void InitHandlers() {
         MovementHandler = new MovementHandler(this);
-        AttackHandler = new AttackHandler(this);
     }
 
     private void InitComponents() {

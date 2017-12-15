@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RecieveAttackHandler : MonoBehaviour {
+public class RecieveAttackHandler {
 
     private IAttackable Attackable { get; set; }
 

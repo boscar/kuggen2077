@@ -9,8 +9,8 @@ public class PlayerDefaultAttack : RangedAttackAction {
     private GameEntity gameEntity;
     private bool hasCooldown = false;
 
-    public PlayerDefaultAttack (GameEntity gameEntity) {
-        this.gameEntity = gameEntity;
+    public PlayerDefaultAttack (Player player) : base(player) {
+        this.gameEntity = player;
         Damage = 10;
         Cooldown = 0.2f;
         ProjectileSpeed = 18;
@@ -18,27 +18,31 @@ public class PlayerDefaultAttack : RangedAttackAction {
         bulletObject = Resources.Load<Bullet>("simple_bullet");
     }
 
-    public override void Activate(IAttacker attacker) {
+    public override void InitAttack() {
         if(hasCooldown) {
             return;
         }
-        CreateBullet(attacker);
+        CreateBullet(this);
         hasCooldown = true;
         TimedEffectFactory.Create(gameEntity, Cooldown, () => {
             hasCooldown = false;
         });
     }
 
-    private void CreateBullet(IAttacker attacker) {
-        Attack attack = new AttackBuilder()
-            .Attacker(attacker)
-            .AttackableLayers(new string[] { LayerConstants.ENEMY, LayerConstants.WALLS })
-            .Damage(Damage).Build();
-        float rotY = attacker.Transform.rotation.eulerAngles.y + ((UnityEngine.Random.value * (2 * Spread)) - Spread);
+    private void CreateBullet(AttackAction attackAction) {
+        float rotY = Attacker.Transform.rotation.eulerAngles.y + ((UnityEngine.Random.value * (2 * Spread)) - Spread);
         Quaternion bulletRotation = Quaternion.Euler(new Vector3(0, rotY, 0));
-        Bullet bullet = GameObject.Instantiate<Bullet>(bulletObject, attacker.Transform.position, bulletRotation);
-        bullet.Attack = attack;
+        Bullet bullet = GameObject.Instantiate<Bullet>(bulletObject, Attacker.Transform.position, bulletRotation);
+        bullet.AttackAction = this;
+        bullet.AttackableLayers = new string[] { LayerConstants.ENEMY, LayerConstants.WALLS };
         bullet.Speed = ProjectileSpeed;
+    }
+
+    public override void Hit(IAttackable attackable) {
+        Attack attack = new AttackBuilder()
+            .Attacker(Attacker)
+            .Damage(Damage).Build();
+        attackable.RecieveAttackHandler.RecieveAttack(attack);
     }
 
 }
