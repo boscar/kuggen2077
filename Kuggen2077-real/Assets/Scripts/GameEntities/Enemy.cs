@@ -3,28 +3,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : GameEntity, IMovable, IAttackable {
+public class Enemy : GameEntity, IMovable, IAttackable, IAttacker {
 
-	public const float DEFAULT_ENEMY_MOVEMENT_SPEED = 6;
-	public const float DEFAULT_ENEMY_MOVEMENT_FLOATINESS = 7;
+    public const float DEFAULT_ENEMY_MOVEMENT_SPEED = 6;
+    public const float DEFAULT_ENEMY_MOVEMENT_FLOATINESS = 7;
 
-	public float movementSpeed = DEFAULT_ENEMY_MOVEMENT_SPEED;
+    public float movementSpeed = DEFAULT_ENEMY_MOVEMENT_SPEED;
 
-	public float MovementSpeed {
-		get { return movementSpeed; }
-		set { movementSpeed = value; }
-	}
+    public const string ATTACK_PRIMARY = "attack_primary";
 
-	public float movementFloatiness = DEFAULT_ENEMY_MOVEMENT_FLOATINESS;
+    public float MovementSpeed {
+        get { return movementSpeed; }
+        set { movementSpeed = value; }
+    }
 
-	public float MovementFloatiness {
-		get { return movementFloatiness; }
-		set { movementFloatiness = value; }
-	}
+    public float movementFloatiness = DEFAULT_ENEMY_MOVEMENT_FLOATINESS;
 
-	public MovementHandler MovementHandler { get; set; }
+    public float MovementFloatiness {
+        get { return movementFloatiness; }
+        set { movementFloatiness = value; }
+    }
 
-	public Rigidbody Rigidbody { get; set; }
+    public MovementHandler MovementHandler { get; set; }
+
+    public Rigidbody Rigidbody { get; set; }
 
     public RecieveAttackHandler RecieveAttackHandler { get; protected set; }
 
@@ -41,10 +43,10 @@ public class Enemy : GameEntity, IMovable, IAttackable {
 
     protected int currentHitPoints;
     public int CurrentHitPoints {
-        get { return currentHitPoints;  }
+        get { return currentHitPoints; }
         set {
             currentHitPoints = value;
-            if(currentHitPoints > HitPoints) {
+            if (currentHitPoints > HitPoints) {
                 currentHitPoints = HitPoints;
             }
         }
@@ -56,34 +58,41 @@ public class Enemy : GameEntity, IMovable, IAttackable {
         }
     }
 
-    void Awake () {
+    private Dictionary<string, AttackAction> attackActions = new Dictionary<string, AttackAction>();
+
+    public Dictionary<string, AttackAction> AttackActions {
+        get { return attackActions; }
+    }
+
+    void Awake() {
         InitStats();
-		InitHandlers();
-	}
+        InitHandlers();
+        AttackActions.Add(ATTACK_PRIMARY, new EnemyDefaultAttack());
+    }
 
-	void Start() {
-		InitComponents();
-	}
+    void Start() {
+        InitComponents();
+    }
 
-	protected new void FixedUpdate() {
-		base.FixedUpdate();
-		MovementHandler.Update(Time.fixedDeltaTime);
-	}
+    protected new void FixedUpdate() {
+        base.FixedUpdate();
+        MovementHandler.Update(Time.fixedDeltaTime);
+    }
 
     private void InitStats() {
         HitPoints = 30;
         CurrentHitPoints = 30;
     }
 
-	private void InitHandlers() {
-		MovementHandler = new MovementHandler(this);
+    private void InitHandlers() {
+        MovementHandler = new MovementHandler(this);
         RecieveAttackHandler = new RecieveAttackHandler(this);
-	}
+    }
 
-	private void InitComponents() {
-		Rigidbody = GetComponent<Rigidbody>();
-		if (Rigidbody == null) {
-			throw new KuggenException("Rigidbody can not be null for " + this);
-		}
-	}
+    private void InitComponents() {
+        Rigidbody = GetComponent<Rigidbody>();
+        if (Rigidbody == null) {
+            throw new KuggenException("Rigidbody can not be null for " + this);
+        }
+    }
 }
