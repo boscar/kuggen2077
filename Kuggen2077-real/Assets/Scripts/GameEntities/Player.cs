@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : GameEntity, IMovable, IAttacker {
+public class Player : GameEntity, IMovable, IAttacker, IAttackable {
 
     public const float DEFAULT_PLAYER_MOVEMENT_SPEED = 6;
     public const float DEFAULT_PLAYER_MOVEMENT_FLOATINESS = 7;
@@ -25,7 +25,7 @@ public class Player : GameEntity, IMovable, IAttacker {
     }
 
     public MovementHandler MovementHandler { get; set; }
-    public AttackHandler AttackHandler { get; set; }
+    public RecieveAttackHandler RecieveAttackHandler { get; protected set; }
 
     public Rigidbody Rigidbody { get; set; }
 
@@ -41,9 +41,32 @@ public class Player : GameEntity, IMovable, IAttacker {
         get { return attackActions;  }
     }
 
+    protected int hitPoints;
+    public int HitPoints {
+        get { return hitPoints; }
+        set {
+            hitPoints = value;
+            if (currentHitPoints > hitPoints) {
+                currentHitPoints = hitPoints;
+            }
+        }
+    }
+
+    protected int currentHitPoints;
+    public int CurrentHitPoints {
+        get { return currentHitPoints; }
+        set {
+            currentHitPoints = value;
+            if (currentHitPoints > HitPoints) {
+                currentHitPoints = HitPoints;
+            }
+        }
+    }
+
     void Awake () {
         DashAbility = new DashAbility();
         AttackActions.Add(ATTACK_PRIMARY, new PlayerDefaultAttack(this));
+        InitStats();
         InitHandlers();
     }
 
@@ -56,9 +79,14 @@ public class Player : GameEntity, IMovable, IAttacker {
         MovementHandler.Update(Time.fixedDeltaTime);
     }
 
+    private void InitStats() {
+        HitPoints = 30;
+        CurrentHitPoints = 30;
+    }
+
     private void InitHandlers() {
         MovementHandler = new MovementHandler(this);
-        AttackHandler = new AttackHandler(this);
+        RecieveAttackHandler = new RecieveAttackHandler(this);
     }
 
     private void InitComponents() {

@@ -7,6 +7,8 @@ public class EnemyController : MonoBehaviour {
 	public Enemy enemy;
 	public Player player;
 
+	private ObservableCollider attackCollider;
+
 	private Vector3 movementVector;
 	private Vector3 direction = Vector3.zero;
 
@@ -43,4 +45,5 @@ public class EnemyController : MonoBehaviour {
 
 		enemy.MovementHandler.BasicMove(movementVector);
 	}
+
 }

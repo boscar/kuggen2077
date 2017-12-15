@@ -5,16 +5,10 @@ using UnityEngine;
 public class AttackBuilder {
 
     private IAttacker attacker;
-    private string[] attackableLayers;
     private int damage = 0;
 
     public AttackBuilder Attacker(IAttacker attacker) {
         this.attacker = attacker;
-        return this;
-    }
-
-    public AttackBuilder AttackableLayers(string[] attackableLayers) {
-        this.attackableLayers = attackableLayers;
         return this;
     }
 
@@ -24,6 +18,6 @@ public class AttackBuilder {
     }
 
     public Attack Build () {
-        return new Attack(attacker, attackableLayers, damage);
+        return new Attack(attacker, damage);
     }
 }
