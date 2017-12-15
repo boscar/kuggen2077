@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour, IColliderObserver {
+public class EnemyController : MonoBehaviour {
 
 	public Enemy enemy;
 	public Player player;
@@ -23,15 +23,6 @@ public class EnemyController : MonoBehaviour, IColliderObserver {
 		}
 		if (enemy == null) {
 			throw new KuggenException("Enemy can not be null for " + this);
-		}
-
-		if (attackCollider == null) {
-			attackCollider = GetComponentInChildren<ObservableCollider> ();
-			attackCollider.addObserver (this);
-		}
-
-		if (attackCollider == null) {
-			throw new KuggenException("Attack Collider can not be null for " + this);
 		}
 	}
 	
@@ -55,15 +46,4 @@ public class EnemyController : MonoBehaviour, IColliderObserver {
 		enemy.MovementHandler.BasicMove(movementVector);
 	}
 
-	// handle collison
-	public void HandleTriggerEnter(Collider col){
-		Debug.Log ("enter111111");
-	}
-
-	public void HandleTriggerStay(Collider col) {
-	}
-
-	public void HandleTriggerExit(Collider col) {
-		Debug.Log ("exit1111111");
-	}
 }

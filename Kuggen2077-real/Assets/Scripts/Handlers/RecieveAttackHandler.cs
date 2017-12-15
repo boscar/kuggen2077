@@ -15,6 +15,7 @@ public class RecieveAttackHandler {
 
 	public void RecieveAttack(Attack attack) {
         Attackable.CurrentHitPoints -= attack.Damage;
+        Debug.Log(Attackable + " recieved " + attack.Damage + " damage and has " + Attackable.CurrentHitPoints + " hp.");
         if (Attackable.CurrentHitPoints <= 0) {
             Die();
         }

@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour {
-
-    public AttackAction AttackAction { get; set; }
+public class Bullet : AttackCollider {
 
     public float Speed { get; set; }
-    public string[] AttackableLayers { get; set; }
 
     private Rigidbody Rigidbody { get; set; }
 
@@ -25,28 +22,9 @@ public class Bullet : MonoBehaviour {
     protected void MoveProjectile(float deltaTime) {
         transform.Translate(Vector3.forward * Speed * Time.deltaTime);
     }
-    
-    public void OnTriggerEnter(Collider collider) {
-        TryImpact(collider);
+    protected override void Impact(Collider collider) {
+        base.Impact(collider);
+        Destroy(gameObject);
     }
 
-    /*
-    public void OnTriggerStay(Collider collider) {
-        TryImpact(collider);
-    }
-    */
-
-    private void TryImpact(Collider collider) {
-        if(Utils.Contains(AttackableLayers, LayerMask.LayerToName(collider.gameObject.layer))) {
-            Impact(collider);
-        }
-    }
-
-    protected void Impact(Collider collider) {
-        GameEntity entity = ComponentDictionary.GetEntity(collider);
-        if(entity != null && entity is IAttackable) {
-            AttackAction.Hit((IAttackable)entity);
-        }
-        Destroy(this.gameObject);
-    }
 }

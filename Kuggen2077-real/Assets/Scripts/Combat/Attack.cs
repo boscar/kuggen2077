@@ -7,12 +7,10 @@ using UnityEngine;
 public class Attack {
 
     public IAttacker Attacker { get; private set; }
-    public string[] AttackableLayers { get; private set; }
     public int Damage { get; private set; }
 
-    public Attack(IAttacker attacker, string[] attackableLayers, int damage) {
+    public Attack(IAttacker attacker, int damage) {
         Attacker = attacker;
-        AttackableLayers = attackableLayers;
         Damage = damage;
     }
 

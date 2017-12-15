@@ -5,19 +5,40 @@ using UnityEngine;
 
 public class EnemyDefaultAttack : AttackAction {
 
-	private Bullet bulletObject;
+	private AttackCollider attackCollider;
 
-	public EnemyDefaultAttack () {
+	public EnemyDefaultAttack (IAttacker attacker) : base(attacker) {
 		Damage = 2;
-	}
+        attackCollider = attacker.Transform.gameObject.GetComponentInChildren<AttackCollider>();
+        if (attackCollider == null) {
+            Debug.LogError("AttackCollider not set for " + this);
+            return;
+        }
+        attackCollider.AttackAction = this;
+        attackCollider.AttackableLayers = new string[] { LayerConstants.PLAYER };
+    }
 
-	public override void Activate(IAttacker attacker) {
-		Attack attack = new AttackBuilder()
-			.Attacker(attacker)
-			.AttackableLayers(new string[] { LayerConstants.ENEMY, LayerConstants.WALLS})
-			.Damage(Damage).Build();
+    public override void InitAttack() {
+        if(attackCollider == null) {
+            Debug.LogError("AttackCollider not set for " + this);
+            return;
+        }
+        attackCollider.IsActivated = true;
+    }
 
-		Debug.Log ("!!attack!!");
-	}
+    public void StopAttack() {
+        if (attackCollider == null) {
+            Debug.LogError("AttackCollider not set for " + this);
+            return;
+        }
+        attackCollider.IsActivated = false;
+    }
+
+    public override void Hit(IAttackable attackable) {
+        Attack attack = new AttackBuilder()
+            .Attacker(Attacker)
+            .Damage(Damage).Build();
+        attackable.RecieveAttackHandler.RecieveAttack(attack);
+    }
 
 }

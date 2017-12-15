@@ -67,7 +67,7 @@ public class Enemy : GameEntity, IMovable, IAttackable, IAttacker {
     void Awake() {
         InitStats();
         InitHandlers();
-        AttackActions.Add(ATTACK_PRIMARY, new EnemyDefaultAttack());
+        AttackActions.Add(ATTACK_PRIMARY, new EnemyDefaultAttack(this));
     }
 
     void Start() {
