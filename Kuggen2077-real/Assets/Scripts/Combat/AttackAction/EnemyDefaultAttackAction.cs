@@ -10,12 +10,18 @@ public class EnemyDefaultAttack : AttackAction {
 	public EnemyDefaultAttack (IAttacker attacker) : base(attacker) {
 		Damage = 2;
         attackCollider = attacker.Transform.gameObject.GetComponentInChildren<AttackCollider>();
+        InitAttackCollider(attackCollider);
+    }
+
+    private void InitAttackCollider (AttackCollider attackCollider) {
         if (attackCollider == null) {
             Debug.LogError("AttackCollider not set for " + this);
             return;
         }
         attackCollider.AttackAction = this;
         attackCollider.AttackableLayers = new string[] { LayerConstants.PLAYER };
+        attackCollider.Continous = true;
+        attackCollider.AttackInterval = 0.5f;
     }
 
     public override void InitAttack() {
