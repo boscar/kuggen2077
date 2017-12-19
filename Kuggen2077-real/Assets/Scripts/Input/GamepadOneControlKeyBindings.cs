@@ -17,31 +17,46 @@ public class GamepadOneControlKeyBindings : ControlKeyBindings {
         }
     }
 
-    public override KeyCode PrimaryAttack {
+    public override string PrimaryAttackAxisID {
         get {
-            return KeyCode.Joystick1Button9;
+            return "RAxis";
         }
     }
 
-    public override KeyCode PrimaryAbility {
-        get {
-            return KeyCode.Joystick1Button5;
+    public override KeyCode PrimaryAttack
+    {
+        get
+        {
+            throw new NotImplementedException();
         }
     }
+
+    public override string PrimaryAbilityAxisID
+    {
+        get
+        {
+            return "LAxis";
+        }
+    }
+
+    public override KeyCode PrimaryAbility
+    {
+        get
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+
+
 
     public override Func<Transform, Vector3> GetDirection {
         get {
             return (transform) => {
-                Vector3 direction = Vector3.right * Input.GetAxisRaw("RHorizontal") + Vector3.forward * -Input.GetAxisRaw("RVertical");
-                
-                if(direction.sqrMagnitude > 0.0f)
-                {
-                    transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
-                    return direction;
-                } else {
-                    return transform.localRotation.eulerAngles;
-                }
+                return Vector3.right * Input.GetAxisRaw("RHorizontal") + Vector3.forward * -Input.GetAxisRaw("RVertical");
             };
         }
     }
+
+
 }

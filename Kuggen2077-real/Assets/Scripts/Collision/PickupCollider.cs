@@ -2,19 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackCollider : AbstractCollider {
+public abstract class PickupCollider : AbstractCollider {
 
-    public AttackAction AttackAction { get; set; }
+    public void Awake() {
+        Layers = new string[] { LayerConstants.PLAYER };
+    }
 
     protected override void Impact(Collider collider) {
         GameEntity entity = ComponentDictionary.GetEntity(collider);
-        if (entity != null && entity is IAttackable) {
-            AttackAction.Hit((IAttackable)entity);
+        if (entity != null && entity is Player) {
+            Pickup((Player)entity);
             ignoredGameObjects.Add(collider.gameObject);
-            if(Continous) {
+            if (Continous) {
                 StartCoroutine(StopIgnoreCourantine(collider.gameObject, Interval));
+            }else {
+                Destroy(gameObject);
             }
         }
     }
+
+    protected abstract void Pickup(Player player);
 
 }

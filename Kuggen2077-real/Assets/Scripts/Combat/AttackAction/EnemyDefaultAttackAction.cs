@@ -19,9 +19,9 @@ public class EnemyDefaultAttack : AttackAction {
             return;
         }
         attackCollider.AttackAction = this;
-        attackCollider.AttackableLayers = new string[] { LayerConstants.PLAYER };
+        attackCollider.Layers = new string[] { LayerConstants.PLAYER };
         attackCollider.Continous = true;
-        attackCollider.AttackInterval = 0.5f;
+        attackCollider.Interval = 0.5f;
     }
 
     public override void InitAttack() {
