@@ -9,17 +9,19 @@ public class TemporaryColorChangeEffectCreator : RecieveAttackEffectCreator {
 
     private Renderer Renderer { get; set; }
     private Color Color { get; set; }
+    private Color OriginalColor { get; set; }
 
     public TemporaryColorChangeEffectCreator(IAttackable attackable, Color color) : base(attackable) {
         Renderer = Attackable.Transform.GetComponent<Renderer>();
         if (Renderer == null) {
             throw new KuggenException(this + " requires a renderer.");
         }
+        OriginalColor = Renderer.material.GetColor("_Color");
         Color = color;
     }
 
     public override bool Activate(Attack attack) {
-        Attackable.ActivateEffect(new TemporaryColorChangeEffect(Renderer, Color, DURATION), GameEntity.EffectFrequency.FIXED_UPDATE);
+        Attackable.ActivateEffect(new TemporaryColorChangeEffect(Renderer, OriginalColor, Color, DURATION), GameEntity.EffectFrequency.FIXED_UPDATE);
         return true;
     }
 
@@ -31,14 +33,14 @@ public class TemporaryColorChangeEffectCreator : RecieveAttackEffectCreator {
         private float timer = 0;
         private float duration;
 
-        public TemporaryColorChangeEffect(Renderer renderer, Color color, float duration) {
+        public TemporaryColorChangeEffect(Renderer renderer, Color originalColor, Color color, float duration) {
             this.renderer = renderer;
             this.color = color;
+            this.originalColor = originalColor;
             this.duration = duration;
         }
 
         public void Activate() {
-            originalColor = renderer.material.GetColor("_Color");
             renderer.material.SetColor("_Color", color);
         }
 

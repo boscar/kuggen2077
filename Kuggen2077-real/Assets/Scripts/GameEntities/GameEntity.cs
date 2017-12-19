@@ -8,6 +8,7 @@ public abstract class GameEntity : MonoBehaviour {
 
     private List<IEffect> effects = new List<IEffect>();
     private List<IEffect> effectsToRemove = new List<IEffect>();
+
     public void ActivateEffect(IEffect effect) {
         ActivateEffect(effect, EffectFrequency.FIXED_UPDATE);
     }
