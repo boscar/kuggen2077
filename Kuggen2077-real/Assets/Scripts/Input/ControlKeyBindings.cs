@@ -13,6 +13,9 @@ public abstract class ControlKeyBindings {
     public abstract KeyCode PrimaryAttack { get; }
     public abstract KeyCode PrimaryAbility { get; }
 
+    public abstract string PrimaryAttackAxisID { get; }
+    public abstract string PrimaryAbilityAxisID { get; }
+
     public abstract Func<Transform, Vector3> GetDirection { get; }
 
 }
