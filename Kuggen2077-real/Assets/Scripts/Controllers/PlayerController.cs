@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour {
 
     protected void FixedUpdate() {
         HandleMovement(Time.fixedDeltaTime);
+        HandleAttack(Time.fixedDeltaTime);
     }
 
     private void HandleMovement(float deltaTime) {
@@ -56,13 +57,21 @@ public class PlayerController : MonoBehaviour {
 
         player.MovementHandler.BasicMove(movementInput);
 
-        if (Input.GetKey(KeyBindings.PrimaryAbility)) {
+
+    }
+
+    private void HandleAttack(float deltaTime)
+    {
+        if (Input.GetKey(KeyBindings.PrimaryAbility))
+        {
             player.DashAbility.Activate(player, player, movementInput);
         }
 
-        if (Input.GetKey(KeyBindings.PrimaryAttack)) {
+        if (Input.GetKey(KeyBindings.PrimaryAttack))
+        {
             AttackAction primaryAttackAction = player.AttackActions[Player.ATTACK_PRIMARY];
-            if(primaryAttackAction != null) {
+            if (primaryAttackAction != null)
+            {
                 primaryAttackAction.InitAttack();
             }
         }
