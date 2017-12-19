@@ -68,6 +68,7 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable {
         AttackActions.Add(ATTACK_PRIMARY, new PlayerDefaultAttack(this));
         InitStats();
         InitHandlers();
+        InitEffects();
     }
 
     void Start() {
@@ -76,7 +77,9 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable {
 
     protected new void FixedUpdate() {
         base.FixedUpdate();
-        MovementHandler.Update(Time.fixedDeltaTime);
+        if (MovementHandler != null) {
+            MovementHandler.Update(Time.fixedDeltaTime);
+        }
     }
 
     private void InitStats() {
@@ -87,6 +90,10 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable {
     private void InitHandlers() {
         MovementHandler = new MovementHandler(this);
         RecieveAttackHandler = new RecieveAttackHandler(this);
+    }
+
+    private void InitEffects() {
+        RecieveAttackHandler.RecieveAttackCreators.Add(new TemporaryColorChangeEffectCreator(this, Color.white));
     }
 
     private void InitComponents() {

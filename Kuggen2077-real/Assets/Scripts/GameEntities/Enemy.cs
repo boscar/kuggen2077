@@ -64,9 +64,10 @@ public class Enemy : GameEntity, IMovable, IAttackable, IAttacker {
         get { return attackActions; }
     }
 
-    void Awake() {
+    protected void Awake() {
         InitStats();
         InitHandlers();
+        InitEffects();
         AttackActions.Add(ATTACK_PRIMARY, new EnemyDefaultAttack(this));
     }
 
@@ -79,14 +80,18 @@ public class Enemy : GameEntity, IMovable, IAttackable, IAttacker {
         MovementHandler.Update(Time.fixedDeltaTime);
     }
 
-    private void InitStats() {
+    protected void InitStats() {
         HitPoints = 30;
         CurrentHitPoints = 30;
     }
 
-    private void InitHandlers() {
+    protected void InitHandlers() {
         MovementHandler = new MovementHandler(this);
         RecieveAttackHandler = new RecieveAttackHandler(this);
+    }
+
+    private void InitEffects() {
+        RecieveAttackHandler.RecieveAttackCreators.Add(new TemporaryColorChangeEffectCreator(this, Color.white));
     }
 
     private void InitComponents() {
