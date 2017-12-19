@@ -4,6 +4,8 @@ using UnityEngine;
 
 public interface IEffect {
 
+    void Activate();
+
     /**
      * Return true if the effect is finished.
      */

@@ -7,8 +7,6 @@ public class EnemyRangeController : MonoBehaviour {
     public RangeEnemy enemy;
     public Player player;
 
-    private ObservableCollider attackCollider;
-
     private Vector3 movementVector;
     private Vector3 direction = Vector3.zero;
 
@@ -55,7 +53,7 @@ public class EnemyRangeController : MonoBehaviour {
 
     private void HandleShoot(float deltaTime)
     {
-        AttackAction primaryAttackAction = enemy.AttackActions[RangeEnemy.ATTACK_PRIMARY];
+        AttackAction primaryAttackAction = enemy.AttackActions[RangeEnemy.ATTACK_RANGE];
         if (primaryAttackAction != null)
         {
             primaryAttackAction.InitAttack();
