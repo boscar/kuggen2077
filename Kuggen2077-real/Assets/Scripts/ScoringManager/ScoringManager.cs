@@ -19,6 +19,9 @@ public class ScoringManager {
 	}
 
 	public void incrementScore(string playerId) {
+		if (!scores.ContainsKey (playerId)) {
+			scores [playerId] = 0;
+		}
 		scores [playerId] = scores [playerId] + 1;
 	}
 
