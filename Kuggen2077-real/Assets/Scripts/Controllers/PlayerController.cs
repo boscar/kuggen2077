@@ -45,11 +45,27 @@ public class PlayerController : MonoBehaviour {
 
     protected void FixedUpdate() {
         HandleMovement(Time.fixedDeltaTime);
-        HandleAttack(Time.fixedDeltaTime);
+
+
+        if (controlScheme != ControlKeyBindings.ControlScheme.KEYBOARD) {
+            //Gamepad
+            HandleAttackGamepad(Time.fixedDeltaTime);
+        } else
+        {
+            //Keyboard
+            HandleAttack(Time.fixedDeltaTime);
+        }
+        
     }
 
     private void HandleMovement(float deltaTime) {
-        transform.LookAt(direction);
+        if(KeyBindings is GamepadOneControlKeyBindings && direction.sqrMagnitude > 0.0f)
+        {
+            transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
+        } else if(KeyBindings is KeyboardControlKeyBindings)
+        {
+            transform.LookAt(direction);
+        }
 
         if (player.MovementHandler == null) {
             return;
@@ -62,11 +78,12 @@ public class PlayerController : MonoBehaviour {
 
     private void HandleAttack(float deltaTime)
     {
+
         if (Input.GetKey(KeyBindings.PrimaryAbility))
         {
             player.DashAbility.Activate(player, player, movementInput);
         }
-
+        
         if (Input.GetKey(KeyBindings.PrimaryAttack))
         {
             AttackAction primaryAttackAction = player.AttackActions[Player.ATTACK_PRIMARY];
@@ -75,6 +92,24 @@ public class PlayerController : MonoBehaviour {
                 primaryAttackAction.InitAttack();
             }
         }
+    }
+
+    private void HandleAttackGamepad(float deltaTime)
+    {
+        if(Input.GetAxis("LAxis") > 0)
+        {
+            player.DashAbility.Activate(player, player, movementInput);
+        }
+
+        if(Input.GetAxis("RAxis") > 0)
+        {
+            AttackAction primaryAttackAction = player.AttackActions[Player.ATTACK_PRIMARY];
+            if (primaryAttackAction != null)
+            {
+                primaryAttackAction.InitAttack();
+            }
+        }
+      
     }
 
 }
