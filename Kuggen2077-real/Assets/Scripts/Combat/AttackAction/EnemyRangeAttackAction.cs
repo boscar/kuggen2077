@@ -10,11 +10,11 @@ public class EnemyRangeAttackAction : RangedAttackAction
     private GameEntity gameEntity;
     private bool hasCooldown = false;
 
-    public EnemyRangeAttackAction(Enemy enemy) : base(enemy)
+    public EnemyRangeAttackAction(RangeEnemy enemy) : base(enemy)
     {
         this.gameEntity = enemy;
         Damage = 1;
-        Cooldown = 0.2f;
+        Cooldown = 5f;
         ProjectileSpeed = 18;
         Spread = 3;
         bulletObject = Resources.Load<Bullet>("simple_bullet");
@@ -48,8 +48,8 @@ public class EnemyRangeAttackAction : RangedAttackAction
     public override void Hit(IAttackable attackable)
     {
         Attack attack = new AttackBuilder()
-         .Attacker(Attacker)
-         .Damage(Damage).Build();
+        .Attacker(Attacker)
+        .Damage(Damage).Build();
         attackable.RecieveAttackHandler.RecieveAttack(attack);
     }
 }

@@ -4,18 +4,11 @@ using UnityEngine;
 
 public class RangeEnemy : Enemy {
 
+    public const string ATTACK_RANGE = "attack_range";
 
-
-     protected new void Awake()
+    protected new void Awake()
     {
-        base.InitStats();
-        base.InitHandlers();
-        AttackActions.Add(ATTACK_PRIMARY, new EnemyRangeAttackAction(this));
-    }
-
-    protected new void FixedUpdate()
-    {   
-
-        base.FixedUpdate();
+        base.Awake();
+        AttackActions.Add(ATTACK_RANGE, new EnemyRangeAttackAction(this));
     }
 }
