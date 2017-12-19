@@ -18,15 +18,15 @@ public class ScoringManager {
 		}
 	}
 
-	public void incrementScore(string playerId){
+	public void incrementScore(string playerId) {
 		scores [playerId] = scores [playerId] + 1;
 	}
 
-	public int getScore(string playerId){
+	public int getScore(string playerId) {
 		return scores [playerId];
 	}
 
-	public Dictionary<string, int> getAllScores(){		
+	public Dictionary<string, int> getAllScores() {		
 		return scores;
 	}
 }

@@ -11,7 +11,6 @@ public class ScoringViewManager : MonoBehaviour {
 	void Start () {
 		manager = ScoringManager.Instance;
 		scoreViews = GetComponentsInChildren<ScoreView>();
-		Debug.Log (scoreViews);
 	}
 	
 	// Update is called once per frame

@@ -11,7 +11,7 @@ public class ScoreView : MonoBehaviour {
 		label = GetComponent<Text> ();
 	}
 
-	public void setScore(int score){
+	public void setScore(int score) {
 		label.text = score.ToString();
 	}
 }
