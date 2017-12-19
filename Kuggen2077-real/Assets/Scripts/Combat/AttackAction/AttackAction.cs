@@ -8,6 +8,8 @@ public abstract class AttackAction {
     public int Damage { get; protected set; }
     public float Cooldown { get; protected set; }
 
+    protected bool hasCooldown = false;
+
     public AttackAction(IAttacker attacker) {
         Attacker = attacker;
     }
