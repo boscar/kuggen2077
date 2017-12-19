@@ -14,7 +14,6 @@ public class ScoringViewManager : MonoBehaviour, IScoreObserver {
 	}
 
 	public void onScoreChange (string playerId, int score) {
-		Debug.Log (playerId);
 		ScoreView result = scoreViews.Find (s => s.id == playerId);
 		if (result != null) {
 			result.setScore (score);
