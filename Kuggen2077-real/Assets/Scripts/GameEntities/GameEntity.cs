@@ -4,8 +4,25 @@ using UnityEngine;
 
 public abstract class GameEntity : MonoBehaviour {
 
-    public List<IEffect> effects = new List<IEffect>();
+    public enum EffectFrequency { FIXED_UPDATE };
+
+    private List<IEffect> effects = new List<IEffect>();
     private List<IEffect> effectsToRemove = new List<IEffect>();
+    public void ActivateEffect(IEffect effect) {
+        ActivateEffect(effect, EffectFrequency.FIXED_UPDATE);
+    }
+
+    public void ActivateEffect(IEffect effect, EffectFrequency frequency) {
+        switch (frequency) {
+            case EffectFrequency.FIXED_UPDATE:
+                effects.Add(effect);
+                break;
+            default:
+                effects.Add(effect);
+                break;
+        }
+        effect.Activate();
+    }
 
     protected void FixedUpdate () {
         HandleEffects(Time.fixedDeltaTime);
