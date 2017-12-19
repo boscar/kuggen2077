@@ -19,14 +19,14 @@ public abstract class RangedAttackAction<T> : AttackAction where T : GameEntity,
         if (hasCooldown) {
             return;
         }
-        CreateBullet();
+        Fire();
         hasCooldown = true;
         TimedEffectFactory.Create(GameEntity, Cooldown, () => {
             hasCooldown = false;
         });
     }
 
-    protected abstract void CreateBullet();
+    protected abstract void Fire();
 
     public override void Hit(IAttackable attackable) {
         Attack attack = new AttackBuilder()

@@ -13,7 +13,7 @@ public class PlayerDefaultAttack : RangedAttackAction<Player> {
         bulletObject = Resources.Load<Bullet>("simple_bullet");
     }
 
-    protected override void CreateBullet() {
+    protected override void Fire() {
         float rotY = Attacker.Transform.rotation.eulerAngles.y + ((UnityEngine.Random.value * (2 * Spread)) - Spread);
         Quaternion bulletRotation = Quaternion.Euler(new Vector3(0, rotY, 0));
         Bullet bullet = GameObject.Instantiate<Bullet>(bulletObject, Attacker.Transform.position, bulletRotation);
