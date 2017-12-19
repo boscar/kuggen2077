@@ -41,7 +41,7 @@ public class EnemyRangeAttackAction : RangedAttackAction
         Quaternion bulletRotation = Quaternion.Euler(new Vector3(0, rotY, 0));
         Bullet bullet = GameObject.Instantiate<Bullet>(bulletObject, Attacker.Transform.position, bulletRotation);
         bullet.AttackAction = this;
-        bullet.AttackableLayers = new string[] { LayerConstants.PLAYER, LayerConstants.WALLS };
+        bullet.Layers = new string[] { LayerConstants.PLAYER, LayerConstants.WALLS };
         bullet.Speed = ProjectileSpeed;
     }
 
