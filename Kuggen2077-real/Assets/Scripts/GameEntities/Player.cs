@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class Player : GameEntity, IMovable, IAttacker, IAttackable {
 
+	//TODO find a way to set this dynamically
+	public string id = "1"; //{ get; private set; }
+
     public const float DEFAULT_PLAYER_MOVEMENT_SPEED = 6;
     public const float DEFAULT_PLAYER_MOVEMENT_FLOATINESS = 7;
 

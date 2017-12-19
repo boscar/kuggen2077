@@ -20,7 +20,6 @@ public class ObservableCollider : MonoBehaviour {
 
 	void OnTriggerEnter(Collider collider) {
 		foreach (IColliderObserver co in observers){
-			Debug.Log ("OBSerVEr TRIGGER: " + co.ToString());
 			co.HandleTriggerEnter (collider);
 		}
 	}

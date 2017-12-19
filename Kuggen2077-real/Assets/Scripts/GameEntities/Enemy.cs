@@ -92,6 +92,7 @@ public class Enemy : GameEntity, IMovable, IAttackable, IAttacker {
 
     private void InitEffects() {
         RecieveAttackHandler.RecieveAttackCreators.Add(new TemporaryColorChangeEffectCreator(this, Color.white));
+		RecieveAttackHandler.DeathCreators.Add (new ScoreUpdateEffectCreator ());
     }
 
     private void InitComponents() {
