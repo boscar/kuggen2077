@@ -12,6 +12,8 @@ public class Enemy : GameEntity, IMovable, IAttackable, IAttacker {
 
     public const string ATTACK_PRIMARY = "attack_primary";
 
+    public const string PREFAB = "enemies/enemy-basic";
+
     public float MovementSpeed {
         get { return movementSpeed; }
         set { movementSpeed = value; }
