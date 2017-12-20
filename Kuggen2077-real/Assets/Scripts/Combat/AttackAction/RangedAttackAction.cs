@@ -20,8 +20,12 @@ public abstract class RangedAttackAction<T> : AttackAction where T : GameEntity,
             return;
         }
         Fire();
+        InitCooldown(Cooldown);
+    }
+
+    protected void InitCooldown(float cooldown) {
         hasCooldown = true;
-        TimedEffectFactory.Create(GameEntity, Cooldown, () => {
+        TimedEffectFactory.Create(GameEntity, cooldown, () => {
             hasCooldown = false;
         });
     }

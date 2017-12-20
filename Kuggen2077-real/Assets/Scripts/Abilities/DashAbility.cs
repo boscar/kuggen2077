@@ -24,7 +24,6 @@ public class DashAbility {
         movable.ActivateEffect(new DashEffect(movable, direction, DEFUALT_DASH_DURATION, DEFUALT_DASH_SPEED), GameEntity.EffectFrequency.FIXED_UPDATE);
         hasCooldown = true;
         TimedEffectFactory.Create(gameEntity, cooldown, () => {
-            Debug.Log("Dash cd over");
             hasCooldown = false;
         });
     }
@@ -42,7 +41,6 @@ public class DashAbility {
             this.direction = direction;
             this.duration = duration;
             this.speed = speed;
-            Debug.Log("Dash!");
             movable.MovementHandler.Move(direction * speed, DASH_MOVEMENT_ID, false);
         }
         public void Activate() {

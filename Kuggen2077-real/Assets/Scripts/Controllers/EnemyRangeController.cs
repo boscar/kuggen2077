@@ -25,6 +25,9 @@ public class EnemyRangeController : MonoBehaviour {
         {
             throw new KuggenException("Enemy can not be null for " + this);
         }
+        if (player == null && Level.Instance != null) {
+            player = Utils.GetRandom<Player>(Level.Instance.players);
+        }
     }
 
     // Update is called once per frame

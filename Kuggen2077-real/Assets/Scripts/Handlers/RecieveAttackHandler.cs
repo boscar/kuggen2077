@@ -24,7 +24,6 @@ public class RecieveAttackHandler {
             creators.Activate(attack);
         }
         Attackable.CurrentHitPoints -= attack.Damage;
-        Debug.Log(Attackable + " recieved " + attack.Damage + " damage and has " + Attackable.CurrentHitPoints + " hp.");
         if (Attackable.CurrentHitPoints <= 0) {
 			foreach(RecieveAttackEffectCreator death in DeathCreators) {
 				death.Activate(attack);
