@@ -18,8 +18,7 @@ public class Level0 : Level {
             throw new KuggenException("Spawn point must be set for " + this);
         }
         LoadPrefabs();
-        AddEnemySpawnEvents();
-        Events.Sort((x, y) => x.TimeStamp.CompareTo(y.TimeStamp));
+        Sections = CreateSections();
     }
 
     private void LoadPrefabs () {
@@ -29,21 +28,37 @@ public class Level0 : Level {
         Debug.Log(EnemyRangedObject);
     }
 
-    private void AddEnemySpawnEvents() {
-        Events.Add(new SpawnEvent(EnemyObject, NorthSpawnPoint.position, 2));
+    private List<Section> CreateSections() {
+        List<Section> sections = new List<Section>();
 
-        Events.Add(new SpawnEvent(EnemyObject, EastSpawnPoint.position, 4));
-        Events.Add(new SpawnEvent(EnemyObject, EastSpawnPoint.position, 4.9f));
+        sections.Add(CreateFirstSection());
 
-        Events.Add(new SpawnEvent(EnemyObject, NorthSpawnPoint.position, 7));
-        Events.Add(new SpawnEvent(EnemyObject, SouthSpawnPoint.position, 7.9f));
+        foreach (Section section in sections) {
+            section.Events.Sort((x, y) => x.TimeStamp.CompareTo(y.TimeStamp));
+        }
+        sections.Sort((x, y) => x.Index.CompareTo(y.Index));
 
-        Events.Add(new SpawnEvent(EnemyObject, WestSpawnPoint.position, 11));
-        Events.Add(new SpawnEvent(EnemyObject, WestSpawnPoint.position, 11.9f));
-        Events.Add(new SpawnEvent(EnemyObject, EastSpawnPoint.position, 11.9f));
-        Events.Add(new SpawnEvent(EnemyObject, SouthSpawnPoint.position, 11));
+        return sections;
+    }
 
-        Events.Add(new SpawnEvent(EnemyRangedObject, NorthSpawnPoint.position, 14));
+    private Section CreateFirstSection() {
+        Section section = new Section(0);
+        section.Events.Add(new SpawnEvent(EnemyObject, NorthSpawnPoint.position, 2));
+
+        section.Events.Add(new SpawnEvent(EnemyObject, EastSpawnPoint.position, 4));
+        section.Events.Add(new SpawnEvent(EnemyObject, EastSpawnPoint.position, 4.9f));
+
+        section.Events.Add(new SpawnEvent(EnemyObject, NorthSpawnPoint.position, 7));
+        section.Events.Add(new SpawnEvent(EnemyObject, SouthSpawnPoint.position, 7.9f));
+
+        section.Events.Add(new SpawnEvent(EnemyObject, WestSpawnPoint.position, 11));
+        section.Events.Add(new SpawnEvent(EnemyObject, WestSpawnPoint.position, 11.9f));
+        section.Events.Add(new SpawnEvent(EnemyObject, EastSpawnPoint.position, 11.9f));
+        section.Events.Add(new SpawnEvent(EnemyObject, SouthSpawnPoint.position, 11));
+
+        section.Events.Add(new SpawnEvent(EnemyRangedObject, NorthSpawnPoint.position, 14));
+
+        return section;
     }
 
 }
