@@ -5,16 +5,16 @@ using UnityEngine;
 
 public class SpawnEvent : Event {
 
-    private Vector3 Position { get; set; }
-    private GameObject GameObjectToSpawn { get; set; }
+    protected Vector3 Position { get; set; }
+    protected GameEntity GameEntityToSpawn { get; set; }
 
-    public SpawnEvent(GameObject gameObject, Vector3 position, float timeStamp) : base(timeStamp) {
+    public SpawnEvent(GameEntity gameEntity, Vector3 position, float timeStamp) : base(timeStamp) {
         Position = position;
-        GameObjectToSpawn = gameObject;
+        GameEntityToSpawn = gameEntity;
     }
 
     public override void Activate() {
-        GameObject.Instantiate<GameObject>(GameObjectToSpawn, Position, Quaternion.identity);
+        GameObject.Instantiate<GameEntity>(GameEntityToSpawn, Position, Quaternion.identity);
     }
 
 }
