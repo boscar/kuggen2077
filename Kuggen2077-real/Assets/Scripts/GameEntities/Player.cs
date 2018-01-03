@@ -8,19 +8,19 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable {
 	//TODO find a way to set this dynamically
 	public string id = "1"; //{ get; private set; }
 
-    public const float DEFAULT_PLAYER_MOVEMENT_SPEED = 6;
-    public const float DEFAULT_PLAYER_MOVEMENT_FLOATINESS = 7;
+    public const float DEFAULT_PLAYER_MOVEMENT_SPEED = 7;
+    public const float DEFAULT_PLAYER_MOVEMENT_FLOATINESS = 8f;
 
     public const string ATTACK_PRIMARY = "attack_primary";
 
-    public float movementSpeed = DEFAULT_PLAYER_MOVEMENT_SPEED;
+    protected float movementSpeed = DEFAULT_PLAYER_MOVEMENT_SPEED;
 
     public float MovementSpeed {
         get { return movementSpeed; }
         set { movementSpeed = value; }
     }
 
-    public float movementFloatiness = DEFAULT_PLAYER_MOVEMENT_FLOATINESS;
+    protected float movementFloatiness = DEFAULT_PLAYER_MOVEMENT_FLOATINESS;
 
     public float MovementFloatiness {
         get { return movementFloatiness; }
@@ -86,8 +86,8 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable {
     }
 
     private void InitStats() {
-        HitPoints = 30;
-        CurrentHitPoints = 30;
+        HitPoints = 100;
+        CurrentHitPoints = 100;
     }
 
     private void InitHandlers() {

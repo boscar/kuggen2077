@@ -5,22 +5,21 @@ using UnityEngine;
 
 public class Enemy : GameEntity, IMovable, IAttackable, IAttacker {
 
-    public const float DEFAULT_ENEMY_MOVEMENT_SPEED = 6;
-    public const float DEFAULT_ENEMY_MOVEMENT_FLOATINESS = 7;
-
-    public float movementSpeed = DEFAULT_ENEMY_MOVEMENT_SPEED;
+    public const float DEFAULT_ENEMY_MOVEMENT_SPEED = 3;
+    public const float DEFAULT_ENEMY_MOVEMENT_FLOATINESS = 3;
 
     public const string ATTACK_PRIMARY = "attack_primary";
 
     public const string PREFAB = "enemies/enemy-basic";
 
+
+    protected float movementSpeed = DEFAULT_ENEMY_MOVEMENT_SPEED;
     public float MovementSpeed {
         get { return movementSpeed; }
         set { movementSpeed = value; }
     }
 
-    public float movementFloatiness = DEFAULT_ENEMY_MOVEMENT_FLOATINESS;
-
+    protected float movementFloatiness = DEFAULT_ENEMY_MOVEMENT_FLOATINESS;
     public float MovementFloatiness {
         get { return movementFloatiness; }
         set { movementFloatiness = value; }
@@ -83,8 +82,8 @@ public class Enemy : GameEntity, IMovable, IAttackable, IAttacker {
     }
 
     protected void InitStats() {
-        HitPoints = 30;
-        CurrentHitPoints = 30;
+        HitPoints = 50;
+        CurrentHitPoints = 50;
     }
 
     protected void InitHandlers() {
