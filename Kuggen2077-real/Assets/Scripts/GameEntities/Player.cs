@@ -118,6 +118,11 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable, IObservable<
         }
     }
 
+	public void setAttackAction(string key, AttackAction attack){
+		AttackActions [key] = attack;
+		callObservers ();
+	}
+
 	// IObservable implementation
 	public void addObserver(IObserver<Player> obs){
 		observers.Add (obs);

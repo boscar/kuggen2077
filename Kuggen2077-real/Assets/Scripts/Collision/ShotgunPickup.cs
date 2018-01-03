@@ -7,7 +7,7 @@ public class ShotgunPickup : PickupCollider {
 
     protected override void Pickup(Player player) {
         Debug.Log("Picked up shotgun");
-        player.AttackActions[Player.ATTACK_PRIMARY] = new ShotgunAttackAction(player);
+		player.setAttackAction (Player.ATTACK_PRIMARY, new ShotgunAttackAction (player));
     }
 
 }
