@@ -5,8 +5,8 @@ using UnityEngine;
 public class MachineGunAttackAction : RangedAttackAction<Player> {
 
     public MachineGunAttackAction(Player gameEntity) : base(gameEntity) {
-        Damage = 3;
-        Cooldown = 0.03f;
+        Damage = 4;
+        Cooldown = 0.04f;
         ProjectileSpeed = 30;
         Spread = 3.5f;
         bulletObject = Resources.Load<Bullet>("simple_bullet");

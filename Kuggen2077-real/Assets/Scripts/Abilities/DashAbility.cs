@@ -6,8 +6,8 @@ using UnityEngine;
 public class DashAbility {
 
     public const string DASH_MOVEMENT_ID = "dash";
-    public const float DEFUALT_DASH_DURATION = 0.08f;
-    public const float DEFUALT_DASH_SPEED = 9;
+    public const float DEFUALT_DASH_DURATION = 0.066f;
+    public const float DEFUALT_DASH_SPEED = 11;
 
     private bool hasCooldown = false;
     private float cooldown = 2.0f;
