@@ -652,7 +652,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 895027006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 335.5, y: 188.5, z: 0}
+  m_LocalPosition: {x: 228, y: 141.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1701824328}
@@ -867,8 +867,8 @@ GameObject:
   - component: {fileID: 1463598185}
   - component: {fileID: 1463598184}
   - component: {fileID: 1463598183}
-  - component: {fileID: 1463598182}
   - component: {fileID: 1463598181}
+  - component: {fileID: 1463598182}
   m_Layer: 11
   m_Name: Basic Enemy
   m_TagString: Untagged
@@ -913,11 +913,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1463598179}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7501accafe1964baa8c152ca06467b77, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a2031a99128ee44dadc0448397da0e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 2
-  movementFloatiness: 2
 --- !u!114 &1463598183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1511,8 +1509,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b60545d2d16bb0a4b94b4efa9fad6fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 2
-  movementFloatiness: 2
 --- !u!114 &1894621092
 MonoBehaviour:
   m_ObjectHideFlags: 0
