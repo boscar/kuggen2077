@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IMovable {
 
-    float MovementSpeed { get; set; }
+    FloatStat MovementSpeed { get; }
 
     float MovementFloatiness { get; set; }
 

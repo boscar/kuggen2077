@@ -23,7 +23,7 @@ public class RangeEnemy : Enemy {
     protected override void InitStats() {
         HitPoints = 50;
         CurrentHitPoints = 50;
-        MovementSpeed = 2;
+        MovementSpeed = new FloatStat(2);
         MovementFloatiness = 2;
     }
 }

@@ -26,6 +26,7 @@ public class TemporaryColorChangeEffectCreator : RecieveAttackEffectCreator {
     }
 
     public class TemporaryColorChangeEffect : IEffect {
+        public string Id { get { return this.ToString(); } }
 
         private Renderer renderer;
         private Color color;

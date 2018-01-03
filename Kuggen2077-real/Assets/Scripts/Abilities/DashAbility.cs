@@ -30,6 +30,8 @@ public class DashAbility {
 
     public class DashEffect : IEffect {
 
+        public string Id { get { return this.ToString(); } }
+
         private IMovable movable;
         private Vector3 direction;
         private float timer = 0;

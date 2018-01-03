@@ -4,6 +4,8 @@ using UnityEngine;
 
 public interface IEffect {
 
+    string Id { get; }
+
     void Activate();
 
     /**

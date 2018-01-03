@@ -33,6 +33,9 @@ public class PlayerController : MonoBehaviour {
             case ControlKeyBindings.ControlScheme.GAMEPAD0:
                 KeyBindings = new GamepadOneControlKeyBindings();
                 break;
+            case ControlKeyBindings.ControlScheme.GAMEPAD1:
+                KeyBindings = new GamepadTwoControlKeyBindings();
+                break;
             default : break;
         }
 
@@ -46,7 +49,6 @@ public class PlayerController : MonoBehaviour {
     protected void FixedUpdate() {
         HandleMovement(Time.fixedDeltaTime);
 
-
         if (controlScheme != ControlKeyBindings.ControlScheme.KEYBOARD) {
             //Gamepad
             HandleAttackGamepad(Time.fixedDeltaTime);
@@ -59,8 +61,9 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void HandleMovement(float deltaTime) {
-        if(KeyBindings is GamepadOneControlKeyBindings && direction.sqrMagnitude > 0.0f)
+        if((KeyBindings is GamepadOneControlKeyBindings || KeyBindings is GamepadTwoControlKeyBindings) && direction.sqrMagnitude > 0.0f)
         {
+            Debug.Log("Here");
             transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
         } else if(KeyBindings is KeyboardControlKeyBindings)
         {
@@ -70,7 +73,7 @@ public class PlayerController : MonoBehaviour {
         if (player.MovementHandler == null) {
             return;
         }
-
+        
         player.MovementHandler.BasicMove(movementInput);
 
 
@@ -90,18 +93,19 @@ public class PlayerController : MonoBehaviour {
             if (primaryAttackAction != null)
             {
                 primaryAttackAction.InitAttack();
+                player.AttackHandler.HandleAttackEffects();
             }
         }
     }
 
     private void HandleAttackGamepad(float deltaTime)
     {
-        if(Input.GetAxis("LAxis") > 0)
+        if(Input.GetAxis(KeyBindings.PrimaryAbilityAxisID) > 0)
         {
             player.DashAbility.Activate(player, player, movementInput);
         }
 
-        if(Input.GetAxis("RAxis") > 0)
+        if(Input.GetAxis(KeyBindings.PrimaryAttackAxisID) > 0)
         {
             AttackAction primaryAttackAction = player.AttackActions[Player.ATTACK_PRIMARY];
             if (primaryAttackAction != null)
