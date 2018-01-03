@@ -24,6 +24,7 @@ public class ActionRecieveAttackEffectCreator : RecieveAttackEffectCreator {
     }
 
     public class ActionRecieveAttackEffect : IEffect {
+        public string Id { get { return this.ToString(); } }
 
         private Func<float, bool> updateFunction;
         private float timer = 0;

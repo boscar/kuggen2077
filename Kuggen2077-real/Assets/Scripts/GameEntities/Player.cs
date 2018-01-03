@@ -15,10 +15,7 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable {
 
     protected float movementSpeed = DEFAULT_PLAYER_MOVEMENT_SPEED;
 
-    public float MovementSpeed {
-        get { return movementSpeed; }
-        set { movementSpeed = value; }
-    }
+    public FloatStat MovementSpeed { get; protected set;  }
 
     protected float movementFloatiness = DEFAULT_PLAYER_MOVEMENT_FLOATINESS;
 
@@ -88,6 +85,7 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable {
     private void InitStats() {
         HitPoints = 100;
         CurrentHitPoints = 100;
+        MovementSpeed = new FloatStat(DEFAULT_PLAYER_MOVEMENT_SPEED);
     }
 
     private void InitHandlers() {

@@ -40,4 +40,14 @@ public abstract class GameEntity : MonoBehaviour {
         }
         effectsToRemove.Clear();
     }
+
+    public T GetEffect<T>(string id) where T : IEffect {
+        foreach (IEffect effect in effects) {
+            if (effect.Id.Equals(id) && effect is T) {
+                return (T)effect;
+            }
+        }
+        return default(T);
+    }
+
 }

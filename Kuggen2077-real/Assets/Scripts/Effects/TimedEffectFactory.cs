@@ -11,6 +11,8 @@ public class TimedEffectFactory {
 
     public class TimedEffect : IEffect {
 
+        public string Id { get { return this.ToString(); } }
+
         private float timer;
         private float duration;
         private Action action; 
