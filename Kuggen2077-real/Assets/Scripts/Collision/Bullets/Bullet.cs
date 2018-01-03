@@ -22,6 +22,7 @@ public class Bullet : AttackCollider {
     protected void MoveProjectile(float deltaTime) {
         transform.Translate(Vector3.forward * Speed * Time.deltaTime);
     }
+
     protected override void Impact(Collider collider) {
         base.Impact(collider);
         Destroy(gameObject);

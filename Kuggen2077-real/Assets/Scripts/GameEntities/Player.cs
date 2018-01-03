@@ -97,7 +97,7 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable {
 
     private void InitEffects() {
         RecieveAttackHandler.RecieveAttackCreators.Add(new TemporaryColorChangeEffectCreator(this, Color.white));
-        AttackHandler.AttackCreators.Add(new ReduceMovementSpeedEffectCreator(this, 0.25f, 0.25f, 1f));
+        AttackHandler.AttackCreators.Add(new ReduceMovementSpeedEffectCreator(this, 0.35f, 0.5f));
     }
 
     private void InitComponents() {

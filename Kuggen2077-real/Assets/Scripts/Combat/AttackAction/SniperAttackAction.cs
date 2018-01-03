@@ -6,6 +6,7 @@ public class SniperAttackAction : RangedAttackAction<Player> {
 
     public SniperAttackAction(Player gameEntity) : base(gameEntity) {
         Damage = 60;
+        Force = 4f;
         Cooldown = 1.1f;
         ProjectileSpeed = 40;
         Spread = 0.2f;

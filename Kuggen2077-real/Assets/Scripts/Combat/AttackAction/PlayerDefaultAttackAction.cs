@@ -7,6 +7,7 @@ public class PlayerDefaultAttack : RangedAttackAction<Player> {
 
     public PlayerDefaultAttack (Player player) : base(player) {
         Damage = 10;
+        Force = 1f;
         Cooldown = 0.2f;
         ProjectileSpeed = 18;
         Spread = 3;
