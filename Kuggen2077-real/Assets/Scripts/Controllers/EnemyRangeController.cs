@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyRangeController : MonoBehaviour {
 
+    private const float MIN_WALK_DISTANCE = 10f;
+
     public RangeEnemy enemy;
     public Player player;
 
@@ -51,7 +53,11 @@ public class EnemyRangeController : MonoBehaviour {
             return;
         }
 
-        enemy.MovementHandler.BasicMove(movementVector);
+        if (player != null && Vector3.Distance(transform.position, player.transform.position) > MIN_WALK_DISTANCE) {
+            enemy.MovementHandler.BasicMove(movementVector);
+        } else {
+            enemy.MovementHandler.BasicMove(Vector3.zero);
+        }
     }
 
     private void HandleShoot(float deltaTime)

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,5 +13,12 @@ public class RangeEnemy : Enemy {
     {
         base.Awake();
         AttackActions.Add(ATTACK_RANGE, new EnemyRangeAttackAction(this));
+    }
+
+    protected override void InitStats() {
+        HitPoints = 50;
+        CurrentHitPoints = 50;
+        MovementSpeed = 2;
+        MovementFloatiness = 2;
     }
 }

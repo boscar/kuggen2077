@@ -5,10 +5,10 @@ using UnityEngine;
 public class SniperAttackAction : RangedAttackAction<Player> {
 
     public SniperAttackAction(Player gameEntity) : base(gameEntity) {
-        Damage = 30;
-        Cooldown = 0.9f;
+        Damage = 60;
+        Cooldown = 1.1f;
         ProjectileSpeed = 40;
-        Spread = 0.3f;
+        Spread = 0.2f;
         bulletObject = Resources.Load<Bullet>("simple_bullet");
     }
 
