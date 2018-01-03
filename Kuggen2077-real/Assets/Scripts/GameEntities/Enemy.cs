@@ -11,10 +11,7 @@ public abstract class Enemy : GameEntity, IMovable, IAttackable, IAttacker {
     public const string PREFAB = "enemies/enemy-basic";
 
     protected float movementSpeed = DEFAULT_ENEMY_MOVEMENT_SPEED;
-    public float MovementSpeed {
-        get { return movementSpeed; }
-        set { movementSpeed = value; }
-    }
+    public FloatStat MovementSpeed { get; set; }
 
     protected float movementFloatiness = DEFAULT_ENEMY_MOVEMENT_FLOATINESS;
     public float MovementFloatiness {
@@ -23,10 +20,11 @@ public abstract class Enemy : GameEntity, IMovable, IAttackable, IAttacker {
     }
 
     public MovementHandler MovementHandler { get; set; }
+    public RecieveAttackHandler RecieveAttackHandler { get; protected set; }
+    public AttackHandler AttackHandler { get; protected set; }
 
     public Rigidbody Rigidbody { get; set; }
-
-    public RecieveAttackHandler RecieveAttackHandler { get; protected set; }
+    
 
     protected int hitPoints;
     public int HitPoints {
@@ -82,6 +80,7 @@ public abstract class Enemy : GameEntity, IMovable, IAttackable, IAttacker {
     protected void InitHandlers() {
         MovementHandler = new MovementHandler(this);
         RecieveAttackHandler = new RecieveAttackHandler(this);
+        AttackHandler = new AttackHandler(this);
     }
 
     private void InitEffects() {

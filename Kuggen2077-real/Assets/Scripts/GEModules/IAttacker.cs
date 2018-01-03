@@ -8,4 +8,6 @@ public interface IAttacker {
 
     Transform Transform { get; }
 
+    AttackHandler AttackHandler { get; }
+
 }

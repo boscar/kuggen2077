@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 
 public class Effect : IEffect {
+    public string Id { get { return this.ToString(); } }
 
     Action activate;
     Func<float, bool> update;
