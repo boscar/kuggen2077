@@ -3,10 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : GameEntity, IMovable, IAttacker, IAttackable {
-
-	//TODO find a way to set this dynamically
-	public string id = "1"; //{ get; private set; }
+public class Player : GameEntity, IMovable, IAttacker, IAttackable, IObservable<Player> {
 
     public const float DEFAULT_PLAYER_MOVEMENT_SPEED = 7;
     public const float DEFAULT_PLAYER_MOVEMENT_FLOATINESS = 8f;
@@ -63,8 +60,20 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable {
             if (currentHitPoints > HitPoints) {
                 currentHitPoints = HitPoints;
             }
+			callObservers ();
         }
     }
+
+	protected int score;
+	public int Score {
+		get { return score; }
+		set {
+			score = value;
+			callObservers ();
+		}
+	}
+
+	private List<IObserver<Player>> observers = new List<IObserver<Player>> ();
 
     void Awake () {
         DashAbility = new DashAbility();
@@ -88,6 +97,7 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable {
     private void InitStats() {
         HitPoints = 100;
         CurrentHitPoints = 100;
+		Score = 0;
     }
 
     private void InitHandlers() {
@@ -106,4 +116,18 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable {
         }
     }
 
+	// IObservable implementation
+	public void addObserver(IObserver<Player> obs){
+		observers.Add (obs);
+	}
+
+	public void removeObserver(IObserver<Player> obs) {
+		observers.Remove (obs);
+	}
+
+	public void callObservers() {
+		foreach (IObserver<Player> obs in observers) {
+			obs.onUpdate(this);
+		}	
+	}
 }

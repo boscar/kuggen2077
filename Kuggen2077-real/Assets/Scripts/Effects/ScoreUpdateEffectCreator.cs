@@ -9,7 +9,7 @@ public class ScoreUpdateEffectCreator : RecieveAttackEffectCreator {
 	public override bool Activate(Attack attack) {
 		Player player = attack.Attacker as Player;
 		if (player != null) {
-			ScoringManager.Instance.incrementScore (player.id);
+			player.Score += 1;
 			return true;
 		}
 
