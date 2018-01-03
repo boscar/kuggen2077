@@ -85,6 +85,7 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable, IObservable<
 
     void Start() {
         InitComponents();
+		callObservers ();
     }
 
     protected new void FixedUpdate() {

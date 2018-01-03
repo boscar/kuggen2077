@@ -11,6 +11,8 @@ public class PlayerUIController : MonoBehaviour, IObserver<Player> {
 	}
 	
 	public void onUpdate(Player player) {
-		Debug.Log (player.ToString());
+		Debug.Log (Utils.LeftPad(player.Score.ToString(), 2, "0"));
+		Debug.Log (player.CurrentHitPoints);
+		Debug.Log (player.AttackActions);
 	}
 }
