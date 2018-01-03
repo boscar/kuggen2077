@@ -31,7 +31,7 @@ public abstract class AbstractCollider : MonoBehaviour {
         if (ignoredGameObjects.Contains(collider.gameObject)) {
             return;
         }
-        if (Utils.Contains(Layers, LayerMask.LayerToName(collider.gameObject.layer))) {
+        if (Layers != null && Utils.Contains(Layers, LayerMask.LayerToName(collider.gameObject.layer))) {
             Impact(collider);
         }
     }
