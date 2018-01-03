@@ -36,6 +36,7 @@ public class ReduceMovementSpeedEffectCreator : EffectCreator {
         private float easingFactor = 1;
         private float slowMultiplier;
         private float duration;
+        private AccelerateInterpolator interpolator;
 
         public float Timer { get; set; }
 
@@ -45,6 +46,7 @@ public class ReduceMovementSpeedEffectCreator : EffectCreator {
             this.easingFactor = easingFactor;
             this.duration = duration;
             this.Id = id;
+            interpolator = new AccelerateInterpolator();
         }
 
         public void Activate() {
@@ -59,7 +61,8 @@ public class ReduceMovementSpeedEffectCreator : EffectCreator {
                 player.MovementSpeed.RemoveMultiplier(Id);
                 return true;
             }
-            player.MovementSpeed.UpdateMultiplier(Id, slowMultiplier);
+            float multiplier = slowMultiplier + ((1 - slowMultiplier) * interpolator.GetInterpolation(Timer / duration));
+            player.MovementSpeed.UpdateMultiplier(Id, multiplier);
             return false;
         }
 

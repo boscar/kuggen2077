@@ -26,7 +26,7 @@ public class FloatStat {
     }
 
     public void UpdateMultiplier(string id, float value) {
-        if (!Multipliers.ContainsKey(id)) {
+        if (Multipliers.ContainsKey(id)) {
             Multipliers[id] = value;
         }
     }
