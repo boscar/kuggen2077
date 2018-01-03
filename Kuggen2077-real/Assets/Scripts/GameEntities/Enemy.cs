@@ -3,22 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : GameEntity, IMovable, IAttackable, IAttacker {
+public abstract class Enemy : GameEntity, IMovable, IAttackable, IAttacker {
 
-    public const float DEFAULT_ENEMY_MOVEMENT_SPEED = 6;
-    public const float DEFAULT_ENEMY_MOVEMENT_FLOATINESS = 7;
+    public const float DEFAULT_ENEMY_MOVEMENT_SPEED = 3;
+    public const float DEFAULT_ENEMY_MOVEMENT_FLOATINESS = 3;
 
-    public float movementSpeed = DEFAULT_ENEMY_MOVEMENT_SPEED;
+    public const string PREFAB = "enemies/enemy-basic";
 
-    public const string ATTACK_PRIMARY = "attack_primary";
-
+    protected float movementSpeed = DEFAULT_ENEMY_MOVEMENT_SPEED;
     public float MovementSpeed {
         get { return movementSpeed; }
         set { movementSpeed = value; }
     }
 
-    public float movementFloatiness = DEFAULT_ENEMY_MOVEMENT_FLOATINESS;
-
+    protected float movementFloatiness = DEFAULT_ENEMY_MOVEMENT_FLOATINESS;
     public float MovementFloatiness {
         get { return movementFloatiness; }
         set { movementFloatiness = value; }
@@ -68,7 +66,6 @@ public class Enemy : GameEntity, IMovable, IAttackable, IAttacker {
         InitStats();
         InitHandlers();
         InitEffects();
-        AttackActions.Add(ATTACK_PRIMARY, new EnemyDefaultAttack(this));
     }
 
     void Start() {
@@ -80,10 +77,7 @@ public class Enemy : GameEntity, IMovable, IAttackable, IAttacker {
         MovementHandler.Update(Time.fixedDeltaTime);
     }
 
-    protected void InitStats() {
-        HitPoints = 30;
-        CurrentHitPoints = 30;
-    }
+    protected abstract void InitStats();
 
     protected void InitHandlers() {
         MovementHandler = new MovementHandler(this);

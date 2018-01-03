@@ -7,11 +7,12 @@ public class EnemyRangeAttackAction : RangedAttackAction<RangeEnemy>
 {
 
     public EnemyRangeAttackAction(RangeEnemy enemy) : base(enemy) {
-        Damage = 1;
+        Damage = 10;
         Cooldown = 5f;
-        ProjectileSpeed = 18;
+        ProjectileSpeed = 10;
         Spread = 3;
         bulletObject = Resources.Load<Bullet>("simple_bullet");
+        InitCooldown(1.5f);
     }
 
     protected override void Fire() {

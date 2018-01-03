@@ -5,18 +5,18 @@ using UnityEngine;
 
 public class ShotgunAttackAction : RangedAttackAction<Player> {
 
-    private const float FIRE_MAX_DELAY = 0.07f;
+    private const float FIRE_MAX_DELAY = 0.05f;
 
     private float BulletLifetime { get; set; }
     private int BulletAmount { get; set; }
 
     public ShotgunAttackAction(Player gameEntity) : base(gameEntity) {
-        Damage = 4;
-        Cooldown = 0.9f;
-        ProjectileSpeed = 30;
+        Damage = 10;
+        Cooldown = 1f;
+        ProjectileSpeed = 36;
         Spread = 22;
-        BulletLifetime = 0.3f;
-        BulletAmount = 10;
+        BulletLifetime = 0.25f;
+        BulletAmount = 12;
         bulletObject = Resources.Load<Bullet>("simple_bullet");
     }
 

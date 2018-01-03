@@ -8,7 +8,7 @@ public class EnemyDefaultAttack : AttackAction {
 	private AttackCollider attackCollider;
 
 	public EnemyDefaultAttack (IAttacker attacker) : base(attacker) {
-		Damage = 2;
+		Damage = 10;
         attackCollider = attacker.Transform.gameObject.GetComponentInChildren<AttackCollider>();
         InitAttackCollider(attackCollider);
     }
