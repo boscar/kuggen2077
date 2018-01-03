@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FloatStat : MonoBehaviour {
+public class FloatStat {
 
     public float Base { get; private set; }
 
@@ -36,6 +36,10 @@ public class FloatStat : MonoBehaviour {
     }
 
     private float AvarageMultiplier () {
+        if (Multipliers.Count == 0) {
+            return 1;
+        }
+
         float val = 0;
         foreach (KeyValuePair<string, float> entry in Multipliers) {
             val += entry.Value;

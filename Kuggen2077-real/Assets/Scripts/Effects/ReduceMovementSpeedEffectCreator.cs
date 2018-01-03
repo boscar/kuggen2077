@@ -21,6 +21,9 @@ public class ReduceMovementSpeedEffectCreator : EffectCreator {
         ReduceMovementSpeedEffect effect = GameEntity.GetEffect<ReduceMovementSpeedEffect>(Id);
         if (effect == null) {
             effect = new ReduceMovementSpeedEffect((Player)GameEntity, slowMultiplier, duration, easingFactor, Id);
+            GameEntity.ActivateEffect(effect);
+        } else {
+            effect.Timer = 0;
         }
         return true;
     }

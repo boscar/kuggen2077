@@ -26,6 +26,7 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable {
 
     public MovementHandler MovementHandler { get; set; }
     public RecieveAttackHandler RecieveAttackHandler { get; protected set; }
+    public AttackHandler AttackHandler { get; protected set; }
 
     public Rigidbody Rigidbody { get; set; }
 
@@ -91,10 +92,12 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable {
     private void InitHandlers() {
         MovementHandler = new MovementHandler(this);
         RecieveAttackHandler = new RecieveAttackHandler(this);
+        AttackHandler = new AttackHandler(this);
     }
 
     private void InitEffects() {
         RecieveAttackHandler.RecieveAttackCreators.Add(new TemporaryColorChangeEffectCreator(this, Color.white));
+        AttackHandler.AttackCreators.Add(new ReduceMovementSpeedEffectCreator(this, 0.3f, 0.5f, 1f));
     }
 
     private void InitComponents() {

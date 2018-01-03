@@ -16,7 +16,7 @@ public class FastEnemy : Enemy {
     protected override void InitStats() {
         HitPoints = 50;
         CurrentHitPoints = 50;
-        MovementSpeed = 3;
+        MovementSpeed = new FloatStat(3);
         MovementFloatiness = 3;
     }
 
