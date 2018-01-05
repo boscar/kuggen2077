@@ -4,7 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour {
-	public void changeScen(string sceneName){
+	public void changeScene(string sceneName){
 		SceneManager.LoadScene (sceneName);
+	}
+		
+	public void quitGame(){
+		Debug.Log ("quit!");
+		Application.Quit ();
 	}
 }

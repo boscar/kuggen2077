@@ -11,6 +11,7 @@ public class PlayerDefaultAttack : RangedAttackAction<Player> {
         ProjectileSpeed = 18;
         Spread = 3;
         bulletObject = Resources.Load<Bullet>("simple_bullet");
+		displayName = "Pistol";
     }
 
     protected override void Fire() {

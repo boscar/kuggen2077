@@ -10,6 +10,7 @@ public class SniperAttackAction : RangedAttackAction<Player> {
         ProjectileSpeed = 40;
         Spread = 0.2f;
         bulletObject = Resources.Load<Bullet>("simple_bullet");
+		displayName = "Sniper Rifle";
     }
 
     protected override void Fire() {

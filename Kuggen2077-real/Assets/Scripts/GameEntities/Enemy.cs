@@ -77,16 +77,14 @@ public abstract class Enemy : GameEntity, IMovable, IAttackable, IAttacker {
 
     protected abstract void InitStats();
 
+
     protected void InitHandlers() {
         MovementHandler = new MovementHandler(this);
         RecieveAttackHandler = new RecieveAttackHandler(this);
         AttackHandler = new AttackHandler(this);
     }
 
-    private void InitEffects() {
-        RecieveAttackHandler.RecieveAttackCreators.Add(new TemporaryColorChangeEffectCreator(this, Color.white));
-		RecieveAttackHandler.DeathCreators.Add (new ScoreUpdateEffectCreator ());
-    }
+	protected abstract void InitEffects();
 
     private void InitComponents() {
         Rigidbody = GetComponent<Rigidbody>();

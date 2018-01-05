@@ -19,4 +19,18 @@ public class Utils {
         return list[r];
     }
 
+	public static string LeftPad(string s, int length, string padChar){
+		if (length < s.Length) {
+			return s;
+		}
+
+		int padLength = length - s.Length;
+		while (padLength > 0) {
+			s = padChar + s;
+			padLength--;
+		}
+
+		return s;
+	}
+
 }

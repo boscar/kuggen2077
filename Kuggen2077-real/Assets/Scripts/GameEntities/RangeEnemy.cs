@@ -15,6 +15,11 @@ public class RangeEnemy : Enemy {
         AttackActions.Add(ATTACK_RANGE, new EnemyRangeAttackAction(this));
     }
 
+	protected override void InitEffects() {
+		RecieveAttackHandler.RecieveAttackCreators.Add(new TemporaryColorChangeEffectCreator(this, Color.white));
+		RecieveAttackHandler.DeathCreators.Add(new ScoreUpdateEffectCreator(2));
+	}
+
     protected override void InitStats() {
         HitPoints = 50;
         CurrentHitPoints = 50;
