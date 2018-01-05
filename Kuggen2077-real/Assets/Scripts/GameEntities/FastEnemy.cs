@@ -13,6 +13,12 @@ public class FastEnemy : Enemy {
         AttackActions.Add(ATTACK_PRIMARY, new EnemyDefaultAttack(this));
     }
 
+	protected override void InitEffects() {
+        base.InitEffects();
+        RecieveAttackHandler.RecieveAttackCreators.Add(new TemporaryColorChangeEffectCreator(this, Color.white));
+		RecieveAttackHandler.DeathCreators.Add(new ScoreUpdateEffectCreator(1));
+	}
+
     protected override void InitStats() {
         HitPoints = 50;
         CurrentHitPoints = 50;
