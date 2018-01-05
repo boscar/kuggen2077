@@ -19,6 +19,7 @@ public class ShotgunAttackAction : RangedAttackAction<Player> {
         BulletLifetime = 0.25f;
         BulletAmount = 12;
         bulletObject = Resources.Load<Bullet>("simple_bullet");
+		displayName = "Shotgun";
     }
 
     protected override void Fire() {

@@ -11,6 +11,7 @@ public class MachineGunAttackAction : RangedAttackAction<Player> {
         ProjectileSpeed = 30;
         Spread = 3.5f;
         bulletObject = Resources.Load<Bullet>("simple_bullet");
+		displayName = "Machine Gun";
     }
 
     protected override void Fire() {

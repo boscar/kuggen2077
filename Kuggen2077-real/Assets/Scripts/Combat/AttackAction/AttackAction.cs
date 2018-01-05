@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class AttackAction {
 
+	public string displayName = "";
+
     public IAttacker Attacker { get; protected set; }
     public int Damage { get; protected set; }
     public float Force { get; protected set; }
