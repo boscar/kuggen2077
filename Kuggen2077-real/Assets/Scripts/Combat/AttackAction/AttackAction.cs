@@ -8,6 +8,7 @@ public abstract class AttackAction {
 
     public IAttacker Attacker { get; protected set; }
     public int Damage { get; protected set; }
+    public float Force { get; protected set; }
     public float Cooldown { get; protected set; }
 
     protected bool hasCooldown = false;
@@ -18,6 +19,6 @@ public abstract class AttackAction {
 
     public abstract void InitAttack();
 
-    public abstract void Hit(IAttackable attackable);
+    public abstract void Hit(IAttackable attackable, Vector3 position);
 
 }

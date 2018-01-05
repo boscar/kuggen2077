@@ -24,7 +24,7 @@ public abstract class Enemy : GameEntity, IMovable, IAttackable, IAttacker {
     public AttackHandler AttackHandler { get; protected set; }
 
     public Rigidbody Rigidbody { get; set; }
-    
+
 
     protected int hitPoints;
     public int HitPoints {
@@ -84,7 +84,11 @@ public abstract class Enemy : GameEntity, IMovable, IAttackable, IAttacker {
         AttackHandler = new AttackHandler(this);
     }
 
-	protected abstract void InitEffects();
+
+    protected virtual void InitEffects() {
+        RecieveAttackHandler.RecieveAttackCreators.Add(new TemporaryColorChangeEffectCreator(this, Color.white));
+        RecieveAttackHandler.RecieveAttackCreators.Add(new KnockbackEffectCreator(this, this));
+    }
 
     private void InitComponents() {
         Rigidbody = GetComponent<Rigidbody>();

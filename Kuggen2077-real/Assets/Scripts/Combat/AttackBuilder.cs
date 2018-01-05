@@ -6,6 +6,8 @@ public class AttackBuilder {
 
     private IAttacker attacker;
     private int damage = 0;
+    private float force = 0;
+    private Vector3 position;
 
     public AttackBuilder Attacker(IAttacker attacker) {
         this.attacker = attacker;
@@ -17,7 +19,18 @@ public class AttackBuilder {
         return this;
     }
 
-    public Attack Build () {
-        return new Attack(attacker, damage);
+    public AttackBuilder Force(float force) {
+        this.force = force;
+        return this;
     }
+
+    public AttackBuilder Position(Vector3 position) {
+        this.position = position;
+        return this;
+    }
+
+    public Attack Build () {
+        return new Attack(attacker, damage, force, position);
+    }
+
 }

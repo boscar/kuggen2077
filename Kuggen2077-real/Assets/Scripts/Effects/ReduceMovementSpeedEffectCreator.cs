@@ -6,21 +6,19 @@ using UnityEngine;
 public class ReduceMovementSpeedEffectCreator : EffectCreator {
 
     private string Id;
-    private float easingFactor;
     private float slowMultiplier;
     private float duration;
 
-    public ReduceMovementSpeedEffectCreator(Player player, float slowMultiplier, float duration, float easingFactor) : base(player) {
+    public ReduceMovementSpeedEffectCreator(Player player, float slowMultiplier, float duration) : base(player) {
         Id = ToString();
         this.slowMultiplier = slowMultiplier;
-        this.easingFactor = easingFactor;
         this.duration = duration;
     }
 
     public override bool Activate() {
         ReduceMovementSpeedEffect effect = GameEntity.GetEffect<ReduceMovementSpeedEffect>(Id);
         if (effect == null) {
-            effect = new ReduceMovementSpeedEffect((Player)GameEntity, slowMultiplier, duration, easingFactor, Id);
+            effect = new ReduceMovementSpeedEffect((Player)GameEntity, slowMultiplier, duration, Id);
             GameEntity.ActivateEffect(effect);
         } else {
             effect.Timer = 0;
@@ -33,17 +31,15 @@ public class ReduceMovementSpeedEffectCreator : EffectCreator {
         public string Id { get; private set; }
 
         private Player player;
-        private float easingFactor = 1;
         private float slowMultiplier;
         private float duration;
         private AccelerateInterpolator interpolator;
 
         public float Timer { get; set; }
 
-        public ReduceMovementSpeedEffect(Player player, float slowMultiplier, float duration, float easingFactor, string id) {
+        public ReduceMovementSpeedEffect(Player player, float slowMultiplier, float duration, string id) {
             this.player = player;
             this.slowMultiplier = slowMultiplier;
-            this.easingFactor = easingFactor;
             this.duration = duration;
             this.Id = id;
             interpolator = new AccelerateInterpolator();

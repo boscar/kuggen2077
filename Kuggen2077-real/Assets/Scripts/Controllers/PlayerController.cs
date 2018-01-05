@@ -93,7 +93,6 @@ public class PlayerController : MonoBehaviour {
             if (primaryAttackAction != null)
             {
                 primaryAttackAction.InitAttack();
-                player.AttackHandler.HandleAttackEffects();
             }
         }
     }
