@@ -47,8 +47,9 @@ public class PlayerSelectState {
 	public ViewState GetNext(Command command){
 		StateTransition transition = new StateTransition (CurrentState, command);
 		ViewState next;
-		if (!transitions.TryGetValue(transition, out next))
-			throw new KuggenException("Invalid transition: " + CurrentState + " -> " + command);
+		if (!transitions.TryGetValue (transition, out next)) {
+			throw new KuggenException ("Invalid transition: " + CurrentState + " -> " + command);
+		}
 		return next;
 	}
 
