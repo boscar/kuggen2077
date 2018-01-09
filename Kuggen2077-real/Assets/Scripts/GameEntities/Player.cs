@@ -58,7 +58,7 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable, IObservable<
             if (currentHitPoints > HitPoints) {
                 currentHitPoints = HitPoints;
             }
-			callObservers ();
+			CallObservers ();
         }
     }
 
@@ -67,7 +67,7 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable, IObservable<
 		get { return score; }
 		set {
 			score = value;
-			callObservers ();
+			CallObservers ();
 		}
 	}
 
@@ -83,7 +83,7 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable, IObservable<
 
     void Start() {
         InitComponents();
-		callObservers ();
+		CallObservers ();
     }
 
     protected new void FixedUpdate() {
@@ -120,21 +120,21 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable, IObservable<
 
 	public void setAttackAction(string key, AttackAction attack){
 		AttackActions [key] = attack;
-		callObservers ();
+		CallObservers ();
 	}
 
 	// IObservable implementation
-	public void addObserver(IObserver<Player> obs){
+	public void AddObserver(IObserver<Player> obs){
 		observers.Add (obs);
 	}
 
-	public void removeObserver(IObserver<Player> obs) {
+	public void RemoveObserver(IObserver<Player> obs) {
 		observers.Remove (obs);
 	}
 
-	public void callObservers() {
+	public void CallObservers() {
 		foreach (IObserver<Player> obs in observers) {
-			obs.onUpdate(this);
+			obs.OnUpdate(this);
 		}	
 	}
 }

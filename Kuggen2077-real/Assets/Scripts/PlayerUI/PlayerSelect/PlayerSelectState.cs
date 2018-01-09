@@ -44,7 +44,7 @@ public class PlayerSelectState {
 
 	public ViewState CurrentState { get; private set; }
 
-	public ViewState getNext(Command command){
+	public ViewState GetNext(Command command){
 		StateTransition transition = new StateTransition (CurrentState, command);
 		ViewState next;
 		if (!transitions.TryGetValue(transition, out next))
@@ -52,8 +52,8 @@ public class PlayerSelectState {
 		return next;
 	}
 
-	public ViewState moveNext(Command command){
-		CurrentState = getNext (command);
+	public ViewState MoveNext(Command command){
+		CurrentState = GetNext (command);
 		return CurrentState;
 	}
 

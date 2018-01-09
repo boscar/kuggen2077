@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class PlayerSelectView : MonoBehaviour {
 
 	private Dictionary<PlayerSelectState.ViewState, Action> views = new Dictionary<PlayerSelectState.ViewState, Action> ();
-	private const string path = "sprites/playerselect/";
+	private const string PATH = "sprites/playerselect/";
 
 	private RawImage backgroundTexture; 
 	private RawImage statusTexture;
@@ -49,15 +49,15 @@ public class PlayerSelectView : MonoBehaviour {
 	}
 
 	private void setDisconnected(){
-		Texture2D background = Resources.Load (path + "background_disconnected") as Texture2D;
-		Texture2D status = Resources.Load (path + "label_disconnected") as Texture2D;
+		Texture2D background = Resources.Load (PATH + "background_disconnected") as Texture2D;
+		Texture2D status = Resources.Load (PATH + "label_disconnected") as Texture2D;
 
 		if (background == null) {
-			throw new KuggenException ("Unable to find Texture2D 'sprites/playerSelect/background_disconnected', make sure the resource is available in the path");
+			throw new KuggenException ("Unable to find Texture2D 'sprites/playerSelect/background_disconnected', make sure the resource is available in the PATH");
 		}
 
 		if (status == null) {
-			throw new KuggenException ("Unable to find Texture2D 'sprites/playerSelect/label_disconnected', make sure the resource is available in the path");
+			throw new KuggenException ("Unable to find Texture2D 'sprites/playerSelect/label_disconnected', make sure the resource is available in the PATH");
 		}
 
 		backgroundTexture.texture = background;
@@ -67,15 +67,15 @@ public class PlayerSelectView : MonoBehaviour {
 	}
 
 	private void setConnected(){
-		Texture2D background = Resources.Load (path + "background_connected") as Texture2D;
-		Texture2D status = Resources.Load (path + "label_connected") as Texture2D;
+		Texture2D background = Resources.Load (PATH + "background_connected") as Texture2D;
+		Texture2D status = Resources.Load (PATH + "label_connected") as Texture2D;
 
 		if (background == null) {
-			throw new KuggenException ("Unable to find Texture2D 'sprites/playerSelect/background_connected', make sure the resource is available in the path");
+			throw new KuggenException ("Unable to find Texture2D 'sprites/playerSelect/background_connected', make sure the resource is available in the PATH");
 		}
 
 		if (status == null) {
-			throw new KuggenException ("Unable to find Texture2D 'sprites/playerSelect/label_connected', make sure the resource is available in the path");
+			throw new KuggenException ("Unable to find Texture2D 'sprites/playerSelect/label_connected', make sure the resource is available in the PATH");
 		}
 
 		backgroundTexture.texture = background;
@@ -84,15 +84,15 @@ public class PlayerSelectView : MonoBehaviour {
 	}
 
 	private void setReady(){
-		Texture2D background = Resources.Load (path + "background_connected") as Texture2D;
-		Texture2D status = Resources.Load (path + "label_ready") as Texture2D;
+		Texture2D background = Resources.Load (PATH + "background_connected") as Texture2D;
+		Texture2D status = Resources.Load (PATH + "label_ready") as Texture2D;
 
 		if (background == null) {
-			throw new KuggenException ("Unable to find Texture2D 'sprites/playerSelect/background_connected', make sure the resource is available in the path");
+			throw new KuggenException ("Unable to find Texture2D 'sprites/playerSelect/background_connected', make sure the resource is available in the PATH");
 		}
 
 		if (status == null) {
-			throw new KuggenException ("Unable to find Texture2D 'sprites/playerSelect/label_ready', make sure the resource is available in the path");
+			throw new KuggenException ("Unable to find Texture2D 'sprites/playerSelect/label_ready', make sure the resource is available in the PATH");
 		}
 
 		backgroundTexture.texture = background;
