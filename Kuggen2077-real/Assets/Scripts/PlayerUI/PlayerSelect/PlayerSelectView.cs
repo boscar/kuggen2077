@@ -15,7 +15,9 @@ public class PlayerSelectView : MonoBehaviour {
 	}
 
 	public void updateView(PlayerSelectState.ViewState state){
-		views [state].Invoke ();
+		if (views.ContainsKey (state)) {
+			views [state].Invoke ();
+		}
 	}
 
 	private void setDisconnected(){
