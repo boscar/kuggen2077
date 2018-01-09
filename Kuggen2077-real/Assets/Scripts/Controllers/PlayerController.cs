@@ -63,7 +63,6 @@ public class PlayerController : MonoBehaviour {
     private void HandleMovement(float deltaTime) {
         if((KeyBindings is GamepadOneControlKeyBindings || KeyBindings is GamepadTwoControlKeyBindings) && direction.sqrMagnitude > 0.0f)
         {
-            Debug.Log("Here");
             transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
         } else if(KeyBindings is KeyboardControlKeyBindings)
         {
@@ -93,7 +92,6 @@ public class PlayerController : MonoBehaviour {
             if (primaryAttackAction != null)
             {
                 primaryAttackAction.InitAttack();
-                player.AttackHandler.HandleAttackEffects();
             }
         }
     }

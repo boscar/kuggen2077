@@ -6,6 +6,7 @@ public class MachineGunAttackAction : RangedAttackAction<Player> {
 
     public MachineGunAttackAction(Player gameEntity) : base(gameEntity) {
         Damage = 4;
+        Force = 0.3f;
         Cooldown = 0.04f;
         ProjectileSpeed = 30;
         Spread = 3.5f;

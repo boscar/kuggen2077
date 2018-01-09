@@ -12,6 +12,7 @@ public class ShotgunAttackAction : RangedAttackAction<Player> {
 
     public ShotgunAttackAction(Player gameEntity) : base(gameEntity) {
         Damage = 10;
+        Force = 1f;
         Cooldown = 1f;
         ProjectileSpeed = 36;
         Spread = 22;
@@ -23,7 +24,7 @@ public class ShotgunAttackAction : RangedAttackAction<Player> {
 
     protected override void Fire() {
         for (int i = 0; i < BulletAmount; ++i) {
-            GameEntity.StartCoroutine(CreateBulletDelayed(UnityEngine.Random.value * FIRE_MAX_DELAY));
+            ((GameEntity)Attacker).StartCoroutine(CreateBulletDelayed(UnityEngine.Random.value * FIRE_MAX_DELAY));
         }
     }
 

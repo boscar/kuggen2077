@@ -16,6 +16,7 @@ public class RangeEnemy : Enemy {
     }
 
 	protected override void InitEffects() {
+        base.InitEffects();
 		RecieveAttackHandler.RecieveAttackCreators.Add(new TemporaryColorChangeEffectCreator(this, Color.white));
 		RecieveAttackHandler.DeathCreators.Add(new ScoreUpdateEffectCreator(2));
 	}

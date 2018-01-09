@@ -14,7 +14,8 @@ public class FastEnemy : Enemy {
     }
 
 	protected override void InitEffects() {
-		RecieveAttackHandler.RecieveAttackCreators.Add(new TemporaryColorChangeEffectCreator(this, Color.white));
+        base.InitEffects();
+        RecieveAttackHandler.RecieveAttackCreators.Add(new TemporaryColorChangeEffectCreator(this, Color.white));
 		RecieveAttackHandler.DeathCreators.Add(new ScoreUpdateEffectCreator(1));
 	}
 

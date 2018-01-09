@@ -10,7 +10,7 @@ public class KeyboardControlKeyBindings : ControlKeyBindings
     {
         get
         {
-            return "Horizontal";
+            return "Horizontal_Keyboard";
         }
     }
 
@@ -18,7 +18,7 @@ public class KeyboardControlKeyBindings : ControlKeyBindings
     {
         get
         {
-            return "Vertical";
+            return "Vertical_Keyboard";
         }
     }
 
