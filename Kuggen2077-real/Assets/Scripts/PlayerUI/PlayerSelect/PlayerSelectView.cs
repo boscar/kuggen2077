@@ -12,11 +12,9 @@ public class PlayerSelectView : MonoBehaviour {
 		views.Add (PlayerSelectState.ViewState.Connected, () => setConnected ());
 		views.Add (PlayerSelectState.ViewState.Disconnected, () => setDisconnected());
 		views.Add (PlayerSelectState.ViewState.Ready, () => setReady());
-
-		update (PlayerSelectState.ViewState.Ready);
 	}
 
-	public void update(PlayerSelectState.ViewState state){
+	public void updateView(PlayerSelectState.ViewState state){
 		views [state].Invoke ();
 	}
 
