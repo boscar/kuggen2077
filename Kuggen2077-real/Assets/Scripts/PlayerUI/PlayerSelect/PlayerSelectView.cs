@@ -34,10 +34,6 @@ public class PlayerSelectView : MonoBehaviour {
 		}
 
 		defaultColor = playerNumber.color; 
-
-
-		// TODO REMOVE;
-		updateView (PlayerSelectState.ViewState.Ready);
 	}
 
 	private void initViews(){
@@ -84,7 +80,7 @@ public class PlayerSelectView : MonoBehaviour {
 
 		backgroundTexture.texture = background;
 		statusTexture.texture = status;
-		playerNumber.color = defaultColor;
+		playerNumber.color = new Color (255f, 255f, 255f, 0.25f);
 	}
 
 	private void setReady(){
