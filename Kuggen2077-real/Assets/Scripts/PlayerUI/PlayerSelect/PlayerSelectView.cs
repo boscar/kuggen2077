@@ -13,10 +13,10 @@ public class PlayerSelectView : MonoBehaviour {
 	private RawImage statusTexture;
 	private Text playerNumber;
 
-	private Color defaultColor;
+	private Color highlightColor;
 
 	void Start () {
-		initViews ();
+		InitViews ();
 
 		backgroundTexture = GetComponent<RawImage> ();
 		if (backgroundTexture == null) {
@@ -33,10 +33,11 @@ public class PlayerSelectView : MonoBehaviour {
 			throw new KuggenException ("Text component required for 'playernumber/label' gameobject in " + this);
 		}
 
-		defaultColor = playerNumber.color; 
+		highlightColor = playerNumber.color; 
+
 	}
 
-	private void initViews(){
+	private void InitViews(){
 		views.Add (PlayerSelectState.ViewState.Connected, 	 () => setConnected () );
 		views.Add (PlayerSelectState.ViewState.Disconnected, () => setDisconnected() );
 		views.Add (PlayerSelectState.ViewState.Ready, 		 () => setReady() );
@@ -62,6 +63,7 @@ public class PlayerSelectView : MonoBehaviour {
 
 		backgroundTexture.texture = background;
 		statusTexture.texture = status;
+		statusTexture.color = Color.white;
 		playerNumber.color = new Color (255f, 255f, 255f, 0.25f);
 
 	}
@@ -80,6 +82,7 @@ public class PlayerSelectView : MonoBehaviour {
 
 		backgroundTexture.texture = background;
 		statusTexture.texture = status;
+		statusTexture.color = Color.white;
 		playerNumber.color = new Color (255f, 255f, 255f, 0.25f);
 	}
 
@@ -97,7 +100,8 @@ public class PlayerSelectView : MonoBehaviour {
 
 		backgroundTexture.texture = background;
 		statusTexture.texture = status;
-		playerNumber.color = defaultColor;
+		statusTexture.color = highlightColor;
+		playerNumber.color = highlightColor;
 	}
 
 }
