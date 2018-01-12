@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerUIController : MonoBehaviour, IObserver<Player> {
 
-	private Player playerReference;
+	public Player playerReference;
 
 	private Slider healthSlider;
 	private Text scoreText;

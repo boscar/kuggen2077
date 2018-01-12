@@ -34,7 +34,6 @@ public class PlayerSelectView : MonoBehaviour {
 		}
 
 		highlightColor = playerNumber.color; 
-
 	}
 
 	private void InitViews(){
