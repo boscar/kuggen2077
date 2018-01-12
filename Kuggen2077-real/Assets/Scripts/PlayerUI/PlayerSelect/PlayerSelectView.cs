@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class PlayerSelectView : MonoBehaviour {
 
 	private Dictionary<PlayerSelectState.ViewState, Action> views = new Dictionary<PlayerSelectState.ViewState, Action> ();
+	public  PlayerSelectState.ViewState ActiveView { get; private set; }
+
 	private const string PATH = "sprites/playerselect/";
 
 	private RawImage backgroundTexture; 
@@ -45,6 +47,7 @@ public class PlayerSelectView : MonoBehaviour {
 	public void updateView(PlayerSelectState.ViewState state){
 		if (views.ContainsKey (state)) {
 			views [state].Invoke ();
+			ActiveView = state;
 		}
 	}
 
