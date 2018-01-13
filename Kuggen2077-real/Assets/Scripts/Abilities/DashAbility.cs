@@ -6,8 +6,8 @@ using UnityEngine;
 public class DashAbility {
 
     public const string DASH_MOVEMENT_ID = "dash";
-    public const float DEFUALT_DASH_DURATION = 0.08f;
-    public const float DEFUALT_DASH_SPEED = 9;
+    public const float DEFUALT_DASH_DURATION = 0.066f;
+    public const float DEFUALT_DASH_SPEED = 11;
 
     private bool hasCooldown = false;
     private float cooldown = 2.0f;
@@ -21,15 +21,16 @@ public class DashAbility {
         if(hasCooldown) {
             return;
         }
-        gameEntity.effects.Add(new DashEffect(movable, direction, DEFUALT_DASH_DURATION, DEFUALT_DASH_SPEED));
+        movable.ActivateEffect(new DashEffect(movable, direction, DEFUALT_DASH_DURATION, DEFUALT_DASH_SPEED), GameEntity.EffectFrequency.FIXED_UPDATE);
         hasCooldown = true;
         TimedEffectFactory.Create(gameEntity, cooldown, () => {
-            Debug.Log("Dash cd over");
             hasCooldown = false;
         });
     }
 
     public class DashEffect : IEffect {
+
+        public string Id { get { return this.ToString(); } }
 
         private IMovable movable;
         private Vector3 direction;
@@ -42,8 +43,10 @@ public class DashAbility {
             this.direction = direction;
             this.duration = duration;
             this.speed = speed;
-            Debug.Log("Dash!");
             movable.MovementHandler.Move(direction * speed, DASH_MOVEMENT_ID, false);
+        }
+        public void Activate() {
+            //NOOP
         }
 
         public bool Update(float deltaTime) {

@@ -21,7 +21,7 @@ public class MovementHandler {
     }
 
     public void BasicMove(Vector3 movementDirection) {
-        Move(movementDirection.normalized * movable.MovementSpeed, BASIC_MOVEMENT_ID, true);
+        Move(movementDirection.normalized * movable.MovementSpeed.Value(), BASIC_MOVEMENT_ID, true);
     }
 
     public void Move(Vector3 velocity, string id, bool useFloatiness) {

@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class AttackHandler {
 
-    public IAttacker Attacker { get; private set; }
+    private IAttacker Attacker { get; set; }
 
-    public AttackHandler (IAttacker attacker) {
+    public List<EffectCreator> AttackCreators { get; private set; }
+
+    public AttackHandler(IAttacker attacker) {
         if (attacker == null) {
             throw new KuggenException("IAttacker can not be null for " + this);
         }
         Attacker = attacker;
+
+        AttackCreators = new List<EffectCreator>();
     }
 
-    public void Attack(string id) {
-        AttackAction attackAction = Attacker.AttackActions[id];
-        if (attackAction != null) {
-            attackAction.Activate(Attacker);
+    public void HandleAttackEffects() {
+        foreach (EffectCreator creator in AttackCreators) {
+            creator.Activate();
         }
     }
 

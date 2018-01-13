@@ -7,6 +7,8 @@ public class EnemyController : MonoBehaviour {
 	public Enemy enemy;
 	public Player player;
 
+	private ObservableCollider attackCollider;
+
 	private Vector3 movementVector;
 	private Vector3 direction = Vector3.zero;
 
@@ -22,6 +24,9 @@ public class EnemyController : MonoBehaviour {
 		if (enemy == null) {
 			throw new KuggenException("Enemy can not be null for " + this);
 		}
+        if(player == null && Level.Instance != null) {
+            player = Utils.GetRandom<Player>(Level.Instance.Players);
+        }
 	}
 	
 	// Update is called once per frame
@@ -43,4 +48,5 @@ public class EnemyController : MonoBehaviour {
 
 		enemy.MovementHandler.BasicMove(movementVector);
 	}
+
 }

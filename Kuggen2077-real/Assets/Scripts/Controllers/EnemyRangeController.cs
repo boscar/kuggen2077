@@ -1,0 +1,71 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EnemyRangeController : MonoBehaviour {
+
+    private const float MIN_WALK_DISTANCE = 10f;
+
+    public RangeEnemy enemy;
+    public Player player;
+
+    private Vector3 movementVector;
+    private Vector3 direction = Vector3.zero;
+
+    protected void Start()
+    {
+        InitComponents();
+    }
+
+    private void InitComponents()
+    {
+        if (enemy == null)
+        {
+            enemy = GetComponent<RangeEnemy>();
+        }
+        if (enemy == null)
+        {
+            throw new KuggenException("Enemy can not be null for " + this);
+        }
+        if (player == null && Level.Instance != null) {
+            player = Utils.GetRandom<Player>(Level.Instance.Players);
+        }
+    }
+
+    // Update is called once per frame
+    void Update () {
+        movementVector = transform.forward;
+        direction = player.transform.position;
+    }
+
+    protected void FixedUpdate()
+    {
+        HandleMovement(Time.fixedDeltaTime);
+        HandleShoot(Time.fixedDeltaTime);
+    }
+
+    private void HandleMovement(float deltaTime)
+    {
+        transform.LookAt(direction);
+
+        if (enemy.MovementHandler == null)
+        {
+            return;
+        }
+
+        if (player != null && Vector3.Distance(transform.position, player.transform.position) > MIN_WALK_DISTANCE) {
+            enemy.MovementHandler.BasicMove(movementVector);
+        } else {
+            enemy.MovementHandler.BasicMove(Vector3.zero);
+        }
+    }
+
+    private void HandleShoot(float deltaTime)
+    {
+        AttackAction primaryAttackAction = enemy.AttackActions[RangeEnemy.ATTACK_RANGE];
+        if (primaryAttackAction != null)
+        {
+            primaryAttackAction.InitAttack();
+        }      
+    }
+}
