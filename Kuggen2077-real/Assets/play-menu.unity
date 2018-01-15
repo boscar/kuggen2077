@@ -3589,6 +3589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff6164515f7d049b7befe990e44c2f4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  highlightColor: {r: 0.94509804, g: 0.7764706, b: 0.23529412, a: 1}
   controlScheme: 2
 --- !u!222 &240914550
 CanvasRenderer:
@@ -3727,7 +3728,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.32352942, b: 0.32352942, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3829,6 +3830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff6164515f7d049b7befe990e44c2f4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  highlightColor: {r: 1, g: 0.2509804, b: 0.2509804, a: 1}
   controlScheme: 1
 --- !u!95 &509074706
 Animator:

@@ -9,6 +9,7 @@ public class PlayerSelectView : MonoBehaviour {
 	private Dictionary<PlayerSelectState.ViewState, Action> views = new Dictionary<PlayerSelectState.ViewState, Action> ();
 
 	private int numberOfControllers = 0;
+	public Color highlightColor;
 	public ControlKeyBindings.ControlScheme controlScheme = ControlKeyBindings.ControlScheme.KEYBOARD;
 	private ControlKeyBindings KeyBindings { get; set; }
 
@@ -21,15 +22,12 @@ public class PlayerSelectView : MonoBehaviour {
 	private Text playerNumber;
 	private Animator animator;
 
-	private Color highlightColor;
-
 	void Start () {
 		sm = new PlayerSelectState ();
 
 		InitViews ();
 		InitComponents ();
 		AssignKeyBindings(controlScheme);
-		highlightColor = playerNumber.color; 
 	}
 
 	private void InitViews(){
