@@ -19,6 +19,7 @@ public class PlayerSelectView : MonoBehaviour {
 	private RawImage backgroundTexture; 
 	private RawImage statusTexture;
 	private Text playerNumber;
+	private Animator animator;
 
 	private Color highlightColor;
 
@@ -43,6 +44,7 @@ public class PlayerSelectView : MonoBehaviour {
 			throw new KuggenException ("Text component required for 'playernumber/label' gameobject in " + this);
 		}
 
+		animator = GetComponent<Animator> ();
 		highlightColor = playerNumber.color; 
 	}
 
@@ -89,9 +91,11 @@ public class PlayerSelectView : MonoBehaviour {
 		}
 
 		backgroundTexture.texture = background;
+		backgroundTexture.color = new Color (255f, 255f, 255f, 0.5f);
 		statusTexture.texture = status;
 		statusTexture.color = Color.white;
 		playerNumber.color = new Color (255f, 255f, 255f, 0.25f);
+		animator.Play ("normal");
 
 	}
 
@@ -108,9 +112,11 @@ public class PlayerSelectView : MonoBehaviour {
 		}
 
 		backgroundTexture.texture = background;
+		backgroundTexture.color = new Color (255f, 255f, 255f, 0.5f);
 		statusTexture.texture = status;
 		statusTexture.color = Color.white;
 		playerNumber.color = new Color (255f, 255f, 255f, 0.25f);
+		animator.Play ("normal");
 	}
 
 	private void setReady(){
@@ -126,9 +132,11 @@ public class PlayerSelectView : MonoBehaviour {
 		}
 
 		backgroundTexture.texture = background;
+		backgroundTexture.color = Color.white;
 		statusTexture.texture = status;
 		statusTexture.color = highlightColor;
 		playerNumber.color = highlightColor;
+		animator.Play ("Bounce");
 	}
 
 	//TODO run in interval instead of each update
@@ -137,6 +145,7 @@ public class PlayerSelectView : MonoBehaviour {
 	}
 
 	void Update() {
+		PlayerSelectState.ViewState previouState = sm.CurrentState;
 		bool isConnected = ControllerIsConnected ();
 
 		if (isConnected) {
@@ -155,7 +164,9 @@ public class PlayerSelectView : MonoBehaviour {
 			sm.MoveNext (PlayerSelectState.Command.Disconnect);
 		}
 
-		updateView (sm.CurrentState);
+		if (previouState != sm.CurrentState) {
+			updateView (sm.CurrentState);
+		}
 	}
 
 }
