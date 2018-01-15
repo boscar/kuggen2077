@@ -12,7 +12,7 @@ public class PlayerSelectView : MonoBehaviour {
 	public ControlKeyBindings.ControlScheme controlScheme = ControlKeyBindings.ControlScheme.KEYBOARD;
 	private ControlKeyBindings KeyBindings { get; set; }
 
-	private PlayerSelectState sm;
+	public PlayerSelectState sm { get; private set; }
 
 	private const string PATH = "sprites/playerselect/";
 
@@ -27,8 +27,18 @@ public class PlayerSelectView : MonoBehaviour {
 		sm = new PlayerSelectState ();
 
 		InitViews ();
+		InitComponents ();
 		AssignKeyBindings(controlScheme);
+		highlightColor = playerNumber.color; 
+	}
 
+	private void InitViews(){
+		views.Add (PlayerSelectState.ViewState.Connected, 	 () => setConnected () );
+		views.Add (PlayerSelectState.ViewState.Disconnected, () => setDisconnected() );
+		views.Add (PlayerSelectState.ViewState.Ready, 		 () => setReady() );
+	}
+
+	private void InitComponents(){
 		backgroundTexture = GetComponent<RawImage> ();
 		if (backgroundTexture == null) {
 			throw new KuggenException ("RawImage component required in gameobject for " + this);
@@ -45,13 +55,9 @@ public class PlayerSelectView : MonoBehaviour {
 		}
 
 		animator = GetComponent<Animator> ();
-		highlightColor = playerNumber.color; 
-	}
-
-	private void InitViews(){
-		views.Add (PlayerSelectState.ViewState.Connected, 	 () => setConnected () );
-		views.Add (PlayerSelectState.ViewState.Disconnected, () => setDisconnected() );
-		views.Add (PlayerSelectState.ViewState.Ready, 		 () => setReady() );
+		if (animator == null) {
+			throw new KuggenException ("Animator component required for " + this);
+		}
 	}
 
 	public void AssignKeyBindings(ControlKeyBindings.ControlScheme controlScheme) {
@@ -78,6 +84,7 @@ public class PlayerSelectView : MonoBehaviour {
 		}
 	}
 
+	// BEGIN VIEWS
 	private void setDisconnected(){
 		Texture2D background = Resources.Load (PATH + "background_disconnected") as Texture2D;
 		Texture2D status = Resources.Load (PATH + "label_disconnected") as Texture2D;
@@ -138,6 +145,8 @@ public class PlayerSelectView : MonoBehaviour {
 		playerNumber.color = highlightColor;
 		animator.Play ("Bounce");
 	}
+
+	// END VIEWS
 
 	//TODO run in interval instead of each update
 	private bool ControllerIsConnected(){
