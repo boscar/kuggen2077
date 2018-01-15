@@ -46,8 +46,18 @@ public class GamepadTwoControlKeyBindings : ControlKeyBindings {
             throw new NotImplementedException();
         }
     }
+		
+	public override string Confirm {
+		get {
+			return "Confirm_Player2";
+		}
+	}
 
-
+	public override string Discard {
+		get {
+			return "Discard_Player2";
+		}
+	}
 
 
     public override Func<Transform, Vector3> GetDirection {

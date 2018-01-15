@@ -35,11 +35,15 @@ public class PlayerSelectState {
 
 
 	private Dictionary<StateTransition, ViewState> transitions = new Dictionary<StateTransition, ViewState> {
+		{ new StateTransition(ViewState.Disconnected, Command.Disconnect), ViewState.Disconnected },
 		{ new StateTransition(ViewState.Disconnected, Command.Connect), ViewState.Connected },
 		{ new StateTransition(ViewState.Connected, Command.Disconnect), ViewState.Disconnected },
+		{ new StateTransition(ViewState.Connected, Command.Connect), ViewState.Connected },
 		{ new StateTransition(ViewState.Connected, Command.Ready), ViewState.Ready },
+		{ new StateTransition(ViewState.Connected, Command.Unready), ViewState.Connected },
 		{ new StateTransition(ViewState.Ready, Command.Disconnect), ViewState.Disconnected },
 		{ new StateTransition(ViewState.Ready, Command.Unready), ViewState.Connected },
+		{ new StateTransition(ViewState.Ready, Command.Ready), ViewState.Ready },
 	};
 
 	public ViewState CurrentState { get; private set; }

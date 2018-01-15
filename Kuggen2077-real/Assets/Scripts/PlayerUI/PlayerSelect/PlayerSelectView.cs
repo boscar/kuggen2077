@@ -7,7 +7,12 @@ using UnityEngine.UI;
 public class PlayerSelectView : MonoBehaviour {
 
 	private Dictionary<PlayerSelectState.ViewState, Action> views = new Dictionary<PlayerSelectState.ViewState, Action> ();
-	public  PlayerSelectState.ViewState ActiveView { get; private set; }
+
+	private int numberOfControllers = 0;
+	public ControlKeyBindings.ControlScheme controlScheme = ControlKeyBindings.ControlScheme.KEYBOARD;
+	private ControlKeyBindings KeyBindings { get; set; }
+
+	private PlayerSelectState sm;
 
 	private const string PATH = "sprites/playerselect/";
 
@@ -18,7 +23,10 @@ public class PlayerSelectView : MonoBehaviour {
 	private Color highlightColor;
 
 	void Start () {
+		sm = new PlayerSelectState ();
+
 		InitViews ();
+		AssignKeyBindings(controlScheme);
 
 		backgroundTexture = GetComponent<RawImage> ();
 		if (backgroundTexture == null) {
@@ -44,10 +52,27 @@ public class PlayerSelectView : MonoBehaviour {
 		views.Add (PlayerSelectState.ViewState.Ready, 		 () => setReady() );
 	}
 
+	public void AssignKeyBindings(ControlKeyBindings.ControlScheme controlScheme) {
+		switch (controlScheme) {
+		case ControlKeyBindings.ControlScheme.KEYBOARD:
+			KeyBindings = new KeyboardControlKeyBindings ();
+			break;
+		case ControlKeyBindings.ControlScheme.GAMEPAD0:
+			KeyBindings = new GamepadOneControlKeyBindings ();
+			numberOfControllers = 1;
+			break;
+		case ControlKeyBindings.ControlScheme.GAMEPAD1:
+			KeyBindings = new GamepadTwoControlKeyBindings ();
+			numberOfControllers = 2;
+			break;
+		default : break;
+		}
+
+	}
+
 	public void updateView(PlayerSelectState.ViewState state){
 		if (views.ContainsKey (state)) {
 			views [state].Invoke ();
-			ActiveView = state;
 		}
 	}
 
@@ -104,6 +129,33 @@ public class PlayerSelectView : MonoBehaviour {
 		statusTexture.texture = status;
 		statusTexture.color = highlightColor;
 		playerNumber.color = highlightColor;
+	}
+
+	//TODO run in interval instead of each update
+	private bool ControllerIsConnected(){
+		return Input.GetJoystickNames ().Length >= numberOfControllers;
+	}
+
+	void Update() {
+		bool isConnected = ControllerIsConnected ();
+
+		if (isConnected) {
+
+			if (Input.GetButton (KeyBindings.Confirm)) {
+				sm.MoveNext (PlayerSelectState.Command.Ready);
+			
+			} else if (Input.GetButton (KeyBindings.Discard)) {
+				sm.MoveNext (PlayerSelectState.Command.Unready);
+			
+			} else if (sm.CurrentState == PlayerSelectState.ViewState.Disconnected) {
+				sm.MoveNext (PlayerSelectState.Command.Connect);
+			}
+
+		} else {
+			sm.MoveNext (PlayerSelectState.Command.Disconnect);
+		}
+
+		updateView (sm.CurrentState);
 	}
 
 }
