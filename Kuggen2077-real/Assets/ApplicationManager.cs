@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ButtonManager : MonoBehaviour {
-	public void changeScene(string sceneName){
+public class ApplicationManager : MonoBehaviour {
+	public void ChangeScene(string sceneName){
 		SceneManager.LoadScene (sceneName);
 	}
 		
-	public void quitGame(){
+	public void QuitGame(){
 		Debug.Log ("quit!");
 		Application.Quit ();
 	}

@@ -47,6 +47,23 @@ public class GamepadOneControlKeyBindings : ControlKeyBindings {
         }
     }
 
+	public override string Confirm {
+		get {
+			return "Confirm";
+		}
+	}
+
+	public override string Discard {
+		get {
+			return "Discard";
+		}
+	}
+
+	public override string Start {
+		get {
+			return "Start";
+		}
+	}
 
 
 

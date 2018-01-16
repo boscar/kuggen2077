@@ -18,4 +18,9 @@ public abstract class ControlKeyBindings {
 
     public abstract Func<Transform, Vector3> GetDirection { get; }
 
+	public abstract string Confirm { get; }
+	public abstract string Discard { get; }
+
+	public abstract string Start { get; }
+
 }
