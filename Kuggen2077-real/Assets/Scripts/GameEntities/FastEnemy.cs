@@ -17,7 +17,8 @@ public class FastEnemy : Enemy {
         base.InitEffects();
         RecieveAttackHandler.RecieveAttackCreators.Add(new TemporaryColorChangeEffectCreator(this, Color.white));
 		RecieveAttackHandler.DeathCreators.Add(new ScoreUpdateEffectCreator(1));
-	}
+        RecieveAttackHandler.RecieveAttackCreators.Add(new KnockbackEffectCreator(this, this));
+    }
 
     protected override void InitStats() {
         HitPoints = 50;
