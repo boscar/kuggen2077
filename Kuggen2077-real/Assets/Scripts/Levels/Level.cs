@@ -58,8 +58,9 @@ public abstract class Level : MonoBehaviour {
             return;
         }
         Transform spawnPoint = Utils.GetRandom<Transform>(spawnPoints);
-        PickupCollider pickup = Utils.GetRandom<PickupCollider>(pickups);
-        Instantiate<PickupCollider>(pickup, spawnPoint.position, spawnPoint.rotation);
+        PickupCollider pickupObject = Utils.GetRandom<PickupCollider>(pickups);
+        PickupCollider pickup  = Instantiate<PickupCollider>(pickupObject, spawnPoint.position, spawnPoint.rotation);
+        pickup.DestroyDelayed(10.0f);
     }
 
 }
