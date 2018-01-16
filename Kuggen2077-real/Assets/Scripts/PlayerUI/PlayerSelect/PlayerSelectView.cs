@@ -155,7 +155,6 @@ public class PlayerSelectView : MonoBehaviour {
 	void Update() {
 		PlayerSelectState.ViewState previouState = sm.CurrentState;
 		bool isConnected = ControllerIsConnected ();
-        Debug.Log(isConnected);
 		if (isConnected) {
 
 			if (Input.GetButton (KeyBindings.Confirm)) {
