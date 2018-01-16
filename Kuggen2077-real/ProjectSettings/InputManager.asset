@@ -153,10 +153,10 @@ InputManager:
     m_Name: Horizontal
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: 
-    altNegativeButton: 
-    altPositiveButton: 
+    negativeButton: left
+    positiveButton: right
+    altNegativeButton: a
+    altPositiveButton: d
     gravity: 0
     dead: 0.19
     sensitivity: 1
@@ -185,10 +185,10 @@ InputManager:
     m_Name: Vertical
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: 
-    altNegativeButton: 
-    altPositiveButton: 
+    negativeButton: down
+    positiveButton: up
+    altNegativeButton: s
+    altPositiveButton: w
     gravity: 0
     dead: 0.19
     sensitivity: 1
@@ -282,7 +282,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: return
+    positiveButton: joystick button 16
     altNegativeButton: 
     altPositiveButton: joystick button 0
     gravity: 1000
@@ -298,9 +298,9 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: enter
+    positiveButton: space
     altNegativeButton: 
-    altPositiveButton: space
+    altPositiveButton: return
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -466,7 +466,7 @@ InputManager:
     sensitivity: 1000
     snap: 1
     invert: 0
-    type: 2
+    type: 0
     axis: 9
     joyNum: 1
   - serializedVersion: 3
@@ -482,7 +482,7 @@ InputManager:
     sensitivity: 1000
     snap: 1
     invert: 0
-    type: 2
+    type: 0
     axis: 9
     joyNum: 2
   - serializedVersion: 3
@@ -498,7 +498,7 @@ InputManager:
     sensitivity: 1000
     snap: 1
     invert: 0
-    type: 2
+    type: 0
     axis: 9
     joyNum: 1
   - serializedVersion: 3
@@ -514,6 +514,38 @@ InputManager:
     sensitivity: 1000
     snap: 1
     invert: 0
-    type: 2
+    type: 0
+    axis: 9
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: Start
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 1 button 9
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.19
+    sensitivity: 1000
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 9
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: Start_Player2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 2 button 9
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.19
+    sensitivity: 1000
+    snap: 1
+    invert: 0
+    type: 0
     axis: 9
     joyNum: 2

@@ -87,4 +87,10 @@ public class KeyboardControlKeyBindings : ControlKeyBindings
 			throw new NotImplementedException ();
 		}
 	}
+
+	public override string Start {
+		get {
+			throw new NotImplementedException ();
+		}
+	}
 }
