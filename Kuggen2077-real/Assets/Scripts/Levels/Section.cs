@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Section {
 
-    private const float DEFAULT_POWERUP_SPAWN_CHANCE = 0.05f;
+    protected const float DEFAULT_POWERUP_SPAWN_CHANCE = 0.05f;
 
-    private static PickupCollider[] DEFAULT_POWERUPS {
+    protected static PickupCollider[] DEFAULT_POWERUPS {
         get {
             return new PickupCollider[] {
                 Resources.Load<PickupCollider>(MachineGunPickup.RESOURCE_PATH),
