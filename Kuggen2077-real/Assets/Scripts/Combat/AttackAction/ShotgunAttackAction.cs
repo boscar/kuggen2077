@@ -11,15 +11,16 @@ public class ShotgunAttackAction : RangedAttackAction<Player> {
     private int BulletAmount { get; set; }
 
     public ShotgunAttackAction(Player gameEntity) : base(gameEntity) {
-        Damage = 10;
+        Damage = 5;
         Force = 1f;
         Cooldown = 1f;
         ProjectileSpeed = 36;
-        Spread = 22;
+        Spread = 16;
         BulletLifetime = 0.25f;
-        BulletAmount = 12;
-        bulletObject = Resources.Load<Bullet>("simple_bullet");
-		displayName = "Shotgun";
+        BulletAmount = 24;
+       // bulletObject = Resources.Load<Bullet>("simple_bullet");
+        bulletObject = Resources.Load<Bullet>("shotgunround");
+        displayName = "Shotgun";
     }
 
     protected override void Fire() {
