@@ -46,8 +46,8 @@ public class Level0 : Level {
     private Section CreateFirstSection() {
         Section section = new Section(0);
 
-        section.Events.Add(new SpawnEvent(EnemyObject, NorthSpawnPoint.position, 2));
-
+        section.Events.Add(new SpawnEvent(EnemyRangedObject, NorthSpawnPoint.position, 2));
+        
         section.Events.Add(new SpawnEvent(EnemyObject, EastSpawnPoint.position, 5));
         section.Events.Add(new SpawnEvent(EnemyObject, EastSpawnPoint.position, 5.9f));
 
