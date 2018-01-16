@@ -148,7 +148,7 @@ public class PlayerSelectView : MonoBehaviour {
 
 	//TODO run in interval instead of each update
 	private bool ControllerIsConnected(){
-		return Input.GetJoystickNames ().Length >= numberOfControllers;
+		return Input.GetJoystickNames ().Length >= numberOfControllers && numberOfControllers > 0;
 	}
 
 	void Update() {
