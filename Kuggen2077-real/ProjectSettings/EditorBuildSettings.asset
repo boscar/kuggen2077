@@ -14,3 +14,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/felix-test.unity
     guid: 447ca0ceee2004f38900ad8210f90d0a
+  - enabled: 1
+    path: Assets/play-menu.unity
+    guid: 17889a3041cc446c7a6ebbccd12f315a

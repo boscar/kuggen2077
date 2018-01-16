@@ -47,7 +47,17 @@ public class GamepadOneControlKeyBindings : ControlKeyBindings {
         }
     }
 
+	public override string Confirm {
+		get {
+			return "Confirm";
+		}
+	}
 
+	public override string Discard {
+		get {
+			return "Discard";
+		}
+	}
 
 
     public override Func<Transform, Vector3> GetDirection {

@@ -10,11 +10,11 @@ public class ObservableCollider : MonoBehaviour {
 		observers = new List<IColliderObserver> ();
 	}
 
-	public void addObserver(IColliderObserver obs){
+	public void AddObserver(IColliderObserver obs){
 		observers.Add (obs);
 	}
 
-	public void removeObserver(IColliderObserver obs){
+	public void RemoveObserver(IColliderObserver obs){
 		observers.Remove (obs);
 	}
 
