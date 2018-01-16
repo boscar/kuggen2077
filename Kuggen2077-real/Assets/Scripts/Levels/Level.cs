@@ -6,6 +6,8 @@ public abstract class Level : MonoBehaviour {
 
     public static Level Instance { get; private set; }
 
+    public Transform[] powerupSpawnPoints;
+
     private float timer = 0;
     public List<Player> Players { get; set; }
     protected List<Section> Sections { get; set; }
