@@ -36,7 +36,7 @@ public class PlayerSelectController : MonoBehaviour {
 	void Update () {
 		if (canProceedToGame) {
 			if (ClickedStart ()) {
-				SceneManager.LoadScene ("felix-test");
+				SceneManager.LoadScene ("level-0");
 			}
 		} else {
 			if (ClickedBack ()) {
