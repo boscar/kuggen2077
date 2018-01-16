@@ -20,17 +20,18 @@ public abstract class Level : MonoBehaviour {
     protected void FixedUpdate () {
         timer += Time.fixedDeltaTime;
         if(Sections != null) {
-            HandleSections();
+            HandleSections(Time.fixedDeltaTime);
         }
 	}
 
-    private void HandleSections() {
+    private void HandleSections(float deltaTime) {
         if (Sections.Count > 0) {
             if (Sections[0].IsFinished) {
                 Sections.RemoveAt(0);
                 timer = 0;
             } else {
                 HandleEvents(Sections[0].Events);
+                HandlePickups(deltaTime, Sections[0].PowerupSpawnChance, powerupSpawnPoints, Sections[0].Powerups);
             }
         }
     }
@@ -41,4 +42,24 @@ public abstract class Level : MonoBehaviour {
             events.RemoveAt(0);
         }
     }
+
+    private void HandlePickups (float deltaTime, float spawnChance, Transform[] spawnPoints, PickupCollider[] pickups) {
+        if(pickups.Length <= 0) {
+            return;
+        }
+        if (Random.value <= deltaTime * spawnChance) {
+            SpawnPickup(spawnPoints, pickups);
+        }
+    }
+
+    private void SpawnPickup(Transform[] spawnPoints, PickupCollider[] pickups) {
+        if(spawnPoints.Length <= 0) {
+            Debug.LogError("No powerup spawn points assigned to level.");
+            return;
+        }
+        Transform spawnPoint = Utils.GetRandom<Transform>(spawnPoints);
+        PickupCollider pickup = Utils.GetRandom<PickupCollider>(pickups);
+        Instantiate<PickupCollider>(pickup, spawnPoint.position, spawnPoint.rotation);
+    }
+
 }
