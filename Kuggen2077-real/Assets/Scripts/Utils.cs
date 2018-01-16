@@ -14,7 +14,7 @@ public class Utils {
     }
 
     public static T GetRandom<T> (IList<T> list) {
-        System.Random rnd = new System.Random();
+        System.Random rnd = new System.Random((int)(99999 * Random.value));
         int r = rnd.Next(list.Count);
         return list[r];
     }

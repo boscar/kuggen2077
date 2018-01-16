@@ -6,13 +6,12 @@ public class RandomSectionBuilder {
 
     private int index;
     private float duration = RandomSection.MEDIUM;
-    private float spawnAmount = 3f;
+    private float spawnAmount = 5f;
     private Transform[] spawnPoints;
     private Enemy[] enemyObjects;
 
-    public RandomSectionBuilder Index(int index) {
+    public RandomSectionBuilder(int index) {
         this.index = index;
-        return this;
     }
 
     public RandomSectionBuilder Duration (float duration) {
@@ -36,9 +35,6 @@ public class RandomSectionBuilder {
     }
 
     public RandomSection Create () {
-        if(index < 0) {
-            throw new KuggenException("Index in Random Section can not be lower than 0. Did you set the index?");
-        }
         if (spawnPoints == null) {
             throw new KuggenException("Must assign spawn points for Section");
         }
