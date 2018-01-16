@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,4 +34,28 @@ public class Utils {
 		return s;
 	}
 
+	public static GameObject FindChildWithTag(GameObject parent, string tag) {
+		Transform t = parent.transform;
+	
+		foreach(Transform tr in t) {
+			if (tr.tag == tag) {
+				return tr.gameObject;
+			}
+
+			GameObject found = FindChildWithTag (tr.gameObject, tag);
+			if (found != null) {
+				return found;
+			}
+		}
+
+		return null;
+	}
+
+	public static T FindComponentInChildWithTag<T>(GameObject parent, string tag) where T:Component {
+		GameObject res = FindChildWithTag (parent, tag);
+		if (res != null) {
+			return res.GetComponent<T> ();
+		}
+		return null;
+	}
 }
