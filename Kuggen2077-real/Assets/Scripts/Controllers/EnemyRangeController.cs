@@ -28,12 +28,23 @@ public class EnemyRangeController : MonoBehaviour {
             throw new KuggenException("Enemy can not be null for " + this);
         }
         if (player == null && Level.Instance != null) {
-            player = Utils.GetRandom<Player>(Level.Instance.Players);
+			SetPlayer ();
         }
     }
 
+	private void SetPlayer(){
+		List<Player> alivePlayers = Level.Instance.Players.FindAll (delegate(Player p) {
+			return p.CurrentHitPoints > 0;
+		});
+		player = Utils.GetRandom<Player>(alivePlayers);
+	}
+
     // Update is called once per frame
     void Update () {
+		if (player == null || !(player.CurrentHitPoints > 0)) {
+			SetPlayer ();
+		}
+
         movementVector = transform.forward;
         direction = player.transform.position;
     }
