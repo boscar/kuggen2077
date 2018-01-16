@@ -18,9 +18,9 @@ public class PlayerUIController : MonoBehaviour, IObserver<Player> {
 
 	private void InitUI () {
 		try {
-			healthSlider = GameObject.FindGameObjectWithTag ("Health").GetComponent<Slider>();
-			scoreText = GameObject.FindGameObjectWithTag ("Score").GetComponent<Text>();
-			weaponText = GameObject.FindGameObjectWithTag ("Weapon").GetComponent<Text>();
+			healthSlider = Utils.FindComponentInChildWithTag<Slider>(gameObject, "Health");
+			scoreText = Utils.FindComponentInChildWithTag<Text>(gameObject, "Score");
+			weaponText = Utils.FindComponentInChildWithTag<Text>(gameObject, "Weapon");
 		} catch (System.Exception ex) {
 			throw new KuggenException ("Unable to find gameobjects tagged 'Health', 'Score' or 'Weapon' in " + this);
 		}
@@ -34,8 +34,8 @@ public class PlayerUIController : MonoBehaviour, IObserver<Player> {
 		}	
 
 		if (weaponText == null) {
-			throw new KuggenException("Object tagged 'Weapon' needs a Text component: " + this);
-		}	
+			throw new KuggenException ("Object tagged 'Weapon' needs a Text component: " + this);
+		}
 	}
 	
 	public void OnUpdate(Player player) {
