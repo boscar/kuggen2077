@@ -18,7 +18,6 @@ public class ShotgunAttackAction : RangedAttackAction<Player> {
         Spread = 16;
         BulletLifetime = 0.25f;
         BulletAmount = 24;
-       // bulletObject = Resources.Load<Bullet>("simple_bullet");
         bulletObject = Resources.Load<Bullet>("shotgunround");
         displayName = "Shotgun";
     }
