@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 135119710706618962}
   - component: {fileID: 54423272341563254}
   m_Layer: 10
-  m_Name: shotgunbullet
+  m_Name: shotgunround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
