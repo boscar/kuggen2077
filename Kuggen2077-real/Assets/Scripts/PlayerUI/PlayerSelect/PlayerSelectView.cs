@@ -147,14 +147,15 @@ public class PlayerSelectView : MonoBehaviour {
 	// END VIEWS
 
 	//TODO run in interval instead of each update
-	private bool ControllerIsConnected(){
-		return Input.GetJoystickNames ().Length >= numberOfControllers;
+	private bool ControllerIsConnected() {
+        string[] filteredJoystickNames = Array.FindAll<string>(Input.GetJoystickNames(), s => s.Length > 0 );
+        return filteredJoystickNames.Length >= numberOfControllers && numberOfControllers > 0;
 	}
 
 	void Update() {
 		PlayerSelectState.ViewState previouState = sm.CurrentState;
 		bool isConnected = ControllerIsConnected ();
-
+        Debug.Log(isConnected);
 		if (isConnected) {
 
 			if (Input.GetButton (KeyBindings.Confirm)) {
