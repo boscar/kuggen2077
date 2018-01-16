@@ -22,8 +22,8 @@ public class RandomSection : Section {
         
         List<float> spawnTimestamps = GetSpawnTimestamps(duration, spawnInterval, intervalOffset);
 
-        foreach (float timestamp in spawnTimestamps) {
-                events.AddRange(GetTimestampEvents(timestamp, spawnAmount, spawnPoints, enemyObjects));
+        for (int i = 0; i < spawnTimestamps.Count; ++i) {
+                events.AddRange(GetTimestampEvents(spawnTimestamps[i], spawnAmount, spawnPoints, enemyObjects, i == (spawnTimestamps.Count - 1)));
         }
 
         return events;
@@ -44,8 +44,7 @@ public class RandomSection : Section {
         return 6f + spawnAmount * 0.4f;
     }
 
-    private List<Event> GetTimestampEvents(float timestamp, float spawnAmount, Transform[] spawnPoints, Enemy[] enemyObjects) {
-        Debug.Log("BASE: " + timestamp);
+    private List<Event> GetTimestampEvents(float timestamp, float spawnAmount, Transform[] spawnPoints, Enemy[] enemyObjects, bool lastTimestamp) {
         List<Event> events = new List<Event>();
 
         int amountOfEnemies = GetAmountOfEnemies(spawnAmount);
@@ -53,10 +52,17 @@ public class RandomSection : Section {
         Enemy[] timestampEnemyObjects = GetTimestampEnemyObjects(enemyObjects);
 
         for(int i = 0; i<amountOfEnemies; ++i) {
-            events.Add(new SpawnEvent(Utils.GetRandom<Enemy>(timestampEnemyObjects), Utils.GetRandom<Vector3>(timestampSpawnPositions), timestamp));
-            Debug.Log("SPAWN " + timestamp);
-            timestamp = timestamp + SPAWN_INTERVAL + (Random.value * SPAWN_INTERVAL);
-            Debug.Log("NEXT" + timestamp);
+            if(lastTimestamp && i == (amountOfEnemies - 1)) {
+                events.Add(
+                    new SpawnEnemyEvent(Utils.GetRandom<Enemy>(timestampEnemyObjects), Utils.GetRandom<Vector3>(timestampSpawnPositions), timestamp,
+                        () => {
+                            Level.Instance.StartCoroutine(FinishSectionCourantine(this, 5));
+                            Debug.Log("Section complete!");
+                        }));
+            } else {
+                events.Add(new SpawnEvent(Utils.GetRandom<Enemy>(timestampEnemyObjects), Utils.GetRandom<Vector3>(timestampSpawnPositions), timestamp));
+            }
+            timestamp = timestamp + SPAWN_INTERVAL + (SPAWN_INTERVAL * Random.value);
         }
 
         return events;
@@ -93,4 +99,12 @@ public class RandomSection : Section {
             Utils.GetRandom<Enemy>(enemyObjects)
         };
     }
+
+    protected IEnumerator FinishSectionCourantine(Section section, float duration) {
+        yield return new WaitForSeconds(duration);
+        if (section != null) {
+            section.IsFinished = true;
+        }
+    }
+
 }

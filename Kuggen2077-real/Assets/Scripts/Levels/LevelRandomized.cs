@@ -23,14 +23,20 @@ public class LevelRandomized : Level {
     private List<Section> LoadSections () {
         List<Section> sections = new List<Section>();
         sections.Add( new RandomSectionBuilder(0)
-            .SpawnAmount(5f)
+            .SpawnAmount(2f)
             .SpawnPoints(enemySpawnPoints)
-            .EnemyObjects(new Enemy[3] { EnemyObject , EnemyObject , EnemyRangedObject })
+            .EnemyObjects(new Enemy[1] { EnemyObject })
             .Create()
         );
         sections.Add( new RandomSectionBuilder(1)
             .SpawnPoints(enemySpawnPoints)
-            .SpawnAmount(3f)
+            .SpawnAmount(5f)
+            .EnemyObjects(new Enemy[3] { EnemyObject, EnemyObject, EnemyRangedObject })
+            .Create()
+        );
+        sections.Add(new RandomSectionBuilder(2)
+            .SpawnPoints(enemySpawnPoints)
+            .SpawnAmount(12f)
             .EnemyObjects(new Enemy[2] { EnemyObject, EnemyRangedObject })
             .Create()
         );
