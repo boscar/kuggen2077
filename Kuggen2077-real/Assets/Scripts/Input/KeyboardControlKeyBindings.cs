@@ -75,4 +75,16 @@ public class KeyboardControlKeyBindings : ControlKeyBindings
             throw new NotImplementedException();
         }
     }
+
+	public override string Confirm {
+		get {
+			throw new NotImplementedException ();
+		}
+	}
+
+	public override string Discard {
+		get {
+			throw new NotImplementedException ();
+		}
+	}
 }

@@ -15,7 +15,7 @@ public abstract class PickupCollider : AbstractCollider {
             ignoredGameObjects.Add(collider.gameObject);
             if (Continous) {
                 StartCoroutine(StopIgnoreCourantine(collider.gameObject, Interval));
-            }else {
+            } else {
                 Destroy(gameObject);
             }
         }
