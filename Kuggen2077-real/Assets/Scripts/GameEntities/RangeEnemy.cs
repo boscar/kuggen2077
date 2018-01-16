@@ -19,7 +19,8 @@ public class RangeEnemy : Enemy {
         base.InitEffects();
 		RecieveAttackHandler.RecieveAttackCreators.Add(new TemporaryColorChangeEffectCreator(this, Color.white));
 		RecieveAttackHandler.DeathCreators.Add(new ScoreUpdateEffectCreator(2));
-	}
+        RecieveAttackHandler.RecieveAttackCreators.Add(new KnockbackEffectCreator(this, this));
+    }
 
     protected override void InitStats() {
         HitPoints = 50;

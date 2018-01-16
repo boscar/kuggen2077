@@ -59,6 +59,12 @@ public class GamepadTwoControlKeyBindings : ControlKeyBindings {
 		}
 	}
 
+	public override string Start {
+		get {
+			return "Start_Player2";
+		}
+	}
+
 
     public override Func<Transform, Vector3> GetDirection {
         get {

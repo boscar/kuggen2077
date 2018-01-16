@@ -157,10 +157,10 @@ public class PlayerSelectView : MonoBehaviour {
 		bool isConnected = ControllerIsConnected ();
 		if (isConnected) {
 
-			if (Input.GetButton (KeyBindings.Confirm)) {
+			if (Input.GetButtonUp (KeyBindings.Confirm)) {
 				sm.MoveNext (PlayerSelectState.Command.Ready);
 			
-			} else if (Input.GetButton (KeyBindings.Discard)) {
+			} else if (Input.GetButtonUp (KeyBindings.Discard)) {
 				sm.MoveNext (PlayerSelectState.Command.Unready);
 			
 			} else if (sm.CurrentState == PlayerSelectState.ViewState.Disconnected) {

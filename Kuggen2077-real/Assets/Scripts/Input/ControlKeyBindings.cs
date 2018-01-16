@@ -21,4 +21,6 @@ public abstract class ControlKeyBindings {
 	public abstract string Confirm { get; }
 	public abstract string Discard { get; }
 
+	public abstract string Start { get; }
+
 }
