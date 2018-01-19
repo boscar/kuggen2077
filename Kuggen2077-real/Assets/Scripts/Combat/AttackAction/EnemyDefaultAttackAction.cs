@@ -40,7 +40,7 @@ public class EnemyDefaultAttack : AttackAction {
         attackCollider.IsActivated = false;
     }
 
-    public override void Hit(IAttackable attackable, Vector3 position) {
+    public override void Hit(IAttackable attackable, Transform transform) {
         Attack attack = new AttackBuilder()
             .Attacker(Attacker)
             .Damage(Damage).Build();
