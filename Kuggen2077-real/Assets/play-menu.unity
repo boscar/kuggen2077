@@ -4195,6 +4195,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startGamePrompt: {fileID: 1185639076}
+  views:
+  - {fileID: 509074705}
+  - {fileID: 240914549}
 --- !u!1 &1535667361
 GameObject:
   m_ObjectHideFlags: 0
