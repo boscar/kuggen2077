@@ -14,8 +14,6 @@ public class PlayerSelectController : MonoBehaviour {
 	};
 
 	public RawImage startGamePrompt;
-	public ApplicationManager applicationManager;
-
 	private bool canProceedToGame;
 
 	// Use this for initialization

@@ -17,9 +17,10 @@ public class PlayerSelectView : MonoBehaviour {
 
 	private const string PATH = "sprites/playerselect/";
 
+	public RawImage statusTexture;
+	public Text playerNumber;
+
 	private RawImage backgroundTexture; 
-	private RawImage statusTexture;
-	private Text playerNumber;
 	private Animator animator;
 
 	void Start () {
@@ -40,16 +41,6 @@ public class PlayerSelectView : MonoBehaviour {
 		backgroundTexture = GetComponent<RawImage> ();
 		if (backgroundTexture == null) {
 			throw new KuggenException ("RawImage component required in gameobject for " + this);
-		}
-
-		statusTexture = transform.Find ("status/label").gameObject.GetComponent<RawImage>();
-		if (statusTexture == null) {
-			throw new KuggenException ("RawImage component required for 'status/label' gameobject in " + this);
-		}
-
-		playerNumber = transform.Find ("playernumber/label").gameObject.GetComponent<Text>();
-		if (playerNumber == null) {
-			throw new KuggenException ("Text component required for 'playernumber/label' gameobject in " + this);
 		}
 
 		animator = GetComponent<Animator> ();
