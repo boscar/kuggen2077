@@ -12,7 +12,7 @@ public class KnockbackEffectCreator : RecieveAttackEffectCreator {
 
     public override bool Activate(Attack attack) {
         float duration = 0.08f;
-        Attackable.ActivateEffect(new KnockbackEffect(movable, attack.GetKnockbackVector(attack, Attackable), duration), GameEntity.EffectFrequency.FIXED_UPDATE);
+        Attackable.ActivateEffect(new KnockbackEffect(movable, attack.KnockbackFunc(attack, Attackable), duration), GameEntity.EffectFrequency.FIXED_UPDATE);
         return true;
     }
 
