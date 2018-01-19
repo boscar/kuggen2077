@@ -1735,6 +1735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4a3ded59db0dfa45809ac0ba3ddd229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER_ID: 2
 --- !u!114 &827433404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3062,6 +3063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdb22a849f76167418994cecf9bcccc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerupSpawnPoints: []
   NorthSpawnPoint: {fileID: 1299316490}
   EastSpawnPoint: {fileID: 1279645763}
   SouthSpawnPoint: {fileID: 569005506}
@@ -3496,6 +3498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4a3ded59db0dfa45809ac0ba3ddd229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER_ID: 1
 --- !u!1 &1894621087
 GameObject:
   m_ObjectHideFlags: 0

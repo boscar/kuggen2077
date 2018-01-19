@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Player : GameEntity, IMovable, IAttacker, IAttackable, IObservable<Player> {
 
+	public int PLAYER_ID = 0;
+
     public const float DEFAULT_PLAYER_MOVEMENT_SPEED = 7;
     public const float DEFAULT_PLAYER_MOVEMENT_FLOATINESS = 8f;
 
@@ -62,18 +64,10 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable, IObservable<
         }
     }
 
-	protected int score;
-	public int Score {
-		get { return score; }
-		set {
-			score = value;
-			CallObservers ();
-		}
-	}
-
 	private List<IObserver<Player>> observers = new List<IObserver<Player>> ();
 
     void Awake () {
+		HighScoreManager.AddPlayer (PLAYER_ID);
         DashAbility = new DashAbility();
         AttackActions.Add(ATTACK_PRIMARY, new PlayerDefaultAttack(this));
         InitStats();
@@ -96,7 +90,6 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable, IObservable<
     private void InitStats() {
         HitPoints = 100;
         CurrentHitPoints = 100;
-		Score = 0;
         MovementSpeed = new FloatStat(DEFAULT_PLAYER_MOVEMENT_SPEED);
     }
 
@@ -121,6 +114,15 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable, IObservable<
 	public void setAttackAction(string key, AttackAction attack){
 		AttackActions [key] = attack;
 		CallObservers ();
+	}
+
+	public void IncrementScore(int score){
+		HighScoreManager.IncrementPlayerScore (PLAYER_ID, score);
+		CallObservers ();
+	}
+
+	public int GetScore(){
+		return HighScoreManager.GetPlayerScore (PLAYER_ID);
 	}
 
 	// IObservable implementation

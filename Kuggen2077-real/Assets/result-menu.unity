@@ -3739,7 +3739,7 @@ GameObject:
   - component: {fileID: 362309601}
   - component: {fileID: 362309600}
   m_Layer: 5
-  m_Name: Panel (3)
+  m_Name: Player 2 Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3759,7 +3759,7 @@ RectTransform:
   - {fileID: 1317993883}
   - {fileID: 1506942674}
   m_Father: {fileID: 433144357}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -3825,8 +3825,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1725727273}
-  - {fileID: 1925892111}
   - {fileID: 362309599}
+  - {fileID: 1925892111}
   m_Father: {fileID: 754489413}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4853,7 +4853,7 @@ GameObject:
   - component: {fileID: 1725727275}
   - component: {fileID: 1725727274}
   m_Layer: 5
-  m_Name: Panel (1)
+  m_Name: Player 1 Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5033,7 +5033,7 @@ GameObject:
   - component: {fileID: 1925892113}
   - component: {fileID: 1925892112}
   m_Layer: 5
-  m_Name: Panel (2)
+  m_Name: Total Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5046,18 +5046,18 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1925892110}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.44999695, y: -69.225006, z: 0}
+  m_LocalPosition: {x: -0.44999695, y: -69.7, z: 0}
   m_LocalScale: {x: 0.99998367, y: 0.99998367, z: 0.99998367}
   m_Children:
   - {fileID: 357730543}
   - {fileID: 567285218}
   m_Father: {fileID: 433144357}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -0.44999695, y: 48.3}
-  m_SizeDelta: {x: 379.8, y: 82.88}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.44999695, y: -69.7}
+  m_SizeDelta: {x: 379.8, y: 82.880005}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1925892112
 MonoBehaviour:

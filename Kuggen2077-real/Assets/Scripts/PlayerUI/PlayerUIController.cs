@@ -40,7 +40,7 @@ public class PlayerUIController : MonoBehaviour, IObserver<Player> {
 	
 	public void OnUpdate(Player player) {
 		healthSlider.value = (float) player.CurrentHitPoints / (float)player.HitPoints;
-		scoreText.text = Utils.LeftPad (player.Score.ToString (), 2, "0");
+		scoreText.text = Utils.LeftPad (player.GetScore().ToString (), 2, "0");
 		weaponText.text = player.AttackActions [Player.ATTACK_PRIMARY].displayName;
 	}
 }
