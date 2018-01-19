@@ -21,6 +21,15 @@ public abstract class PickupCollider : AbstractCollider {
         }
     }
 
+    public void DestroyDelayed(float delay) {
+        StartCoroutine(DestroyCourantine(delay));
+    }
+
+    private IEnumerator DestroyCourantine(float delay) {
+        yield return new WaitForSeconds(delay);
+        Destroy(gameObject);
+    }
+
     protected abstract void Pickup(Player player);
 
 }
