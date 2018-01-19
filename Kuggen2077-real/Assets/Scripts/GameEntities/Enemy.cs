@@ -66,7 +66,8 @@ public abstract class Enemy : GameEntity, IMovable, IAttackable, IAttacker {
         InitEffects();
     }
 
-    void Start() {
+    new void Start() {
+        base.Start();
         InitComponents();
     }
 

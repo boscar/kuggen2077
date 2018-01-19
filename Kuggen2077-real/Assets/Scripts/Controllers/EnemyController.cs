@@ -44,8 +44,8 @@ public class EnemyController : MonoBehaviour {
 		}
 
 		movementVector = transform.forward;
-		direction = player.transform.position;
-	}
+        direction = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+    }
 
 
 	protected void FixedUpdate() {

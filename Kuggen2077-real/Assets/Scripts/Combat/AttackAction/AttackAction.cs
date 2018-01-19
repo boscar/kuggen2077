@@ -19,6 +19,6 @@ public abstract class AttackAction {
 
     public abstract void InitAttack();
 
-    public abstract void Hit(IAttackable attackable, Vector3 position);
+    public abstract void Hit(IAttackable attackable, Transform transform);
 
 }

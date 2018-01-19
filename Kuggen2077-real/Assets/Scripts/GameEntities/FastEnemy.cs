@@ -10,6 +10,7 @@ public class FastEnemy : Enemy {
 
     protected new void Awake() {
         base.Awake();
+        SpawnYValue = 1.1f;
         AttackActions.Add(ATTACK_PRIMARY, new EnemyDefaultAttack(this));
     }
 

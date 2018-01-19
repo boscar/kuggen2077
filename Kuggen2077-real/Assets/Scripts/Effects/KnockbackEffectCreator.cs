@@ -12,14 +12,8 @@ public class KnockbackEffectCreator : RecieveAttackEffectCreator {
 
     public override bool Activate(Attack attack) {
         float duration = 0.08f;
-        Attackable.ActivateEffect(new KnockbackEffect(movable, GetMovementVector(attack), duration), GameEntity.EffectFrequency.FIXED_UPDATE);
+        Attackable.ActivateEffect(new KnockbackEffect(movable, attack.KnockbackFunc(attack, Attackable), duration), GameEntity.EffectFrequency.FIXED_UPDATE);
         return true;
-    }
-
-    private Vector3 GetMovementVector(Attack attack) {
-        Vector3 attackPos = new Vector3(attack.Position.x, 0, attack.Position.z);
-        Vector3 targetPos = new Vector3(Attackable.Transform.position.x, 0, Attackable.Transform.position.z);
-        return (targetPos - attackPos).normalized * attack.Force;
     }
 
     public class KnockbackEffect : IEffect {

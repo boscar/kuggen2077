@@ -10,7 +10,7 @@ public class EnemyRangeController : MonoBehaviour {
     public Player player;
 
     private Vector3 movementVector;
-    private Vector3 direction = Vector3.zero;
+    private Vector3 playerPos = Vector3.zero;
 
     protected void Start()
     {
@@ -46,7 +46,7 @@ public class EnemyRangeController : MonoBehaviour {
 		}
 
         movementVector = transform.forward;
-        direction = player.transform.position;
+        playerPos = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
     }
 
     protected void FixedUpdate()
@@ -57,7 +57,8 @@ public class EnemyRangeController : MonoBehaviour {
 
     private void HandleMovement(float deltaTime)
     {
-        transform.LookAt(direction);
+        Vector3 direction = playerPos - transform.position;
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction), deltaTime * 10.0f);
 
         if (enemy.MovementHandler == null)
         {

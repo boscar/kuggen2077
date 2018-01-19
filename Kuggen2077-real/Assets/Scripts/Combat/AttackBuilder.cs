@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class AttackBuilder {
 
@@ -8,6 +9,7 @@ public class AttackBuilder {
     private int damage = 0;
     private float force = 0;
     private Vector3 position;
+    private Func<Attack, IAttackable, Vector3> knockbackFunc = Attack.DEFAULT_KNOCKBACK_FUNC;
 
     public AttackBuilder Attacker(IAttacker attacker) {
         this.attacker = attacker;
@@ -29,8 +31,13 @@ public class AttackBuilder {
         return this;
     }
 
+    public AttackBuilder KnockbackFunc(Func<Attack, IAttackable, Vector3> knockbackFunc) {
+        this.knockbackFunc = knockbackFunc;
+        return this;
+    }
+
     public Attack Build () {
-        return new Attack(attacker, damage, force, position);
+        return new Attack(attacker, damage, force, position, knockbackFunc);
     }
 
 }
