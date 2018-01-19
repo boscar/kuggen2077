@@ -67,7 +67,6 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable, IObservable<
 	private List<IObserver<Player>> observers = new List<IObserver<Player>> ();
 
     void Awake () {
-		HighScoreManager.AddPlayer (PLAYER_ID);
         DashAbility = new DashAbility();
         AttackActions.Add(ATTACK_PRIMARY, new PlayerDefaultAttack(this));
         InitStats();
@@ -88,6 +87,7 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable, IObservable<
     }
 
     private void InitStats() {
+		HighScoreManager.AddPlayer (PLAYER_ID);
         HitPoints = 100;
         CurrentHitPoints = 100;
         MovementSpeed = new FloatStat(DEFAULT_PLAYER_MOVEMENT_SPEED);

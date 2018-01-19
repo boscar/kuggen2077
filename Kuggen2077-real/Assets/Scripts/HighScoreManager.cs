@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class HighScoreManager {
 
-	private static int numberOfPlayers = 0;
+	// Keep everything static in order to preserver HighScore state on Load (scene changes)
+	public static int NumberOfPlayers { get; private set; }
 	private static Dictionary<int, int> scores = new Dictionary<int, int> ();
 
 	public static int GetPlayerScore(int playerId){
@@ -32,16 +33,31 @@ public class HighScoreManager {
 		return total;
 	}
 
+	public static int GetChampion(){
+		int max = -1;
+		int id = -1;
+		foreach (KeyValuePair<int, int> entry in scores) {
+			if (max < 0 || entry.Value > max) {
+				max = entry.Value;
+				id = entry.Key;
+			}
+		}
+
+		return id;
+	}
+
 	public static void AddPlayer(int playerId){
-		numberOfPlayers += 1;
 		if (scores.ContainsKey (playerId)) {
 			throw new KuggenException ("Player with ID " + playerId + " already added to HighScoreManager");
 		}
+
+		NumberOfPlayers += 1;
 		scores [playerId] = 0;
 	}
+		
 
 	public void reset(){
-		numberOfPlayers = 0;
+		NumberOfPlayers = 0;
 		scores.Clear ();
 	}
 }
