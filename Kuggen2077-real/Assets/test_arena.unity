@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4397555, g: 0.48817986, b: 0.56839603, a: 1}
+  m_IndirectSpecularColor: {r: 0.43975532, g: 0.48817974, b: 0.5683958, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1060,7 +1060,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1234350241
 Transform:
   m_ObjectHideFlags: 0
@@ -1528,6 +1528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdb22a849f76167418994cecf9bcccc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerupSpawnPoints: []
   NorthSpawnPoint: {fileID: 1299316490}
   EastSpawnPoint: {fileID: 1279645763}
   SouthSpawnPoint: {fileID: 569005506}
