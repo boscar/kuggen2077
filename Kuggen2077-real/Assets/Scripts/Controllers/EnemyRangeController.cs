@@ -46,7 +46,7 @@ public class EnemyRangeController : MonoBehaviour {
 		}
 
         movementVector = transform.forward;
-        playerPos = player.transform.position;
+        playerPos = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
     }
 
     protected void FixedUpdate()

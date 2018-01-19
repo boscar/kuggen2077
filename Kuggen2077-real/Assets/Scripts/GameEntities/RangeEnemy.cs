@@ -13,6 +13,7 @@ public class RangeEnemy : Enemy {
     {
         base.Awake();
         AttackActions.Add(ATTACK_RANGE, new EnemyRangeAttackAction(this));
+        SpawnYValue = 0.5f;
     }
 
 	protected override void InitEffects() {

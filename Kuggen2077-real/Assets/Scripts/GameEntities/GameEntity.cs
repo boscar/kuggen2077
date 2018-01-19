@@ -9,6 +9,16 @@ public abstract class GameEntity : MonoBehaviour {
     private List<IEffect> effects = new List<IEffect>();
     private List<IEffect> effectsToRemove = new List<IEffect>();
 
+    private float spawnYValue = 0.0f;
+    public float SpawnYValue {
+        get { return spawnYValue;  }
+        protected set { spawnYValue = value; }
+    }
+
+    public void Start() {
+        transform.position = new Vector3(transform.position.x, spawnYValue, transform.position.z);
+    }
+
     public void ActivateEffect(IEffect effect) {
         ActivateEffect(effect, EffectFrequency.FIXED_UPDATE);
     }
