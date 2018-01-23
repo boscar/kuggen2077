@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerSelectController : MonoBehaviour {
 
+	public AudioClip backClip;
+	public AudioClip startGameClip;
+
 	private Dictionary<int, ControlKeyBindings> keybindings = new Dictionary<int, ControlKeyBindings> () {
 		{ 1, new GamepadOneControlKeyBindings () },
 		{ 2, new GamepadTwoControlKeyBindings () },
@@ -30,10 +33,12 @@ public class PlayerSelectController : MonoBehaviour {
 	void Update () {
 		if (canProceedToGame) {
 			if (ClickedStart ()) {
+				SoundManager.Instance.PlaySingle (startGameClip);
 				SceneManager.LoadScene ("level-0");
 			}
 		} else {
 			if (ClickedBack ()) {
+				SoundManager.Instance.PlaySingle (backClip);
 				SceneManager.LoadScene ("main-menu");
 			}
 		}
