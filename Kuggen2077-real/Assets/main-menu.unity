@@ -4040,6 +4040,7 @@ GameObject:
   - component: {fileID: 1585357254}
   - component: {fileID: 1585357253}
   - component: {fileID: 1585357256}
+  - component: {fileID: 1585357257}
   m_Layer: 0
   m_Name: GlobalSoundManager
   m_TagString: Untagged
@@ -4232,6 +4233,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   efxSource: {fileID: 1585357254}
+--- !u!114 &1585357257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1585357252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b67bf41c93de645088aa1b3825c0c408, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuMusic: {fileID: 8300000, guid: 4312b29ab2ba7437993be78279c00630, type: 3}
+  levelMusic:
+  - {fileID: 8300000, guid: b17559d39ca8e42a28feffe45fca0d4d, type: 3}
   musicSource: {fileID: 1585357253}
 --- !u!1 &1604554023
 GameObject:

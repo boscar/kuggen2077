@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GlobalSoundManager : MonoBehaviour {
-
 	public AudioSource efxSource;
-	public AudioSource musicSource;
 	public static GlobalSoundManager Instance;
 
 	// singleton pattern
