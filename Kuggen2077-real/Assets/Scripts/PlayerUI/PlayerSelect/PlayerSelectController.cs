@@ -7,22 +7,16 @@ using UnityEngine.SceneManagement;
 
 public class PlayerSelectController : MonoBehaviour {
 
-	private Component[] views;
 	private Dictionary<int, ControlKeyBindings> keybindings = new Dictionary<int, ControlKeyBindings> () {
 		{ 1, new GamepadOneControlKeyBindings () },
 		{ 2, new GamepadTwoControlKeyBindings () },
 	};
 
 	public RawImage startGamePrompt;
-	public ApplicationManager applicationManager;
+	public PlayerSelectView[] views;
 
 	private bool canProceedToGame;
 
-	// Use this for initialization
-	void Start () {
-		views = GetComponentsInChildren<PlayerSelectView> ();
-
-	}
 
 	private bool ClickedStart(){
 		return Input.GetButtonUp (keybindings [1].Start) || Input.GetButtonUp (keybindings [2].Start);
