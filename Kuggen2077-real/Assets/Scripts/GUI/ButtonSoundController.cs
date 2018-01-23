@@ -10,10 +10,10 @@ public class ButtonSoundController : MonoBehaviour, ISelectHandler, ISubmitHandl
 	public AudioClip submit;
 
 	public void OnSelect(BaseEventData data) {
-		SoundManager.Instance.PlaySingle (select);
+		GlobalSoundManager.Instance.PlaySingle (select);
 	}
 
 	public void OnSubmit(BaseEventData data) {
-		SoundManager.Instance.PlaySingle (submit);
+		GlobalSoundManager.Instance.PlaySingle (submit);
 	}
 }

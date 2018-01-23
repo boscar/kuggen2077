@@ -4041,7 +4041,7 @@ GameObject:
   - component: {fileID: 1585357253}
   - component: {fileID: 1585357256}
   m_Layer: 0
-  m_Name: SoundManager
+  m_Name: GlobalSoundManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4228,13 +4228,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1585357252}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ae40e6bfdbee42af9e8456971430865, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a8d7292b8d46488db48891fd542e8a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   efxSource: {fileID: 1585357254}
   musicSource: {fileID: 1585357253}
-  lowPitchRange: 0.95
-  highPitchRange: 1.05
 --- !u!1 &1604554023
 GameObject:
   m_ObjectHideFlags: 0
