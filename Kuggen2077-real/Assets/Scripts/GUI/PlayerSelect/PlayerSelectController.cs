@@ -34,7 +34,7 @@ public class PlayerSelectController : MonoBehaviour {
 		if (canProceedToGame) {
 			if (ClickedStart ()) {
 				GlobalSoundManager.Instance.PlaySingle (startGameClip);
-				MusicManager.Instance.PlayLevel (0);
+				MusicManager.Instance.PlayLevel (0, false);
 				SceneManager.LoadScene ("level-0");
 			}
 		} else {
