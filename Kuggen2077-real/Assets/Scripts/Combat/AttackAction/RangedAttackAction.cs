@@ -37,7 +37,7 @@ public abstract class RangedAttackAction<T> : AttackAction where T : GameEntity,
             .Force(Force)
             .Position(transform.position)
             .KnockbackFunc((at, att) => {
-                return transform.rotation;
+                return transform.forward.normalized * Force;
             })
             .Build();
         attackable.RecieveAttackHandler.RecieveAttack(attack);

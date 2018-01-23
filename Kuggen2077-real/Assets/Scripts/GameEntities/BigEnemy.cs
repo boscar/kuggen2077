@@ -13,6 +13,7 @@ public class BigEnemy : Enemy
     {
         base.Awake();
         AttackActions.Add(ATTACK_PRIMARY, new EnemyDefaultAttack(this));
+        SpawnYValue = 1;
     }
 
     protected override void InitEffects()

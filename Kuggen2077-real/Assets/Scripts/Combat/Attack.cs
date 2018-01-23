@@ -16,8 +16,6 @@ public class Attack {
         }
     }
 
-    public 
-
     public IAttacker Attacker { get; private set; }
     public int Damage { get; private set; }
     public float Force { get; private set; }
