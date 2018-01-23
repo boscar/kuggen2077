@@ -23,9 +23,9 @@ public class LevelRandomized : Level {
     private List<Section> LoadSections () {
         List<Section> sections = new List<Section>();
         sections.Add( new RandomSectionBuilder(0)
-            .SpawnAmount(10f)
+            .SpawnAmount(2f)
             .SpawnPoints(enemySpawnPoints)
-            .EnemyObjects(new Enemy[2] { EnemyObject, EnemyRangedObject })
+            .EnemyObjects(new Enemy[1] { EnemyRangedObject })
             .Create()
         );
         sections.Add( new RandomSectionBuilder(1)

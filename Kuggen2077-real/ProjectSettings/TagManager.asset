@@ -7,6 +7,7 @@ TagManager:
   - Score
   - Weapon
   - Health
+  - body
   layers:
   - Default
   - TransparentFX
