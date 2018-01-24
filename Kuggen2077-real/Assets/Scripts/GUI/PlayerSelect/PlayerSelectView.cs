@@ -143,15 +143,15 @@ public class PlayerSelectView : MonoBehaviour {
         return filteredJoystickNames.Length >= numberOfControllers && numberOfControllers > 0;
 	}
 
-	void FixedUpdate() {
+	void Update() {
 		PlayerSelectState.ViewState previouState = sm.CurrentState;
 		bool isConnected = ControllerIsConnected ();
 		if (isConnected) {
 
-			if (Input.GetButtonUp (KeyBindings.Confirm)) {
+			if (Input.GetButtonDown (KeyBindings.Confirm)) {
 				sm.MoveNext (PlayerSelectState.Command.Ready);
 			
-			} else if (Input.GetButtonUp (KeyBindings.Discard)) {
+			} else if (Input.GetButtonDown (KeyBindings.Discard)) {
 				sm.MoveNext (PlayerSelectState.Command.Unready);
 			
 			} else if (sm.CurrentState == PlayerSelectState.ViewState.Disconnected) {

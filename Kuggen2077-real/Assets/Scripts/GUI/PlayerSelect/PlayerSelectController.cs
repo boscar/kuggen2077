@@ -22,15 +22,15 @@ public class PlayerSelectController : MonoBehaviour {
 
 
 	private bool ClickedStart(){
-		return Input.GetButtonUp (keybindings [1].Start) || Input.GetButtonUp (keybindings [2].Start);
+		return Input.GetButtonDown (keybindings [1].Start) || Input.GetButtonUp (keybindings [2].Start);
 	}
 
 	private bool ClickedBack(){
-		return Input.GetButtonUp (keybindings[1].Discard) || Input.GetButtonUp (keybindings[2].Discard);
+		return Input.GetButtonDown (keybindings[1].Discard) || Input.GetButtonUp (keybindings[2].Discard);
 	}
 
 	// Update is called once per frame
-	void FixedUpdate () {
+	void Update () {
 		if (canProceedToGame) {
 			if (ClickedStart ()) {
 				GlobalSoundManager.Instance.PlaySingle (startGameClip);
