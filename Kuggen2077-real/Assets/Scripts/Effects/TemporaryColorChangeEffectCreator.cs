@@ -16,6 +16,15 @@ public class TemporaryColorChangeEffectCreator : RecieveAttackEffectCreator {
         if (Renderer == null) {
             throw new KuggenException(this + " requires a renderer.");
         }
+        InitColor(color);
+    }
+
+    public TemporaryColorChangeEffectCreator(IAttackable attackable, Renderer renderer, Color color) : base(attackable) {
+        Renderer = renderer;
+        InitColor(color);
+    }
+
+    private void InitColor (Color color) {
         OriginalColor = Renderer.material.GetColor("_Color");
         Color = color;
     }

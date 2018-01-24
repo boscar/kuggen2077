@@ -74,7 +74,8 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable, IObservable<
         InitEffects();
     }
 
-    void Start() {
+    new void Start() {
+        base.Start();
         InitComponents();
 		CallObservers ();
     }
