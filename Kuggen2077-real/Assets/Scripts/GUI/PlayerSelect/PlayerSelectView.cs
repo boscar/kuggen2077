@@ -143,7 +143,7 @@ public class PlayerSelectView : MonoBehaviour {
         return filteredJoystickNames.Length >= numberOfControllers && numberOfControllers > 0;
 	}
 
-	void Update() {
+	void FixedUpdate() {
 		PlayerSelectState.ViewState previouState = sm.CurrentState;
 		bool isConnected = ControllerIsConnected ();
 		if (isConnected) {

@@ -4194,8 +4194,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51b4ad681c4f44d7cb5db12074b7848c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backClip: {fileID: 8300000, guid: d5c6d8bd5c52b46d9b1166044ca6cbbf, type: 3}
-  startGameClip: {fileID: 8300000, guid: c47ea159c4c91481a9fee59a37d81b6d, type: 3}
+  backClip: {fileID: 8300000, guid: 3b24fc3ebdc644f61956d2db90a8390b, type: 3}
+  startGameClip: {fileID: 8300000, guid: 2d0ae40e5b1a1403887761b4d3b7a5be, type: 3}
   startGamePrompt: {fileID: 1185639076}
   views:
   - {fileID: 509074705}
@@ -4371,7 +4371,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1649958904}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -268.28027, y: -182.03027, z: 0}
+  m_LocalPosition: {x: -268.24622, y: -182.01111, z: 0}
   m_LocalScale: {x: 1.0000162, y: 1.0000162, z: 1.0000162}
   m_Children: []
   m_Father: {fileID: 1951308947}
@@ -4718,7 +4718,7 @@ RectTransform:
   m_GameObject: {fileID: 1951308943}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 101}
-  m_LocalScale: {x: 0.2566001, y: 0.2566001, z: 0.2566001}
+  m_LocalScale: {x: 0.25662196, y: 0.25662196, z: 0.25662196}
   m_Children:
   - {fileID: 320574881}
   - {fileID: 1649958905}

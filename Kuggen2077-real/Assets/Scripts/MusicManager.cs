@@ -36,7 +36,7 @@ public class MusicManager : MonoBehaviour {
 			
 		AudioClip clip = levelMusic [levelId];
 		if (fade) {
-			Instance.StartCoroutine (Fade (clip, 0.15f));
+			Instance.StartCoroutine (Fade (clip, 0.75f));
 		} else {
 			musicSource.clip = clip;
 			musicSource.Play ();

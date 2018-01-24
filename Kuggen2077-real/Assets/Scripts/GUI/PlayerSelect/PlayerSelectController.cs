@@ -30,11 +30,11 @@ public class PlayerSelectController : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		if (canProceedToGame) {
 			if (ClickedStart ()) {
 				GlobalSoundManager.Instance.PlaySingle (startGameClip);
-				MusicManager.Instance.PlayLevel (0, false);
+				MusicManager.Instance.PlayLevel (0, true);
 				SceneManager.LoadScene ("level-0");
 			}
 		} else {

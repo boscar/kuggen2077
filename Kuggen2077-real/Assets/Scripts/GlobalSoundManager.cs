@@ -18,12 +18,14 @@ public class GlobalSoundManager : MonoBehaviour {
 	}
 
 	public void PlaySingle(AudioClip clip){
-		efxSource.PlayOneShot (clip);
+		efxSource.clip = clip;
+		efxSource.Play();
 	}
 
 	public void RandomizeSingle(params AudioClip[] clips){
 		int randomIndex = Random.Range (0, clips.Length);
-		efxSource.PlayOneShot (clips [randomIndex]);
+		efxSource.clip = clips [randomIndex];
+		efxSource.Play();
 
 	}
 }
