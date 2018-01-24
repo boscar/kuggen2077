@@ -24,11 +24,15 @@ public class RecieveAttackHandler {
             creators.Activate(attack);
         }
         Attackable.CurrentHitPoints -= attack.Damage;
+
         if (Attackable.CurrentHitPoints <= 0) {
-			foreach(RecieveAttackEffectCreator death in DeathCreators) {
-				death.Activate(attack);
-			}
 			Die();
+
+			if (Attackable.CurrentHitPoints == 0) {
+				foreach (RecieveAttackEffectCreator death in DeathCreators) {
+					death.Activate (attack);
+				}
+			}
         }
     }
 
