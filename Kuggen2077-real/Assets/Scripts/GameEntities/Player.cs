@@ -106,7 +106,6 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable, IObservable<
 
     private void InitEffects() {
         RecieveAttackHandler.RecieveAttackCreators.Add(new TemporaryColorChangeEffectCreator(this, Color.white));
-
         AttackHandler.AttackCreators.Add(new ReduceMovementSpeedEffectCreator(this, 0.35f, 0.5f));
     }
 
@@ -117,7 +116,6 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable, IObservable<
         }
 
 		AudioSource = GetComponent<AudioSource>();
-		Debug.Log (AudioSource);
 		if (AudioSource == null) {
 			throw new KuggenException("AudioSource can not be null for " + this);
 		}
