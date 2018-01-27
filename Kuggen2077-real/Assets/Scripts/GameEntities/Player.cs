@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : GameEntity, IMovable, IAttacker, IAttackable, IObservable<Player> {
+public class Player : GameEntity, IMovable, IAttacker, IAttackable, IObservable<Player>, IAudible {
 
 	public int PLAYER_ID = 0;
 
@@ -26,8 +26,10 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable, IObservable<
     public MovementHandler MovementHandler { get; set; }
     public RecieveAttackHandler RecieveAttackHandler { get; protected set; }
     public AttackHandler AttackHandler { get; protected set; }
+	public AudioHandler AudioHandler { get; protected set; }
 
     public Rigidbody Rigidbody { get; set; }
+	public AudioSource AudioSource { get; set; }
 
     public Transform Transform {
         get { return transform; }
@@ -98,18 +100,27 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable, IObservable<
         MovementHandler = new MovementHandler(this);
         RecieveAttackHandler = new RecieveAttackHandler(this);
         AttackHandler = new AttackHandler(this);
+		AudioHandler = new AudioHandler (this);
+
     }
 
     private void InitEffects() {
         RecieveAttackHandler.RecieveAttackCreators.Add(new TemporaryColorChangeEffectCreator(this, Color.white));
+
         AttackHandler.AttackCreators.Add(new ReduceMovementSpeedEffectCreator(this, 0.35f, 0.5f));
     }
 
     private void InitComponents() {
-        Rigidbody = GetComponent<Rigidbody>();
+		Rigidbody = GetComponent<Rigidbody>();
         if (Rigidbody == null) {
             throw new KuggenException("Rigidbody can not be null for " + this);
         }
+
+		AudioSource = GetComponent<AudioSource>();
+		Debug.Log (AudioSource);
+		if (AudioSource == null) {
+			throw new KuggenException("AudioSource can not be null for " + this);
+		}
     }
 
 	public void setAttackAction(string key, AttackAction attack){
