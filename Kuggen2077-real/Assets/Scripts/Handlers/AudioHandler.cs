@@ -10,21 +10,17 @@ public class AudioHandler {
 		Audible = audible;
 	}
 
-	public void PlaySingle(AudioClip clip){
-		ResetPitch ();
-		Audible.AudioSource.PlayOneShot (clip);
-	}
-
-	public void PlayRandomized(params AudioClip[] clips){
+	public void PlaySingle(params AudioClip[] clips){
 		ResetPitch ();
 		int randomIndex = Random.Range (0, clips.Length);
 		Audible.AudioSource.PlayOneShot (clips [randomIndex]);
 	}
 
-	public void PlayPitched(AudioClip clip, float lowerBound, float upperBound){
-		float pitch = UnityEngine.Random.Range (lowerBound, upperBound);
+	public void PlayPitched(float lowerBound, float upperBound, params AudioClip[] clips){
+		float pitch = Random.Range (lowerBound, upperBound);
+		int randomIndex = Random.Range (0, clips.Length);
 		Audible.AudioSource.pitch = pitch;
-		Audible.AudioSource.PlayOneShot (clip);
+		Audible.AudioSource.PlayOneShot (clips[randomIndex]);
 	}
 
 	private void ResetPitch(){

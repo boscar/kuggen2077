@@ -13,8 +13,7 @@ public class PitchedSoundEffectCreator : SoundEffectCreator {
 	}
 
 	public override bool Activate (){
-		int randomIndex = Random.Range (0, Clips.Length);
-		Audible.AudioHandler.PlayPitched (Clips [randomIndex], Low, High);
+		Audible.AudioHandler.PlayPitched (Low, High, Clips);
 		return true;
 	}
 }

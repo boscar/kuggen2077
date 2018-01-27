@@ -13,7 +13,7 @@ public class SoundEffectCreator : EffectCreator {
 	}
 
 	public override bool Activate (){
-		Audible.AudioHandler.PlayRandomized (Clips);
+		Audible.AudioHandler.PlaySingle (Clips);
 		return true;
 	}
 }
