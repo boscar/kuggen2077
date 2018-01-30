@@ -6,10 +6,10 @@ using UnityEngine;
 public class EnemyRangeAttackAction : RangedAttackAction<RangeEnemy>
 {
 
-    public EnemyRangeAttackAction(RangeEnemy enemy) : base(enemy) {
-        Damage = 10;
+    public EnemyRangeAttackAction(RangeEnemy enemy, int damage, float projectileSpeed) : base(enemy) {
+        Damage = damage;
         Cooldown = 5f;
-        ProjectileSpeed = 10;
+        ProjectileSpeed = projectileSpeed;
         Spread = 3;
         bulletObject = Resources.Load<Bullet>("simple_bullet");
         InitCooldown(1.5f);

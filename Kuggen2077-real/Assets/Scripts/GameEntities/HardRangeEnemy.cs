@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HardFastEnemy : FastEnemy {
+public class HardRangeEnemy : RangeEnemy {
 
-    public new const string PREFAB = "enemies/enemy-basic-hard";
+    public new const string PREFAB = "enemies/enemy-ranged-hard";
 
     protected new void Awake() {
         base.Awake();
-        AttackActions[ATTACK_PRIMARY] = new EnemyDefaultAttack(this, 15);
+        AttackActions[ATTACK_RANGE] = new EnemyRangeAttackAction(this, 15, 12);
     }
 
     protected override void InitStats() {
         Strength = 2;
         HitPoints = 75;
         CurrentHitPoints = 75;
-        MovementSpeed = new FloatStat(3.75f);
-        MovementFloatiness = 3.75f;
+        MovementSpeed = new FloatStat(2.5f);
+        MovementFloatiness = 2.5f;
     }
 
 }
