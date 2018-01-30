@@ -61,7 +61,7 @@ public abstract class Enemy : GameEntity, IMovable, IAttackable, IAttacker {
     }
 
     private int strength = 1;
-    public int Strenth {
+    public int Strength {
         get { return strength; }
         protected set { strength = value; }
     }

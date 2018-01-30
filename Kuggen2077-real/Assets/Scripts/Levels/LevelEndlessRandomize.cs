@@ -12,6 +12,7 @@ public class LevelEndlessRandomize : Level {
     private int index = 0;
 
     private Enemy EnemyObject { get; set; }
+    private Enemy EnemyFastHardObject { get; set; }
     private Enemy EnemyRangedObject { get; set; }
 
     protected new void Start() {
@@ -22,6 +23,7 @@ public class LevelEndlessRandomize : Level {
 
     private void LoadPrefabs() {
         EnemyObject = Resources.Load<Enemy>(Enemy.PREFAB);
+        EnemyFastHardObject = Resources.Load<Enemy>(HardFastEnemy.PREFAB);
         EnemyRangedObject = Resources.Load<Enemy>(RangeEnemy.PREFAB);
     }
 
@@ -56,7 +58,7 @@ public class LevelEndlessRandomize : Level {
                 case 0:
                     return new Enemy[1] { EnemyObject };
                 case 1:
-                    return new Enemy[4] { EnemyObject, EnemyObject, EnemyObject, EnemyRangedObject };
+                    return new Enemy[1] { EnemyFastHardObject };
                 case 2:
                     return new Enemy[3] { EnemyObject, EnemyObject, EnemyRangedObject };
                 case 3:

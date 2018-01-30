@@ -48,7 +48,7 @@ public class RandomSection : Section {
 
         while(strengthOfEnemies >= 1) {
             Enemy enemy = Utils.GetRandom<Enemy>(timestampEnemyObjects);
-            strengthOfEnemies -= enemy.Strenth;
+            strengthOfEnemies -= enemy.Strength;
             if (lastTimestamp && strengthOfEnemies <= 0) {
                 events.Add(
                     new SpawnEnemyEvent(enemy, Utils.GetRandom<Vector3>(timestampSpawnPositions), timestamp,
