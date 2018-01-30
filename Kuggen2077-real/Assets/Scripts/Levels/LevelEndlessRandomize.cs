@@ -49,8 +49,8 @@ public class LevelEndlessRandomize : Level {
     }
 
     public Section CreateSection(int index) {
-        Enemy[] enemyObjects = GetEnemyObjects(index);
         float strength = (strengthIncrease * index) + startStrength;
+        Enemy[] enemyObjects = GetEnemyObjects(strength);
         return new RandomSectionBuilder(0)
             .Strength((strengthIncrease * index) + startStrength)
             .PowerupSpawnChance(0.02f + (strength * 0.003f))
@@ -59,35 +59,33 @@ public class LevelEndlessRandomize : Level {
             .Create();
     }
 
-    private Enemy[] GetEnemyObjects(int index) {
-        if (index < 10) {
-            switch (index) {
-                case 0:
-                    return new Enemy[2] { EnemyObject, EnemyRangedObject };
-                case 1:
-                    return new Enemy[2] { EnemyFastHardObject, EnemyRangedHardObject };
-                case 2:
-                    return new Enemy[2] { EnemyFastInsaneObject, EnemyRangedInsaneObject };
-                case 3:
-                    return new Enemy[3] { EnemyObject, EnemyObject, EnemyRangedObject };
-                case 4:
-                    return new Enemy[3] { EnemyObject, EnemyObject, EnemyRangedObject };
-                case 5:
-                    return new Enemy[3] { EnemyObject, EnemyObject, EnemyRangedObject };
-                case 6:
-                    return new Enemy[3] { EnemyObject, EnemyObject, EnemyRangedObject };
-                case 7:
-                    return new Enemy[3] { EnemyObject, EnemyObject, EnemyRangedObject };
-                case 8:
-                    return new Enemy[3] { EnemyObject, EnemyObject, EnemyRangedObject };
-                case 9:
-                    return new Enemy[3] { EnemyObject, EnemyObject, EnemyRangedObject };
-                default:
-                    return new Enemy[3] { EnemyObject, EnemyObject, EnemyRangedObject };
-            }
-        } else {
+    private Enemy[] GetEnemyObjects(float strength) {
+        if(strength >= 24) {
+            return new Enemy[2] { EnemyRangedInsaneObject, EnemyFastInsaneObject };
+        } else if (strength >= 22) {
+            return new Enemy[6] { EnemyRangedHardObject, EnemyFastHardObject, EnemyRangedInsaneObject, EnemyFastInsaneObject, EnemyRangedInsaneObject, EnemyFastInsaneObject };
+        } else if (strength >= 20) {
+            return new Enemy[4] { EnemyRangedHardObject, EnemyFastHardObject, EnemyRangedInsaneObject, EnemyFastInsaneObject };
+        } else if (strength >= 18) {
+            return new Enemy[5] { EnemyFastHardObject, EnemyRangedHardObject, EnemyFastHardObject, EnemyFastInsaneObject, EnemyRangedInsaneObject };
+        } else if (strength >= 16) {
+            return new Enemy[5] { EnemyFastHardObject, EnemyRangedHardObject, EnemyFastHardObject, EnemyRangedHardObject, EnemyFastInsaneObject };
+        } else if (strength >= 14) {
+            return new Enemy[2] { EnemyFastHardObject, EnemyRangedHardObject };
+        } else if (strength >= 12) {
+            return new Enemy[6] { EnemyRangedHardObject, EnemyObject, EnemyRangedObject, EnemyFastHardObject, EnemyFastHardObject, EnemyRangedHardObject };
+        } else if (strength >= 10) {
+            return new Enemy[4] { EnemyRangedHardObject, EnemyObject, EnemyRangedObject, EnemyFastHardObject };
+        } else if (strength >= 8) {
+            return new Enemy[5] { EnemyObject, EnemyRangedHardObject, EnemyObject, EnemyRangedObject, EnemyFastHardObject };
+        } else if (strength >= 6) {
+            return new Enemy[5] { EnemyObject, EnemyRangedObject, EnemyObject, EnemyRangedObject, EnemyFastHardObject };
+        } else if (strength >= 4) {
+            return new Enemy[2] { EnemyObject, EnemyRangedObject };
+        } else if (strength >= 2) {
             return new Enemy[3] { EnemyObject, EnemyObject, EnemyRangedObject };
+        } else {
+            return new Enemy[1] { EnemyObject };
         }
     }
-
 }
