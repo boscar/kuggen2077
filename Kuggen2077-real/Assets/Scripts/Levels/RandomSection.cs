@@ -9,10 +9,10 @@ public class RandomSection : Section {
     public const float LONG = 65;
     
     private const float SPAWN_INTERVAL = 0.4f;
-    private const float SEGMENT_DURATION = 15f;
-    private const float SEGMENT_DURATION_VARIATION = 3f;
+    private const float SEGMENT_DURATION = 8f;
+    private const float SEGMENT_DURATION_VARIATION = 2f;
 
-    public RandomSection (int index, float duration, float strength, Transform[] spawnPoints, Enemy[] enemyObjects) : base(index, DEFAULT_POWERUP_SPAWN_CHANCE, DEFAULT_POWERUPS) {
+    public RandomSection (int index, float duration, float strength, float powerupSpawnChance, Transform[] spawnPoints, Enemy[] enemyObjects) : base(index, powerupSpawnChance, DEFAULT_POWERUPS) {
         Events = GenerateEnemyEvents(duration, strength, spawnPoints, enemyObjects);
     }
 
@@ -53,7 +53,7 @@ public class RandomSection : Section {
                 events.Add(
                     new SpawnEnemyEvent(enemy, Utils.GetRandom<Vector3>(timestampSpawnPositions), timestamp,
                         () => {
-                            Level.Instance.StartCoroutine(FinishSectionCourantine(this, 5));
+                            Level.Instance.StartCoroutine(FinishSectionCourantine(this, SEGMENT_DURATION));
                             Debug.Log("Section complete!");
                         }));
             } else {

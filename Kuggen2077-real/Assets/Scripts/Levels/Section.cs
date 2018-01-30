@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Section {
 
-    protected const float DEFAULT_POWERUP_SPAWN_CHANCE = 0.05f;
+    public const float DEFAULT_POWERUP_SPAWN_CHANCE = 0.05f;
 
     protected static PickupCollider[] DEFAULT_POWERUPS {
         get {
