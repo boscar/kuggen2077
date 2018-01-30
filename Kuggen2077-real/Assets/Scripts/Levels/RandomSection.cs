@@ -10,57 +10,59 @@ public class RandomSection : Section {
 
     private const float SPAWN_INTERVAL = 0.4f;
 
-    public RandomSection (int index, float duration, float spawnAmount, Transform[] spawnPoints, Enemy[] enemyObjects) : base(index, DEFAULT_POWERUP_SPAWN_CHANCE, DEFAULT_POWERUPS) {
-        Events = GenerateEnemyEvents(duration, spawnAmount, spawnPoints, enemyObjects);
+    public RandomSection (int index, float duration, float strength, Transform[] spawnPoints, Enemy[] enemyObjects) : base(index, DEFAULT_POWERUP_SPAWN_CHANCE, DEFAULT_POWERUPS) {
+        Events = GenerateEnemyEvents(duration, strength, spawnPoints, enemyObjects);
     }
 
-    private List<Event> GenerateEnemyEvents(float duration, float spawnAmount, Transform[] spawnPoints, Enemy[] enemyObjects) {
+    private List<Event> GenerateEnemyEvents(float duration, float strength, Transform[] spawnPoints, Enemy[] enemyObjects) {
         List<Event> events = new List<Event>();
 
-        float spawnInterval = GetSpawnInterval(spawnAmount);
+        float spawnInterval = GetSpawnInterval(strength);
         float intervalOffset = spawnInterval * 0.15f;
         
         List<float> spawnTimestamps = GetSpawnTimestamps(duration, spawnInterval, intervalOffset);
 
         for (int i = 0; i < spawnTimestamps.Count; ++i) {
-                events.AddRange(GetTimestampEvents(spawnTimestamps[i], spawnAmount, spawnPoints, enemyObjects, i == (spawnTimestamps.Count - 1)));
+                events.AddRange(GetTimestampEvents(spawnTimestamps[i], strength, spawnPoints, enemyObjects, i == (spawnTimestamps.Count - 1)));
         }
 
         return events;
     }
 
-    private List<float> GetSpawnTimestamps(float duration, float spawnInterval, float intervalOffset) {
+    private List<float> GetSpawnTimestamps(float duration, float strength, float intervalOffset) {
         List<float> timestamps = new List<float>();
         float timestamp = 0;
-        while(duration > (spawnInterval + intervalOffset)) {
-            timestamp = timestamp + spawnInterval - intervalOffset + (Random.value * (2 * intervalOffset));
+        while(duration > (strength + intervalOffset)) {
+            timestamp = timestamp + strength - intervalOffset + (Random.value * (2 * intervalOffset));
             duration = duration - timestamp;
             timestamps.Add(timestamp);
         }
         return timestamps;
     }
 
-    private float GetSpawnInterval(float spawnAmount) {
-        return 6f + spawnAmount * 0.4f;
+    private float GetSpawnInterval(float strength) {
+        return 6f + strength * 0.4f;
     }
 
-    private List<Event> GetTimestampEvents(float timestamp, float spawnAmount, Transform[] spawnPoints, Enemy[] enemyObjects, bool lastTimestamp) {
+    private List<Event> GetTimestampEvents(float timestamp, float strength, Transform[] spawnPoints, Enemy[] enemyObjects, bool lastTimestamp) {
         List<Event> events = new List<Event>();
 
-        int amountOfEnemies = GetAmountOfEnemies(spawnAmount);
-        List<Vector3> timestampSpawnPositions = GetTimestampSpawnPositions(spawnPoints, amountOfEnemies);
+        int strengthOfEnemies = GetStrenthOfEnemies(strength);
+        List<Vector3> timestampSpawnPositions = GetTimestampSpawnPositions(spawnPoints, strengthOfEnemies);
         Enemy[] timestampEnemyObjects = GetTimestampEnemyObjects(enemyObjects);
 
-        for(int i = 0; i<amountOfEnemies; ++i) {
-            if(lastTimestamp && i == (amountOfEnemies - 1)) {
+        while(strengthOfEnemies >= 1) {
+            Enemy enemy = Utils.GetRandom<Enemy>(timestampEnemyObjects);
+            strengthOfEnemies -= enemy.Strenth;
+            if (lastTimestamp && strengthOfEnemies <= 0) {
                 events.Add(
-                    new SpawnEnemyEvent(Utils.GetRandom<Enemy>(timestampEnemyObjects), Utils.GetRandom<Vector3>(timestampSpawnPositions), timestamp,
+                    new SpawnEnemyEvent(enemy, Utils.GetRandom<Vector3>(timestampSpawnPositions), timestamp,
                         () => {
                             Level.Instance.StartCoroutine(FinishSectionCourantine(this, 5));
                             Debug.Log("Section complete!");
                         }));
             } else {
-                events.Add(new SpawnEvent(Utils.GetRandom<Enemy>(timestampEnemyObjects), Utils.GetRandom<Vector3>(timestampSpawnPositions), timestamp));
+                events.Add(new SpawnEvent(enemy, Utils.GetRandom<Vector3>(timestampSpawnPositions), timestamp));
             }
             timestamp = timestamp + SPAWN_INTERVAL + (SPAWN_INTERVAL * Random.value);
         }
@@ -68,25 +70,25 @@ public class RandomSection : Section {
         return events;
     }
 
-    private int GetAmountOfEnemies (float spawnAmount) {
-        float baseAmount = spawnAmount * 1.2f;
+    private int GetStrenthOfEnemies (float strength) {
+        float baseAmount = strength * 1.2f;
         float offset = baseAmount * 0.15f;
         return (int)(baseAmount - offset + (Random.value * (2 * offset)));
     }
 
-    private List<Vector3> GetTimestampSpawnPositions(Transform[] spawnPoints, int amountOfEnemies) {
+    private List<Vector3> GetTimestampSpawnPositions(Transform[] spawnPoints, int strength) {
         List<Vector3> spawnPositions = new List<Vector3>();
             spawnPositions.Add(Utils.GetRandom<Transform>(spawnPoints).position);
-        if (amountOfEnemies >= 9) {
+        if (strength >= 9) {
             spawnPositions.Add(Utils.GetRandom<Transform>(spawnPoints).position);
         }
-        if (amountOfEnemies >= 7) {
+        if (strength >= 7) {
             spawnPositions.Add(Utils.GetRandom<Transform>(spawnPoints).position);
         }
-        if (amountOfEnemies >= 5) {
+        if (strength >= 5) {
             spawnPositions.Add(Utils.GetRandom<Transform>(spawnPoints).position);
         }
-        if (amountOfEnemies >= 3) {
+        if (strength >= 3) {
             spawnPositions.Add(Utils.GetRandom<Transform>(spawnPoints).position);
         }
         return spawnPositions;

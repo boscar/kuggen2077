@@ -60,6 +60,12 @@ public abstract class Enemy : GameEntity, IMovable, IAttackable, IAttacker {
         get { return attackActions; }
     }
 
+    private int strength = 1;
+    public int Strenth {
+        get { return strength; }
+        protected set { strength = value; }
+    }
+
     protected void Awake() {
         InitStats();
         InitHandlers();
