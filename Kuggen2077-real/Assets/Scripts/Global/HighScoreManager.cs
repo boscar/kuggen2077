@@ -56,7 +56,7 @@ public class HighScoreManager {
 	}
 		
 
-	public void reset(){
+	public static void Reset(){
 		NumberOfPlayers = 0;
 		scores.Clear ();
 	}

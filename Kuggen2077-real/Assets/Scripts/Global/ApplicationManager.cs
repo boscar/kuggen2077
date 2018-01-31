@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class ApplicationManager : MonoBehaviour {
 	
 	public static ApplicationManager Instance { get; private set; }
-	public ApplicationState State = new ApplicationState (ApplicationState.SceneState.Result);
+	public ApplicationState State = new ApplicationState (ApplicationState.SceneState.Main);
 
 	// singleton pattern
 	void Awake () {
@@ -21,6 +21,11 @@ public class ApplicationManager : MonoBehaviour {
 	}
 
 	void InitSubscribers(){
+		// Main -> Quit
+		State.Subscribe (ApplicationState.SceneState.Main, ApplicationState.Command.Quit, () => {
+			QuitGame();
+		});
+
 		// Main -> Play
 		State.Subscribe (ApplicationState.SceneState.Main, ApplicationState.Command.Play, () => {
 			SceneManager.LoadScene("play-menu");
@@ -33,6 +38,7 @@ public class ApplicationManager : MonoBehaviour {
 
 		// Play -> Level
 		State.Subscribe (ApplicationState.SceneState.Play, ApplicationState.Command.Level, () => {
+			HighScoreManager.Reset();
 			MusicManager.Instance.PlayLevel(0, true);
 			SceneManager.LoadScene("level-0");
 		});
@@ -45,6 +51,7 @@ public class ApplicationManager : MonoBehaviour {
 
 		// Level <- Results
 		State.Subscribe (ApplicationState.SceneState.Result, ApplicationState.Command.Main, () => {
+			HighScoreManager.Reset();
 			SceneManager.LoadScene("main-menu");
 		});
 
@@ -60,7 +67,7 @@ public class ApplicationManager : MonoBehaviour {
 	}
 		
 	public void QuitGame(){
-		Debug.Log ("quit!");
+		Debug.Log ("!!!!quit!!!!!");
 		Application.Quit ();
 	}
 }

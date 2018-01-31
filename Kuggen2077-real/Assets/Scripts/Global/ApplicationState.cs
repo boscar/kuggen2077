@@ -5,8 +5,8 @@ using System;
 
 public class ApplicationState {
 
-	public enum SceneState { Main, Play, Level, Result }
-	public enum Command { Main, Play, Level, Result }
+	public enum SceneState { Main, Play, Level, Result, Quit }
+	public enum Command { Main, Play, Level, Result, Quit }
 	private Dictionary<StateTransition, List<Action>> Actions = new Dictionary<StateTransition, List<Action>>();
 
 	/*
@@ -38,6 +38,7 @@ public class ApplicationState {
 
 	private Dictionary<StateTransition, SceneState> transitions = new Dictionary<StateTransition, SceneState> {
 		{ new StateTransition(SceneState.Main, Command.Play), SceneState.Play },
+		{ new StateTransition(SceneState.Main, Command.Quit), SceneState.Quit },
 		{ new StateTransition(SceneState.Play, Command.Main), SceneState.Main },
 		{ new StateTransition(SceneState.Play, Command.Level), SceneState.Level },
 		{ new StateTransition(SceneState.Level, Command.Result), SceneState.Result },
