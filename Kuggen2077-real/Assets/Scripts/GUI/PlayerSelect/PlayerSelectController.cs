@@ -33,14 +33,11 @@ public class PlayerSelectController : MonoBehaviour {
 	void Update () {
 		if (canProceedToGame) {
 			if (ClickedStart ()) {
-				GlobalSoundManager.Instance.PlaySingle (startGameClip);
-				MusicManager.Instance.PlayLevel (0, true);
-				SceneManager.LoadScene ("level-0");
+				ApplicationManager.Instance.ChangeScene (ApplicationState.Command.Level);
 			}
 		} else {
 			if (ClickedBack ()) {
-				GlobalSoundManager.Instance.PlaySingle (backClip);
-				SceneManager.LoadScene ("main-menu");
+				ApplicationManager.Instance.ChangeScene (ApplicationState.Command.Main);
 			}
 		}
 

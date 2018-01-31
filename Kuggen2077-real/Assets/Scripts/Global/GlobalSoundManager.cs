@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GlobalSoundManager : MonoBehaviour {
 	public AudioSource efxSource;
-	public static GlobalSoundManager Instance;
+	public static GlobalSoundManager Instance { get; private set; }
 
 	// singleton pattern
 	void Awake () {
