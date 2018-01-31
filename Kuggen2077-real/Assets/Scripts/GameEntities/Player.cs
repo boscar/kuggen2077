@@ -107,6 +107,16 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable, IObservable<
     private void InitEffects() {
         RecieveAttackHandler.RecieveAttackCreators.Add(new TemporaryColorChangeEffectCreator(this, Color.white));
         AttackHandler.AttackCreators.Add(new ReduceMovementSpeedEffectCreator(this, 0.35f, 0.5f));
+
+		RecieveAttackHandler.RecieveAttackSoundEffects.Add((new SoundEffectCreator(this,
+			Resources.Load<AudioClip>("Sounds/Player/Damaged1"),
+			Resources.Load<AudioClip>("Sounds/Player/Damaged2"),
+			Resources.Load<AudioClip>("Sounds/Player/Damaged3"),
+			Resources.Load<AudioClip>("Sounds/Player/Damaged4"),
+			Resources.Load<AudioClip>("Sounds/Player/Damaged5")
+		)));
+
+		RecieveAttackHandler.DeathSoundEffects.Add (new SoundEffectCreator (this, Resources.Load<AudioClip> ("Sounds/Player/Death")));
     }
 
     private void InitComponents() {
