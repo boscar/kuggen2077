@@ -69,10 +69,10 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable, IObservable<
 	private List<IObserver<Player>> observers = new List<IObserver<Player>> ();
 
     void Awake () {
+		InitHandlers();
         DashAbility = new DashAbility();
         AttackActions.Add(ATTACK_PRIMARY, new PlayerDefaultAttack(this));
         InitStats();
-        InitHandlers();
         InitEffects();
     }
 

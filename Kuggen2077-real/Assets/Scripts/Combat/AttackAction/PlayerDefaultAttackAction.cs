@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDefaultAttack : RangedAttackAction<Player> {
+public class PlayerDefaultAttack : PlayerRangedAttackAction {
 
     public PlayerDefaultAttack (Player player) : base(player) {
         Damage = 10;
@@ -12,10 +12,12 @@ public class PlayerDefaultAttack : RangedAttackAction<Player> {
         ProjectileSpeed = 18;
         Spread = 3;
         bulletObject = Resources.Load<Bullet>("simple_bullet");
+		fireSound = Resources.Load<AudioClip>("Sounds/Weapon/Pistol");
 		displayName = "Pistol";
     }
 
     protected override void Fire() {
+		AudioHandler.PlayPitched (0.95f, 1.05f, fireSound);
         float rotY = Attacker.Transform.rotation.eulerAngles.y + ((UnityEngine.Random.value * (2 * Spread)) - Spread);
         Quaternion bulletRotation = Quaternion.Euler(new Vector3(0, rotY, 0));
         Bullet bullet = GameObject.Instantiate<Bullet>(bulletObject, Attacker.Transform.position, bulletRotation);
