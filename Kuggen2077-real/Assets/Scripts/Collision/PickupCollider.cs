@@ -4,14 +4,19 @@ using UnityEngine;
 
 public abstract class PickupCollider : AbstractCollider {
 
+	protected AudioClip pickUpSound;
+
     public void Awake() {
         Layers = new string[] { LayerConstants.PLAYER };
+		pickUpSound = Resources.Load<AudioClip>("Sounds/Player/Pickup");
     }
 
     protected override void Impact(Collider collider) {
         GameEntity entity = ComponentDictionary.GetEntity(collider);
         if (entity != null && entity is Player) {
-            Pickup((Player)entity);
+			Player player = (Player)entity;
+			player.AudioHandler.PlaySingle (pickUpSound);
+			Pickup(player);
             ignoredGameObjects.Add(collider.gameObject);
             if (Continous) {
                 StartCoroutine(StopIgnoreCourantine(collider.gameObject, Interval));
