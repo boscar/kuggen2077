@@ -8,7 +8,7 @@ public abstract class Level : MonoBehaviour {
 
     public Transform[] powerupSpawnPoints;
 
-    private float timer = 0;
+    protected float timer = 0;
     public List<Player> Players { get; set; }
     protected List<Section> Sections { get; set; }
 
@@ -36,14 +36,14 @@ public abstract class Level : MonoBehaviour {
         }
     }
 
-    private void HandleEvents(List<Event> events) {
+    protected void HandleEvents(List<Event> events) {
         if (events.Count > 0 && timer >= events[0].TimeStamp) {
             events[0].Activate();
             events.RemoveAt(0);
         }
     }
 
-    private void HandlePickups (float deltaTime, float spawnChance, Transform[] spawnPoints, PickupCollider[] pickups) {
+    protected void HandlePickups (float deltaTime, float spawnChance, Transform[] spawnPoints, PickupCollider[] pickups) {
         if(pickups.Length <= 0) {
             return;
         }

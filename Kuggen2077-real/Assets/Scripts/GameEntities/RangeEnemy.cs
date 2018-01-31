@@ -12,7 +12,7 @@ public class RangeEnemy : Enemy {
     protected new void Awake()
     {
         base.Awake();
-        AttackActions.Add(ATTACK_RANGE, new EnemyRangeAttackAction(this));
+        AttackActions.Add(ATTACK_RANGE, new EnemyRangeAttackAction(this, 10, 10));
         SpawnYValue = 0.5f;
     }
 
