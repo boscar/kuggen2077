@@ -6,7 +6,8 @@ public class RandomSectionBuilder {
 
     private int index;
     private float duration = RandomSection.MEDIUM;
-    private float spawnAmount = 5f;
+    private float strength = 5f;
+    private float powerupSpawnChance = Section.DEFAULT_POWERUP_SPAWN_CHANCE;
     private Transform[] spawnPoints;
     private Enemy[] enemyObjects;
 
@@ -19,8 +20,13 @@ public class RandomSectionBuilder {
         return this;
     }
 
-    public RandomSectionBuilder SpawnAmount(float spawnAmount) {
-        this.spawnAmount = spawnAmount;
+    public RandomSectionBuilder Strength(float strength) {
+        this.strength = strength;
+        return this;
+    }
+
+    public RandomSectionBuilder PowerupSpawnChance(float powerupSpawnChance) {
+        this.powerupSpawnChance = powerupSpawnChance;
         return this;
     }
 
@@ -42,7 +48,7 @@ public class RandomSectionBuilder {
             throw new KuggenException("Must assign enemyobjects for Section");
         }
 
-        return new RandomSection(index, duration, spawnAmount, spawnPoints, enemyObjects);
+        return new RandomSection(index, duration, strength, powerupSpawnChance, spawnPoints, enemyObjects);
     }
 
 }

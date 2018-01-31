@@ -12,7 +12,7 @@ public class BigEnemy : Enemy
     protected new void Awake()
     {
         base.Awake();
-        AttackActions.Add(ATTACK_PRIMARY, new EnemyDefaultAttack(this));
+        AttackActions.Add(ATTACK_PRIMARY, new EnemyDefaultAttack(this, 30));
         SpawnYValue = 1;
     }
 
