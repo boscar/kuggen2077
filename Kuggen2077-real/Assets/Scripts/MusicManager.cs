@@ -36,7 +36,7 @@ public class MusicManager : MonoBehaviour {
 			
 		AudioClip clip = levelMusic [levelId];
 		if (fade) {
-			Instance.StartCoroutine (Fade (clip, 0.75f));
+			Instance.StartCoroutine (Fade (clip, 0.45f));
 		} else {
 			musicSource.clip = clip;
 			musicSource.Play ();
@@ -45,17 +45,19 @@ public class MusicManager : MonoBehaviour {
 		
 
 	IEnumerator Fade(AudioClip clip, float speed){
+		float baseVolume = musicSource.volume;
 		yield return FadeOut (speed);
 		musicSource.clip = clip;
 		musicSource.Play ();
-		yield return FadeIn (speed);
+		yield return FadeIn (speed, baseVolume);
 	}
 
-	IEnumerator FadeIn(float speed){
+	IEnumerator FadeIn(float speed, float maxVolume){
 		float volume = musicSource.volume;
-		while (volume < 1) {
+		while (volume < maxVolume) {
 			volume += speed;
 			musicSource.volume = volume;
+			Debug.Log (volume + " " + maxVolume);
 			yield return new WaitForSeconds (0.1f);
 		}
 	}
