@@ -7,7 +7,7 @@ public class MusicManager : MonoBehaviour {
 	public AudioClip menuMusic;
 	public AudioClip[] levelMusic;
 	public AudioSource musicSource;
-	public static MusicManager Instance;
+	public static MusicManager Instance { get; private set; }
 
 	// singleton pattern
 	void Awake () {
