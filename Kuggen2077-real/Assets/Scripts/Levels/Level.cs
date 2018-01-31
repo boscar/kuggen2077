@@ -73,7 +73,6 @@ public abstract class Level : MonoBehaviour {
 		}
 
 		if (!hasAlive) {
-			Debug.Log ("---->should load scene<------");
 			ApplicationManager.Instance.ChangeScene (ApplicationState.Command.Result);
 		}
 	}
