@@ -1817,9 +1817,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1604743368}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60bd3d3df90f5fc408f42e4c1441ecdd, type: 3}
+  m_Script: {fileID: 11500000, guid: f057a836fea6bfd49a263922fcb6f522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targets:
+  - {fileID: 104539251}
+  cameraSpeed: 5
 --- !u!1 &1679247819
 GameObject:
   m_ObjectHideFlags: 0

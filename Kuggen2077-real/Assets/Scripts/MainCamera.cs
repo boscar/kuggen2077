@@ -11,7 +11,7 @@ public class MainCamera : MonoBehaviour {
 
     public Camera Camera { get; private set; }
 
-	void Awake () {
+	protected void Awake () {
         Camera = GetComponent<Camera>();
         if (Camera == null) {
             throw new KuggenException(this + " needs to have a Camera component.");
