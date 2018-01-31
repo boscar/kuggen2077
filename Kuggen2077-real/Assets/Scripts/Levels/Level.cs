@@ -65,14 +65,8 @@ public abstract class Level : MonoBehaviour {
     }
 
 	private void CheckPlayers(){
-		bool hasAlive = true;
-		foreach (Player p in Players) {
-			if (hasAlive && p.CurrentHitPoints <= 0) {
-				hasAlive = false;
-			}
-		}
-
-		if (!hasAlive) {
+		bool allDead = Players.TrueForAll ((Player p) => p.CurrentHitPoints <= 0);
+		if (allDead) {
 			ApplicationManager.Instance.ChangeScene (ApplicationState.Command.Result);
 		}
 	}
