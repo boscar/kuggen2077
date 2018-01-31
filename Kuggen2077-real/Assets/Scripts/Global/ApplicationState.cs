@@ -59,7 +59,6 @@ public class ApplicationState {
 	}
 
 	public void Subscribe (ApplicationState.SceneState scene, ApplicationState.Command command, Action callback){
-		Debug.Log ("subscribed to: " + scene + " -> " + command);
 		StateTransition st = new StateTransition (scene, command);
 		if (!Actions.ContainsKey(st)) {
 			Actions [st] = new List<Action> ();

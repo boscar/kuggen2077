@@ -45,19 +45,19 @@ public class ApplicationManager : MonoBehaviour {
 
 		// Level -> Results
 		State.Subscribe (ApplicationState.SceneState.Level, ApplicationState.Command.Result, () => {
-			MusicManager.Instance.PlayMenu(true);
 			SceneManager.LoadScene("result-menu");
 		});
 
 		// Level <- Results
-		State.Subscribe (ApplicationState.SceneState.Result, ApplicationState.Command.Main, () => {
+		State.Subscribe (ApplicationState.SceneState.Result, ApplicationState.Command.Level, () => {
 			HighScoreManager.Reset();
 			MusicManager.Instance.PlayLevel(0, true);
 			SceneManager.LoadScene("main-menu");
 		});
 
 		// Results -> Main
-		State.Subscribe (ApplicationState.SceneState.Result, ApplicationState.Command.Level, () => {
+		State.Subscribe (ApplicationState.SceneState.Result, ApplicationState.Command.Main, () => {
+			MusicManager.Instance.PlayMenu();
 			SceneManager.LoadScene("main-menu");
 		});
 	}

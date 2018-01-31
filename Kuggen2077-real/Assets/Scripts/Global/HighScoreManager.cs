@@ -47,6 +47,7 @@ public class HighScoreManager {
 	}
 
 	public static void AddPlayer(int playerId){
+		Debug.Log ("added player: " + playerId);
 		if (scores.ContainsKey (playerId)) {
 			throw new KuggenException ("Player with ID " + playerId + " already added to HighScoreManager");
 		}
