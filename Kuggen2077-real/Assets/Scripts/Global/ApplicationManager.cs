@@ -40,7 +40,7 @@ public class ApplicationManager : MonoBehaviour {
 		State.Subscribe (ApplicationState.SceneState.Play, ApplicationState.Command.Level, () => {
 			HighScoreManager.Reset();
 			MusicManager.Instance.PlayLevel(0, true);
-			SceneManager.LoadScene("level-0");
+			SceneManager.LoadScene("oscars-test-scene");
 		});
 
 		// Level -> Results
@@ -52,13 +52,13 @@ public class ApplicationManager : MonoBehaviour {
 		// Level <- Results
 		State.Subscribe (ApplicationState.SceneState.Result, ApplicationState.Command.Main, () => {
 			HighScoreManager.Reset();
+			MusicManager.Instance.PlayLevel(0, true);
 			SceneManager.LoadScene("main-menu");
 		});
 
 		// Results -> Main
 		State.Subscribe (ApplicationState.SceneState.Result, ApplicationState.Command.Level, () => {
-			MusicManager.Instance.PlayLevel(0, true);
-			SceneManager.LoadScene("level-0");
+			SceneManager.LoadScene("main-menu");
 		});
 	}
 
