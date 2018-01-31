@@ -52,7 +52,7 @@ public class ApplicationManager : MonoBehaviour {
 		State.Subscribe (ApplicationState.SceneState.Result, ApplicationState.Command.Level, () => {
 			HighScoreManager.Reset();
 			MusicManager.Instance.PlayLevel(0, true);
-			SceneManager.LoadScene("main-menu");
+			SceneManager.LoadScene("oscars-test-scene");
 		});
 
 		// Results -> Main
