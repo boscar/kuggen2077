@@ -57,7 +57,7 @@ public class ApplicationManager : MonoBehaviour {
 
 		// Results -> Main
 		State.Subscribe (ApplicationState.SceneState.Result, ApplicationState.Command.Main, () => {
-			MusicManager.Instance.PlayMenu();
+			MusicManager.Instance.PlayMenu(true);
 			SceneManager.LoadScene("main-menu");
 		});
 	}
