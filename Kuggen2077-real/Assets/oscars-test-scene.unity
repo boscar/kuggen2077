@@ -2658,7 +2658,7 @@ MonoBehaviour:
   - {fileID: 1279645763}
   - {fileID: 520095900}
   - {fileID: 569005506}
-  startStrength: 4
+  startStrength: 3
   strengthIncrease: 3
 --- !u!1 &1589874135
 GameObject:
