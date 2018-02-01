@@ -105,7 +105,7 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable, IObservable<
     }
 
     private void InitEffects() {
-        Renderer renderer = GetRenderer();
+        Renderer renderer = GetBodyRenderer();
         if (renderer != null) {
             RecieveAttackHandler.RecieveAttackCreators.Add(new TemporaryColorChangeEffectCreator(this, renderer, Color.white));
         }

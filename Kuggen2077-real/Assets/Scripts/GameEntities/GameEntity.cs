@@ -60,8 +60,11 @@ public abstract class GameEntity : MonoBehaviour {
         return default(T);
     }
 
-    protected Renderer GetRenderer() {
+    protected Renderer GetBodyRenderer() {
         GameObject bodyGameObjet = Utils.FindChildWithTag(gameObject, "body");
+        if(bodyGameObjet == null) {
+            return null;
+        }
         return bodyGameObjet.transform.GetComponent<Renderer>();
     }
 

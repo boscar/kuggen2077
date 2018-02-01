@@ -16,7 +16,7 @@ public class FastEnemy : Enemy {
 
 	protected override void InitEffects() {
         base.InitEffects();
-        Renderer renderer = GetRenderer();
+        Renderer renderer = GetBodyRenderer();
         if (renderer != null) {
             RecieveAttackHandler.RecieveAttackCreators.Add(new TemporaryColorChangeEffectCreator(this, renderer, Color.white));
         }
