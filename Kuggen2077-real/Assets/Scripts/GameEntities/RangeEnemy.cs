@@ -18,13 +18,11 @@ public class RangeEnemy : Enemy {
 
 	protected override void InitEffects() {
         base.InitEffects();
-        GameObject bodyGameObjet = Utils.FindChildWithTag(gameObject, "body");
-        Renderer renderer = bodyGameObjet.transform.GetComponent<Renderer>();
-        if (renderer == null) {
-            throw new KuggenException(this + " requires a renderer.");
+        Renderer renderer = GetBodyRenderer();
+        if (renderer != null) {
+            RecieveAttackHandler.RecieveAttackCreators.Add(new TemporaryColorChangeEffectCreator(this, renderer, Color.white));
         }
-        RecieveAttackHandler.RecieveAttackCreators.Add(new TemporaryColorChangeEffectCreator(this, renderer, Color.white));
-		RecieveAttackHandler.DeathCreators.Add(new ScoreUpdateEffectCreator(2));
+        RecieveAttackHandler.DeathCreators.Add(new ScoreUpdateEffectCreator(2));
         RecieveAttackHandler.RecieveAttackCreators.Add(new KnockbackEffectCreator(this, this));
     }
 
