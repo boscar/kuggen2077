@@ -26,6 +26,7 @@ public abstract class Level : MonoBehaviour {
 	}
 
     private void HandleSections(float deltaTime) {
+		Debug.Log ("Sections.Count: " + Sections.Count);
         if (Sections.Count > 0) {
             if (Sections[0].IsFinished) {
                 Sections.RemoveAt(0);
