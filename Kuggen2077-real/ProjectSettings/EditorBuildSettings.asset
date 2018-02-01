@@ -17,3 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/level-0.unity
     guid: 262ba21c61b9f554691727e21ca9e897
+  - enabled: 1
+    path: Assets/oscars-test-scene.unity
+    guid: 829cf982f7bca204e8b2c6c4238f9397
+  - enabled: 1
+    path: Assets/result-menu.unity
+    guid: 19b108361e2c04ad19abae01bd9c8616

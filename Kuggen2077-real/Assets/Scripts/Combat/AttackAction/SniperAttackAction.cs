@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SniperAttackAction : RangedAttackAction<Player> {
+public class SniperAttackAction : PlayerRangedAttackAction {
 
     public SniperAttackAction(Player gameEntity) : base(gameEntity) {
         Damage = 60;
@@ -11,10 +11,12 @@ public class SniperAttackAction : RangedAttackAction<Player> {
         ProjectileSpeed = 40;
         Spread = 0.2f;
         bulletObject = Resources.Load<Bullet>("simple_bullet");
+		fireSound = Resources.Load<AudioClip>("Sounds/Weapon/Sniper");
 		displayName = "Sniper Rifle";
     }
 
     protected override void Fire() {
+		AudioHandler.PlaySingle(fireSound);
         float rotY = Attacker.Transform.rotation.eulerAngles.y + ((UnityEngine.Random.value * (2 * Spread)) - Spread);
         Quaternion bulletRotation = Quaternion.Euler(new Vector3(0, rotY, 0));
         Bullet bullet = GameObject.Instantiate<Bullet>(bulletObject, Attacker.Transform.position, bulletRotation);

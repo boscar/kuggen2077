@@ -15,6 +15,7 @@ public abstract class Level : MonoBehaviour {
     protected void Start () {
         Players = new List<Player> (FindObjectsOfType<Player>());
         Instance = this;
+		InvokeRepeating ("CheckPlayers", 1f, 1f);
 	}
 
     protected void FixedUpdate () {
@@ -63,4 +64,10 @@ public abstract class Level : MonoBehaviour {
         pickup.DestroyDelayed(10.0f);
     }
 
+	private void CheckPlayers(){
+		bool allDead = Players.TrueForAll ((Player p) => p.CurrentHitPoints <= 0);
+		if (allDead) {
+			ApplicationManager.Instance.ChangeScene (ApplicationState.Command.Result);
+		}
+	}
 }
