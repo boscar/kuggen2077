@@ -8,6 +8,7 @@ public class DashAbility {
     public const string DASH_MOVEMENT_ID = "dash";
     public const float DEFUALT_DASH_DURATION = 0.066f;
     public const float DEFUALT_DASH_SPEED = 11;
+	private AudioClip dashSound = Resources.Load<AudioClip> ("Sounds/Player/Dash");
 
     private bool hasCooldown = false;
     private float cooldown = 2.0f;
@@ -17,7 +18,7 @@ public class DashAbility {
         set { cooldown = value; }
     }
 
-    public void Activate (GameEntity gameEntity, IMovable movable, Vector3 direction) {
+	public void Activate (GameEntity gameEntity, IMovable movable, Vector3 direction) {
         if(hasCooldown) {
             return;
         }
@@ -26,6 +27,10 @@ public class DashAbility {
         TimedEffectFactory.Create(gameEntity, cooldown, () => {
             hasCooldown = false;
         });
+
+		if (gameEntity is IAudible) {
+			((IAudible)gameEntity).AudioHandler.PlaySingle (dashSound);
+		}
     }
 
     public class DashEffect : IEffect {

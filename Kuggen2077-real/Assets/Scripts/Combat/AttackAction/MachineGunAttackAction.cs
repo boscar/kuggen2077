@@ -2,19 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MachineGunAttackAction : RangedAttackAction<Player> {
+public class MachineGunAttackAction : PlayerRangedAttackAction {
 
     public MachineGunAttackAction(Player gameEntity) : base(gameEntity) {
-        Damage = 4;
+		Damage = 10;
         Force = 0.3f;
-        Cooldown = 0.04f;
+        Cooldown = 0.095f;
         ProjectileSpeed = 30;
         Spread = 3.5f;
         bulletObject = Resources.Load<Bullet>("simple_bullet");
+		fireSound = Resources.Load<AudioClip>("Sounds/Weapon/Machinegun");
 		displayName = "Machine Gun";
     }
 
     protected override void Fire() {
+		AudioHandler.PlayPitched (0.95f, 1.05f, fireSound);
         float rotY = Attacker.Transform.rotation.eulerAngles.y + ((UnityEngine.Random.value * (2 * Spread)) - Spread);
         Quaternion bulletRotation = Quaternion.Euler(new Vector3(0, rotY, 0));
         Bullet bullet = GameObject.Instantiate<Bullet>(bulletObject, Attacker.Transform.position, bulletRotation);

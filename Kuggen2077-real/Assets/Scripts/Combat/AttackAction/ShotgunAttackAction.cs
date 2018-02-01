@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShotgunAttackAction : RangedAttackAction<Player> {
+public class ShotgunAttackAction : PlayerRangedAttackAction {
 
     private const float FIRE_MAX_DELAY = 0.05f;
 
@@ -19,10 +19,12 @@ public class ShotgunAttackAction : RangedAttackAction<Player> {
         BulletLifetime = 0.25f;
         BulletAmount = 24;
         bulletObject = Resources.Load<Bullet>("shotgunround");
+		fireSound = Resources.Load<AudioClip>("Sounds/Weapon/Shotgun");
         displayName = "Shotgun";
     }
 
     protected override void Fire() {
+		AudioHandler.PlaySingle(fireSound);
         for (int i = 0; i < BulletAmount; ++i) {
             ((GameEntity)Attacker).StartCoroutine(CreateBulletDelayed(UnityEngine.Random.value * FIRE_MAX_DELAY));
         }

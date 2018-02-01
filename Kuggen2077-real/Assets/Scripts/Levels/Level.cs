@@ -8,13 +8,14 @@ public abstract class Level : MonoBehaviour {
 
     public Transform[] powerupSpawnPoints;
 
-    private float timer = 0;
+    protected float timer = 0;
     public List<Player> Players { get; set; }
     protected List<Section> Sections { get; set; }
 
     protected void Start () {
         Players = new List<Player> (FindObjectsOfType<Player>());
         Instance = this;
+		InvokeRepeating ("CheckPlayers", 1f, 1f);
 	}
 
     protected void FixedUpdate () {
@@ -36,14 +37,14 @@ public abstract class Level : MonoBehaviour {
         }
     }
 
-    private void HandleEvents(List<Event> events) {
+    protected void HandleEvents(List<Event> events) {
         if (events.Count > 0 && timer >= events[0].TimeStamp) {
             events[0].Activate();
             events.RemoveAt(0);
         }
     }
 
-    private void HandlePickups (float deltaTime, float spawnChance, Transform[] spawnPoints, PickupCollider[] pickups) {
+    protected void HandlePickups (float deltaTime, float spawnChance, Transform[] spawnPoints, PickupCollider[] pickups) {
         if(pickups.Length <= 0) {
             return;
         }
@@ -63,4 +64,10 @@ public abstract class Level : MonoBehaviour {
         pickup.DestroyDelayed(10.0f);
     }
 
+	private void CheckPlayers(){
+		bool allDead = Players.TrueForAll ((Player p) => p.CurrentHitPoints <= 0);
+		if (allDead) {
+			ApplicationManager.Instance.ChangeScene (ApplicationState.Command.Result);
+		}
+	}
 }
