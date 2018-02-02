@@ -2,16 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelEndlessRandomize : Level, IObservable<Level> {
+public class LevelEndlessRandomize : Level, IObservable<LevelEndlessRandomize> {
 
-	private List<IObserver<Level>> observers = new List<IObserver<Level>> ();
-	public List<IObserver<Level>> Observers { get { return observers; } private set { observers = value; } }
+	private List<IObserver<LevelEndlessRandomize>> observers = new List<IObserver<LevelEndlessRandomize>> ();
+	public List<IObserver<LevelEndlessRandomize>> Observers { get { return observers; } private set { observers = value; } }
 
     public Transform[] enemySpawnPoints;
     public float startStrength = 2;
     public float strengthIncrease = 4;
 
-    private Section CurrentSection;
+	private Section currentSection;
+	public Section CurrentSection { 
+		get { return currentSection; }
+		private set {
+			currentSection = value;
+
+			if (value.Index > 0) {
+				CallObservers ();
+			}
+		}
+	}
     private int index = 0;
 
     private Enemy EnemyObject { get; set; }
@@ -52,10 +62,9 @@ public class LevelEndlessRandomize : Level, IObservable<Level> {
     }
 
     public Section CreateSection(int index) {
-		CallObservers ();
         float strength = (strengthIncrease * index) + startStrength;
         Enemy[] enemyObjects = GetEnemyObjects(strength);
-        return new RandomSectionBuilder(0)
+        return new RandomSectionBuilder(index)
             .Strength((strengthIncrease * index) + startStrength)
             .PowerupSpawnChance(0.02f + (strength * 0.003f))
             .SpawnPoints(enemySpawnPoints)
@@ -94,17 +103,16 @@ public class LevelEndlessRandomize : Level, IObservable<Level> {
     }
 
 	// IObservable implementation
-	public void AddObserver(IObserver<Level> obs){
+	public void AddObserver(IObserver<LevelEndlessRandomize> obs){
 		Observers.Add (obs);
 	}
 
-	public void RemoveObserver(IObserver<Level> obs) {
+	public void RemoveObserver(IObserver<LevelEndlessRandomize> obs) {
 		Observers.Remove (obs);
 	}
 
 	public void CallObservers() {
-		Debug.Log ("calling: " + Observers.Count);
-		foreach (IObserver<Level> obs in Observers) {
+		foreach (IObserver<LevelEndlessRandomize> obs in Observers) {
 			obs.OnUpdate(this);
 		}	
 	}

@@ -57,7 +57,6 @@ public class MusicManager : MonoBehaviour {
 		while (volume < maxVolume) {
 			volume += speed;
 			musicSource.volume = volume;
-			Debug.Log (volume + " " + maxVolume);
 			yield return new WaitForSeconds (0.1f);
 		}
 	}
