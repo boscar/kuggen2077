@@ -33,6 +33,7 @@ public class PlayerSelectController : MonoBehaviour {
 	void Update () {
 		if (canProceedToGame) {
 			if (ClickedStart ()) {
+				PersistPlayers ();
 				ApplicationManager.Instance.ChangeScene (ApplicationState.Command.Level);
 			}
 		} else {
@@ -49,5 +50,18 @@ public class PlayerSelectController : MonoBehaviour {
 		}
 
 		startGamePrompt.enabled = canProceedToGame;
+	}
+
+	void PersistPlayers(){
+		HighScoreManager.Players = HighScoreManager.PlayerState.PLAYER_ALL;
+
+		bool playerOneReady = views [0].sm.CurrentState == PlayerSelectState.ViewState.Ready;
+		bool playerTwoReady = views [1].sm.CurrentState == PlayerSelectState.ViewState.Ready;
+
+		if (playerOneReady && !playerTwoReady) {
+			HighScoreManager.Players = HighScoreManager.PlayerState.PLAYER_ONE;
+		} else if (!playerOneReady && playerTwoReady) {
+			HighScoreManager.Players = HighScoreManager.PlayerState.PLAYER_TWO;
+		}
 	}
 }

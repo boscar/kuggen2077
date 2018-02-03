@@ -5,11 +5,9 @@ using UnityEngine;
 public class HighScoreManager {
 
 	// Keep everything static in order to preserver HighScore state on Load (scene changes)
-	public static int NumberOfPlayers {
-		get {
-			return scores.Keys.Count;
-		}
-	}
+	public enum PlayerState { PLAYER_ONE, PLAYER_TWO, PLAYER_ALL };
+	public static PlayerState Players = PlayerState.PLAYER_ALL;
+
 	private static Dictionary<int, int> scores = new Dictionary<int, int> ();
 
 	public static int GetPlayerScore(int playerId){

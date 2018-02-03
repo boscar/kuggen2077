@@ -15,7 +15,7 @@ public class PlayerScoreController : MonoBehaviour {
 	}
 
 	private void InitViews() {
-		if (HighScoreManager.NumberOfPlayers < 2) {
+		if (HighScoreManager.Players == HighScoreManager.PlayerState.PLAYER_ONE || HighScoreManager.Players == HighScoreManager.PlayerState.PLAYER_TWO ) {
 			RenderSinglePlayer ();
 		} else {
 			RenderMultiPlayer ();
@@ -28,7 +28,7 @@ public class PlayerScoreController : MonoBehaviour {
 		foreach (PlayerScoreView v in scoreViews) {
 			v.SetActive(false);
 		}
-
+			
 		totalView.transform.position = new Vector3 (totalView.transform.position.x, 0, totalView.transform.position.z);
 	}
 

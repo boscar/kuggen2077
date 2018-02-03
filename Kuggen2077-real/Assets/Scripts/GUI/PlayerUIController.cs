@@ -1,26 +1,45 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerUIController : MonoBehaviour {
 
-	public PlayerUIView[] views;
+	public PlayerUIView playerOne;
+	public PlayerUIView playerTwo;
 
-	void Start () {
-		if (views.Length < 2) {
-			throw new KuggenException ("atleast two PlayerUIView are required in " + this);
-		}
-			
-		if (HighScoreManager.NumberOfPlayers == 1) {
-			showSinglePlayer ();
+	void Awake () {
+		switch (HighScoreManager.Players) {
+		case HighScoreManager.PlayerState.PLAYER_ONE:
+			ShowPlayerOne ();
+			break;
+
+		case HighScoreManager.PlayerState.PLAYER_TWO:
+			ShowPlayerTwo ();
+			break;
+
+		case HighScoreManager.PlayerState.PLAYER_ALL:
+			ShowPlayerAll ();
+			break;
+
+		default:
+			break;
 		}
 	}
 
-	void showSinglePlayer(){
-		Debug.Log ("Show SinglePlayer");
-		Debug.Log (views [0].transform.position);
-		//views[0].transform.position = new Vector3 (0, 60, 0);
+	void ShowPlayerOne(){
+		RectTransform transform = playerOne.GetComponent<RectTransform> ();
+		transform.localPosition = new Vector3 (0, transform.localPosition.y, transform.localPosition.z);
+		playerTwo.gameObject.SetActive (false);
+	}
 
-		views [1].gameObject.SetActive (false);
+	void ShowPlayerTwo(){
+		RectTransform transform = playerTwo.GetComponent<RectTransform> ();
+		transform.localPosition = new Vector3 (0, transform.localPosition.y, transform.localPosition.z);
+		playerOne.gameObject.SetActive (false);
+	}
+
+	void ShowPlayerAll(){
+		
 	}
 }
