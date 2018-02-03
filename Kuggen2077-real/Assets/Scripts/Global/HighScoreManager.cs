@@ -5,7 +5,11 @@ using UnityEngine;
 public class HighScoreManager {
 
 	// Keep everything static in order to preserver HighScore state on Load (scene changes)
-	public static int NumberOfPlayers { get; private set; }
+	public static int NumberOfPlayers {
+		get {
+			return scores.Keys.Count;
+		}
+	}
 	private static Dictionary<int, int> scores = new Dictionary<int, int> ();
 
 	public static int GetPlayerScore(int playerId){
@@ -50,14 +54,12 @@ public class HighScoreManager {
 		if (scores.ContainsKey (playerId)) {
 			throw new KuggenException ("Player with ID " + playerId + " already added to HighScoreManager");
 		}
-
-		NumberOfPlayers += 1;
+			
 		scores [playerId] = 0;
 	}
 		
 
 	public static void Reset(){
-		NumberOfPlayers = 0;
 		scores.Clear ();
 	}
 }

@@ -1,49 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class PlayerUIController : MonoBehaviour, IObserver<Player> {
+public class PlayerUIController : MonoBehaviour {
 
-	public Player playerReference;
+	public PlayerUIView[] views;
 
-	public GameObject AlivePanel;
-	public GameObject DeadPanel;
-
-	public Slider healthSlider;
-	public Image sliderFillArea;
-	public Text scoreText;
-	public Text weaponText;
-
-	public Color Highlight;
-
-	void Awake () {
-		playerReference.AddObserver (this);
-		if (sliderFillArea != null){
-			sliderFillArea.color = Highlight;
+	void Start () {
+		if (views.Length < 2) {
+			throw new KuggenException ("atleast two PlayerUIView are required in " + this);
 		}
-	}
-	
-	public void OnUpdate(Player player) {
-		if (player.CurrentHitPoints <= 0) {
-			ShowDead (player);
-		} else {
-			ShowAlive (player);
+			
+		if (HighScoreManager.NumberOfPlayers == 1) {
+			showSinglePlayer ();
 		}
 	}
 
-	void ShowDead(Player player){
-		healthSlider.value = 0;
-		AlivePanel.SetActive (false);
-		DeadPanel.SetActive (true);
-	}
+	void showSinglePlayer(){
+		Debug.Log ("Show SinglePlayer");
+		Debug.Log (views [0].transform.position);
+		//views[0].transform.position = new Vector3 (0, 60, 0);
 
-	void ShowAlive(Player player){
-		AlivePanel.SetActive (true);
-		DeadPanel.SetActive (false);
-
-		healthSlider.value = (float)player.CurrentHitPoints / (float)player.HitPoints;
-		scoreText.text = Utils.LeftPad (player.GetScore ().ToString (), 2, "0");
-		weaponText.text = player.AttackActions [Player.ATTACK_PRIMARY].displayName;
+		views [1].gameObject.SetActive (false);
 	}
 }
