@@ -2,13 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelEndlessRandomize : Level {
+public class LevelEndlessRandomize : Level, IObservable<LevelEndlessRandomize> {
+
+	private List<IObserver<LevelEndlessRandomize>> observers = new List<IObserver<LevelEndlessRandomize>> ();
+	public List<IObserver<LevelEndlessRandomize>> Observers { get { return observers; } private set { observers = value; } }
 
     public Transform[] enemySpawnPoints;
     public float startStrength = 2;
     public float strengthIncrease = 4;
 
-    private Section CurrentSection;
+	private Section currentSection;
+	public Section CurrentSection { 
+		get { return currentSection; }
+		private set {
+			currentSection = value;
+
+			if (value.Index > 0) {
+				CallObservers ();
+			}
+		}
+	}
     private int index = 0;
 
     private Enemy EnemyObject { get; set; }
@@ -51,7 +64,7 @@ public class LevelEndlessRandomize : Level {
     public Section CreateSection(int index) {
         float strength = (strengthIncrease * index) + startStrength;
         Enemy[] enemyObjects = GetEnemyObjects(strength);
-        return new RandomSectionBuilder(0)
+        return new RandomSectionBuilder(index)
             .Strength((strengthIncrease * index) + startStrength)
             .PowerupSpawnChance(0.02f + (strength * 0.003f))
             .SpawnPoints(enemySpawnPoints)
@@ -88,4 +101,19 @@ public class LevelEndlessRandomize : Level {
             return new Enemy[1] { EnemyObject };
         }
     }
+
+	// IObservable implementation
+	public void AddObserver(IObserver<LevelEndlessRandomize> obs){
+		Observers.Add (obs);
+	}
+
+	public void RemoveObserver(IObserver<LevelEndlessRandomize> obs) {
+		Observers.Remove (obs);
+	}
+
+	public void CallObservers() {
+		foreach (IObserver<LevelEndlessRandomize> obs in Observers) {
+			obs.OnUpdate(this);
+		}	
+	}
 }

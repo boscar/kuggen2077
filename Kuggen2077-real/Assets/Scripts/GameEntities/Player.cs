@@ -67,6 +67,7 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable, IObservable<
     }
 
 	private List<IObserver<Player>> observers = new List<IObserver<Player>> ();
+	public List<IObserver<Player>> Observers { get { return observers; } private set { observers = value; } }
 
     void Awake () {
 		InitHandlers();
@@ -150,15 +151,15 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable, IObservable<
 
 	// IObservable implementation
 	public void AddObserver(IObserver<Player> obs){
-		observers.Add (obs);
+		Observers.Add (obs);
 	}
 
 	public void RemoveObserver(IObserver<Player> obs) {
-		observers.Remove (obs);
+		Observers.Remove (obs);
 	}
 
 	public void CallObservers() {
-		foreach (IObserver<Player> obs in observers) {
+		foreach (IObserver<Player> obs in Observers) {
 			obs.OnUpdate(this);
 		}	
 	}
