@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ShotgunAttackAction : PlayerRangedAttackAction {
 
-    private const float FIRE_MAX_DELAY = 0.05f;
+    private const float FIRE_MAX_DELAY = 0.06f;
 
     private float BulletLifetime { get; set; }
     private int BulletAmount { get; set; }
@@ -17,7 +17,7 @@ public class ShotgunAttackAction : PlayerRangedAttackAction {
         ProjectileSpeed = 36;
         Spread = 16;
         BulletLifetime = 0.25f;
-        BulletAmount = 24;
+        BulletAmount = 26;
         bulletObject = Resources.Load<Bullet>("shotgunround");
 		fireSound = Resources.Load<AudioClip>("Sounds/Weapon/Shotgun");
         displayName = "Shotgun";
@@ -36,14 +36,14 @@ public class ShotgunAttackAction : PlayerRangedAttackAction {
     }
 
     private void CreateBullet() {
-        float rotY = Attacker.Transform.rotation.eulerAngles.y + ((UnityEngine.Random.value * (2 * Spread)) - Spread);
+        float rotY = Attacker.Transform.rotation.eulerAngles.y + ((UnityEngine.Random.value * Spread) - (0.5f * Spread)) + ((UnityEngine.Random.value * Spread) - (0.5f * Spread));
         Quaternion bulletRotation = Quaternion.Euler(new Vector3(0, rotY, 0));
         Bullet bullet = GameObject.Instantiate<Bullet>(bulletObject, Attacker.Transform.position, bulletRotation);
         bullet.AttackAction = this;
         bullet.transform.localScale = bullet.transform.localScale * 0.7f;
         bullet.Layers = new string[] { LayerConstants.ENEMY, LayerConstants.WALLS };
         bullet.Speed = ProjectileSpeed;
-        GameObject.Destroy(bullet.gameObject, BulletLifetime);
+        GameObject.Destroy(bullet.gameObject, (UnityEngine.Random.value * (0.2f * BulletLifetime)) + (0.8f * BulletLifetime));
     }
 
 }

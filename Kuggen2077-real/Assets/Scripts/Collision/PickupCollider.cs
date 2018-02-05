@@ -4,7 +4,9 @@ using UnityEngine;
 
 public abstract class PickupCollider : AbstractCollider {
 
-	protected AudioClip pickUpSound;
+    public const string WEAPON_TAG = "Weapon";
+
+    protected AudioClip pickUpSound;
 
     public void Awake() {
         Layers = new string[] { LayerConstants.PLAYER };
