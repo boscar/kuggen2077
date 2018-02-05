@@ -8,7 +8,7 @@ public class HardFastEnemy : FastEnemy {
 
     protected new void Awake() {
         base.Awake();
-        AttackActions[ATTACK_PRIMARY] = new EnemyDefaultAttack(this, 15);
+        AttackActions[ATTACK_PRIMARY] = new EnemyDefaultAttack(this, 13);
     }
 
     protected override void InitStats() {

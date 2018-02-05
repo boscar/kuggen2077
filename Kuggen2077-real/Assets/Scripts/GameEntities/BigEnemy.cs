@@ -12,23 +12,26 @@ public class BigEnemy : Enemy
     protected new void Awake()
     {
         base.Awake();
-        AttackActions.Add(ATTACK_PRIMARY, new EnemyDefaultAttack(this, 30));
+        AttackActions.Add(ATTACK_PRIMARY, new EnemyDefaultAttack(this, 15));
         SpawnYValue = 1;
     }
 
     protected override void InitEffects()
     {
         base.InitEffects();
-        RecieveAttackHandler.RecieveAttackCreators.Add(new TemporaryColorChangeEffectCreator(this, Color.white));
+        Renderer renderer = GetBodyRenderer();
+        if (renderer != null) {
+            RecieveAttackHandler.RecieveAttackCreators.Add(new TemporaryColorChangeEffectCreator(this, renderer, Color.white));
+        }
         RecieveAttackHandler.DeathCreators.Add(new ScoreUpdateEffectCreator(1));
     }
 
-    protected override void InitStats()
-    {
-        HitPoints = 200;
-        CurrentHitPoints = 200;
+    protected override void InitStats() {
+        Strength = 3;
+        HitPoints = 150;
+        CurrentHitPoints = 150;
         MovementSpeed = new FloatStat(1);
-        MovementFloatiness = 2;
+        MovementFloatiness = 1;
     }
 
 }

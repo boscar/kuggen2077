@@ -8,7 +8,7 @@ public class InsaneRangeEnemy : RangeEnemy {
 
     protected new void Awake() {
         base.Awake();
-        AttackActions[ATTACK_RANGE] = new EnemyRangeAttackAction(this, 22, 14);
+        AttackActions[ATTACK_RANGE] = new EnemyRangeAttackAction(this, 15, 14);
     }
 
     protected override void InitStats() {

@@ -8,7 +8,7 @@ public class HardRangeEnemy : RangeEnemy {
 
     protected new void Awake() {
         base.Awake();
-        AttackActions[ATTACK_RANGE] = new EnemyRangeAttackAction(this, 15, 12);
+        AttackActions[ATTACK_RANGE] = new EnemyRangeAttackAction(this, 13, 12);
     }
 
     protected override void InitStats() {

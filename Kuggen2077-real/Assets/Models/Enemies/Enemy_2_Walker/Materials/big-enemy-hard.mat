@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Material
+  m_Name: big-enemy-hard
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _METALLICGLOSSMAP
   m_LightmapFlags: 4
@@ -72,5 +72,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.709, g: 0.709, b: 0.709, a: 1}
+    - _Color: {r: 0.341109, g: 0.40454036, b: 0.753, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
