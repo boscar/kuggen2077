@@ -5,8 +5,8 @@ using UnityEngine;
 public class SniperAttackAction : PlayerRangedAttackAction {
 
     public SniperAttackAction(Player gameEntity) : base(gameEntity) {
-        Damage = 60;
-        Force = 4f;
+        Damage = 80;
+        Force = 5f;
         Cooldown = 1.1f;
         ProjectileSpeed = 40;
         Spread = 0.2f;

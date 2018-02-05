@@ -9,8 +9,8 @@ public class RandomSection : Section {
     public const float LONG = 65;
     
     private const float SPAWN_INTERVAL = 0.4f;
-    private const float SEGMENT_DURATION = 8f;
-    private const float SEGMENT_DURATION_VARIATION = 2f;
+    private const float SEGMENT_DURATION = 6f;
+    private const float SEGMENT_DURATION_VARIATION = 1.5f;
 
     public RandomSection (int index, float duration, float strength, float powerupSpawnChance, Transform[] spawnPoints, Enemy[] enemyObjects) : base(index, powerupSpawnChance, DEFAULT_POWERUPS) {
         Events = GenerateEnemyEvents(duration, strength, spawnPoints, enemyObjects);
