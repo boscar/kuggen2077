@@ -32,6 +32,10 @@ public class LevelEndlessRandomize : Level, IObservable<LevelEndlessRandomize> {
     private Enemy EnemyRangedHardObject { get; set; }
     private Enemy EnemyRangedInsaneObject { get; set; }
 
+    private Enemy EnemyBigObject { get; set; }
+    private Enemy EnemyBigHardObject { get; set; }
+    private Enemy EnemyBigInsaneObject { get; set; }
+
     protected new void Start() {
         base.Start();
         LoadPrefabs();
@@ -45,6 +49,9 @@ public class LevelEndlessRandomize : Level, IObservable<LevelEndlessRandomize> {
         EnemyRangedObject = Resources.Load<Enemy>(RangeEnemy.PREFAB);
         EnemyRangedHardObject = Resources.Load<Enemy>(HardRangeEnemy.PREFAB);
         EnemyRangedInsaneObject = Resources.Load<Enemy>(InsaneRangeEnemy.PREFAB);
+        EnemyBigObject = Resources.Load<Enemy>(BigEnemy.PREFAB);
+        EnemyBigHardObject = Resources.Load<Enemy>(HardBigEnemy.PREFAB);
+        EnemyBigInsaneObject = Resources.Load<Enemy>(InsaneBigEnemy.PREFAB);
     }
 
     protected new void FixedUpdate() {
@@ -74,27 +81,27 @@ public class LevelEndlessRandomize : Level, IObservable<LevelEndlessRandomize> {
 
     private Enemy[] GetEnemyObjects(float strength) {
         if(strength >= 24) {
-            return new Enemy[2] { EnemyRangedInsaneObject, EnemyFastInsaneObject };
+            return new Enemy[5] { EnemyRangedInsaneObject, EnemyFastInsaneObject , EnemyRangedInsaneObject, EnemyFastInsaneObject, EnemyBigInsaneObject };
         } else if (strength >= 22) {
-            return new Enemy[6] { EnemyRangedHardObject, EnemyFastHardObject, EnemyRangedInsaneObject, EnemyFastInsaneObject, EnemyRangedInsaneObject, EnemyFastInsaneObject };
+            return new Enemy[7] { EnemyRangedHardObject, EnemyFastHardObject, EnemyRangedInsaneObject, EnemyFastInsaneObject, EnemyRangedInsaneObject, EnemyFastInsaneObject, EnemyBigInsaneObject };
         } else if (strength >= 20) {
-            return new Enemy[4] { EnemyRangedHardObject, EnemyFastHardObject, EnemyRangedInsaneObject, EnemyFastInsaneObject };
+            return new Enemy[5] { EnemyRangedHardObject, EnemyFastHardObject, EnemyRangedInsaneObject, EnemyFastInsaneObject, EnemyBigHardObject };
         } else if (strength >= 18) {
-            return new Enemy[5] { EnemyFastHardObject, EnemyRangedHardObject, EnemyFastHardObject, EnemyFastInsaneObject, EnemyRangedInsaneObject };
+            return new Enemy[6] { EnemyFastHardObject, EnemyRangedHardObject, EnemyFastHardObject, EnemyFastInsaneObject, EnemyRangedInsaneObject, EnemyBigHardObject };
         } else if (strength >= 16) {
-            return new Enemy[5] { EnemyFastHardObject, EnemyRangedHardObject, EnemyFastHardObject, EnemyRangedHardObject, EnemyFastInsaneObject };
+            return new Enemy[6] { EnemyFastHardObject, EnemyRangedHardObject, EnemyFastHardObject, EnemyRangedHardObject, EnemyFastInsaneObject, EnemyBigHardObject };
         } else if (strength >= 14) {
-            return new Enemy[2] { EnemyFastHardObject, EnemyRangedHardObject };
+            return new Enemy[5] { EnemyFastHardObject, EnemyRangedHardObject, EnemyFastHardObject, EnemyRangedHardObject, EnemyBigHardObject };
         } else if (strength >= 12) {
-            return new Enemy[6] { EnemyRangedHardObject, EnemyObject, EnemyRangedObject, EnemyFastHardObject, EnemyFastHardObject, EnemyRangedHardObject };
+            return new Enemy[7] { EnemyRangedHardObject, EnemyObject, EnemyRangedObject, EnemyFastHardObject, EnemyFastHardObject, EnemyRangedHardObject, EnemyBigObject };
         } else if (strength >= 10) {
-            return new Enemy[4] { EnemyRangedHardObject, EnemyObject, EnemyRangedObject, EnemyFastHardObject };
+            return new Enemy[5] { EnemyRangedHardObject, EnemyObject, EnemyRangedObject, EnemyFastHardObject, EnemyBigObject };
         } else if (strength >= 8) {
-            return new Enemy[5] { EnemyObject, EnemyRangedHardObject, EnemyObject, EnemyRangedObject, EnemyFastHardObject };
+            return new Enemy[6] { EnemyObject, EnemyRangedHardObject, EnemyObject, EnemyRangedObject, EnemyFastHardObject, EnemyBigObject };
         } else if (strength >= 6) {
-            return new Enemy[5] { EnemyObject, EnemyRangedObject, EnemyObject, EnemyRangedObject, EnemyFastHardObject };
+            return new Enemy[6] { EnemyObject, EnemyRangedObject, EnemyObject, EnemyRangedObject, EnemyFastHardObject, EnemyBigObject };
         } else if (strength >= 4) {
-            return new Enemy[2] { EnemyObject, EnemyRangedObject };
+            return new Enemy[5] { EnemyObject, EnemyRangedObject, EnemyObject, EnemyRangedObject, EnemyBigObject };
         } else if (strength >= 2) {
             return new Enemy[3] { EnemyObject, EnemyObject, EnemyRangedObject };
         } else {
