@@ -8,7 +8,7 @@ public class InsaneFastEnemy : FastEnemy {
 
     protected new void Awake() {
         base.Awake();
-        AttackActions[ATTACK_PRIMARY] = new EnemyDefaultAttack(this, 22);
+        AttackActions[ATTACK_PRIMARY] = new EnemyDefaultAttack(this, 15);
     }
 
     protected override void InitStats() {
