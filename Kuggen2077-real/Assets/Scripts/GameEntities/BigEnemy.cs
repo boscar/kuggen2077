@@ -19,7 +19,10 @@ public class BigEnemy : Enemy
     protected override void InitEffects()
     {
         base.InitEffects();
-        RecieveAttackHandler.RecieveAttackCreators.Add(new TemporaryColorChangeEffectCreator(this, Color.white));
+        Renderer renderer = GetBodyRenderer();
+        if (renderer != null) {
+            RecieveAttackHandler.RecieveAttackCreators.Add(new TemporaryColorChangeEffectCreator(this, renderer, Color.white));
+        }
         RecieveAttackHandler.DeathCreators.Add(new ScoreUpdateEffectCreator(1));
     }
 

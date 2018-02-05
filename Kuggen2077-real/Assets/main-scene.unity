@@ -6613,7 +6613,7 @@ Prefab:
         type: 2}
       propertyPath: playerReference
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 474512724}
     - target: {fileID: 114332546686690724, guid: ef215f47ec3d94c6cbc85ebc04c5db42,
         type: 2}
       propertyPath: Highlight.r
