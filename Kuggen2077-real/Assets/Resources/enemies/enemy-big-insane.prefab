@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 114879549007453800}
   - component: {fileID: 54801695695502390}
   - component: {fileID: 114110246252663326}
+  - component: {fileID: 95869706815916516}
   m_Layer: 11
   m_Name: enemy-big-insane
   m_TagString: Untagged
@@ -1284,10 +1285,27 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1564014147957362}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: b2a8913eaddb7454692eeeb84d819ae0, type: 3}
   m_Controller: {fileID: 9100000, guid: fe9973e95d028a34985539b9f98fe514, type: 2}
   m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!95 &95869706815916516
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1199352010674642}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: b2a8913eaddb7454692eeeb84d819ae0, type: 3}
+  m_Controller: {fileID: 9100000, guid: fe9973e95d028a34985539b9f98fe514, type: 2}
+  m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
@@ -1329,6 +1347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
   player: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!136 &136776601674966778
 CapsuleCollider:
   m_ObjectHideFlags: 1
