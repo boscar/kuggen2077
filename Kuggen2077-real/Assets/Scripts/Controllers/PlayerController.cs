@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour {
 
     public ControlKeyBindings.ControlScheme controlScheme = ControlKeyBindings.ControlScheme.KEYBOARD;
     public Player player;
+    public Animator anim;
+
 
     private ControlKeyBindings KeyBindings { get; set; }
     private Vector3 movementInput;
@@ -22,6 +24,11 @@ public class PlayerController : MonoBehaviour {
         }
         if (player == null) {
             throw new KuggenException("Player can not be null for " + this);
+        }
+        anim = GetComponent<Animator>();
+        if (anim == null)
+        {
+            throw new KuggenException("Animator where unable to instantiate. Be sure to add an Animator Component" + this);
         }
     }
 
@@ -72,7 +79,18 @@ public class PlayerController : MonoBehaviour {
         if (player.MovementHandler == null) {
             return;
         }
-        
+        if(anim != null)
+        {
+            if (movementInput != Vector3.zero)
+            {
+                anim.SetBool("isRunning", true);
+            }
+            else
+            {
+                anim.SetBool("isRunning", false);
+            }
+        }
+      
         player.MovementHandler.BasicMove(movementInput);
 
 
