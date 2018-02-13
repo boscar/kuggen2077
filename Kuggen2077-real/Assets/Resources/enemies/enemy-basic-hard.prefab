@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114667476581732862}
   - component: {fileID: 54115541715083666}
   - component: {fileID: 114742076364074064}
+  - component: {fileID: 95820502754241132}
   m_Layer: 11
   m_Name: enemy-basic-hard
   m_TagString: Untagged
@@ -415,10 +416,27 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1296033052854454}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: 6303794888dfbda4c96e11dd338ddb19, type: 3}
   m_Controller: {fileID: 9100000, guid: d4761764bb2ac974c8f36c4a4dc2bb9e, type: 2}
   m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!95 &95820502754241132
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1002684465553366}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 351412ddf3712e44d9f2d61efa8f58e1, type: 3}
+  m_Controller: {fileID: 9100000, guid: d4761764bb2ac974c8f36c4a4dc2bb9e, type: 2}
+  m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
@@ -438,6 +456,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
   player: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!114 &114742076364074064
 MonoBehaviour:
   m_ObjectHideFlags: 1
