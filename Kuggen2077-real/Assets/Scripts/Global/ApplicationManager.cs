@@ -8,6 +8,9 @@ public class ApplicationManager : MonoBehaviour {
 	public static ApplicationManager Instance { get; private set; }
 	public ApplicationState State = new ApplicationState (ApplicationState.SceneState.Main);
 
+	public AudioClip backSound;
+	public AudioClip startGameSound;
+
 	// singleton pattern
 	void Awake () {
 		if (Instance == null){
@@ -33,11 +36,13 @@ public class ApplicationManager : MonoBehaviour {
 
 		// Main <- Play
 		State.Subscribe (ApplicationState.SceneState.Play, ApplicationState.Command.Main, () => {
+			GlobalSoundManager.Instance.PlaySingle(backSound);
 			SceneManager.LoadScene("main-menu");
 		});
 
 		// Play -> Level
 		State.Subscribe (ApplicationState.SceneState.Play, ApplicationState.Command.Level, () => {
+			GlobalSoundManager.Instance.PlaySingle(startGameSound);
 			HighScoreManager.Reset();
 			MusicManager.Instance.PlayLevel(0, true);
 			SceneManager.LoadScene("main-scene");

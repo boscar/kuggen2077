@@ -9,6 +9,9 @@ public class PlayerSetupManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		playerOne.SetActive (false);
+		playerTwo.SetActive (false);
+
 		switch (HighScoreManager.Players) {
 		case HighScoreManager.PlayerState.PLAYER_ALL:
 			playerOne.SetActive (true);
