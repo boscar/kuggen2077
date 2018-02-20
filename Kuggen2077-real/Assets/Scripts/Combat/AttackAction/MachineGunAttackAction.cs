@@ -13,6 +13,7 @@ public class MachineGunAttackAction : PlayerRangedAttackAction {
         bulletObject = Resources.Load<Bullet>("simple_bullet");
 		fireSound = Resources.Load<AudioClip>("Sounds/Weapon/Machinegun");
 		displayName = "Machine Gun";
+        HitEffectCreators.Add(new SpawnParticlesHitEffectCreator(gameEntity, "particles/VfxHitSparksSmall", 0.5f));
     }
 
     protected override void Fire() {

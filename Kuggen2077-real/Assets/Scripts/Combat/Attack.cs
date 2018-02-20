@@ -20,16 +20,18 @@ public class Attack {
     public int Damage { get; private set; }
     public float Force { get; private set; }
     public Vector3 Position { get; private set; }
+    public Quaternion Rotation { get; private set; }
 
     public Func<Attack, IAttackable, Vector3> KnockbackFunc { get; private set; }
 
-    public Attack(IAttacker attacker, int damage, float force, Vector3 position) : this(attacker, damage, force, position, DEFAULT_KNOCKBACK_FUNC) { }
+    public Attack(IAttacker attacker, int damage, float force, Vector3 position, Quaternion rotation) : this(attacker, damage, force, position, rotation, DEFAULT_KNOCKBACK_FUNC) { }
 
-    public Attack(IAttacker attacker, int damage, float force, Vector3 position, Func<Attack, IAttackable, Vector3> getKnockbackVector) {
+    public Attack(IAttacker attacker, int damage, float force, Vector3 position, Quaternion rotation, Func<Attack, IAttackable, Vector3> getKnockbackVector) {
         Attacker = attacker;
         Damage = damage;
         Force = force;
         Position = position;
+        Rotation = rotation;
         KnockbackFunc = getKnockbackVector;
     }
 

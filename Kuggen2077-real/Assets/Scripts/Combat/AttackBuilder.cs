@@ -8,7 +8,8 @@ public class AttackBuilder {
     private IAttacker attacker;
     private int damage = 0;
     private float force = 0;
-    private Vector3 position;
+    private Vector3 position = Vector3.zero;
+    private Quaternion rotation = Quaternion.Euler(Vector3.zero);
     private Func<Attack, IAttackable, Vector3> knockbackFunc = Attack.DEFAULT_KNOCKBACK_FUNC;
 
     public AttackBuilder Attacker(IAttacker attacker) {
@@ -31,13 +32,18 @@ public class AttackBuilder {
         return this;
     }
 
+    public AttackBuilder Rotation(Quaternion rotation) {
+        this.rotation = rotation;
+        return this;
+    }
+
     public AttackBuilder KnockbackFunc(Func<Attack, IAttackable, Vector3> knockbackFunc) {
         this.knockbackFunc = knockbackFunc;
         return this;
     }
 
     public Attack Build () {
-        return new Attack(attacker, damage, force, position, knockbackFunc);
+        return new Attack(attacker, damage, force, position, rotation, knockbackFunc);
     }
 
 }

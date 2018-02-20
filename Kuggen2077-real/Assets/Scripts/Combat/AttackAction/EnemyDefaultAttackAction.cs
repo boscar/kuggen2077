@@ -11,6 +11,7 @@ public class EnemyDefaultAttack : AttackAction {
 		Damage = damage;
         attackCollider = attacker.Transform.gameObject.GetComponentInChildren<AttackCollider>();
         InitAttackCollider(attackCollider);
+        HitEffectCreators.Add(new SpawnParticlesHitEffectCreator(attacker, "particles/VfxImpactBig", 0.8f));
     }
 
     private void InitAttackCollider (AttackCollider attackCollider) {
@@ -43,8 +44,10 @@ public class EnemyDefaultAttack : AttackAction {
     public override void Hit(IAttackable attackable, Transform transform) {
         Attack attack = new AttackBuilder()
             .Attacker(Attacker)
+            .Position(attackable.Transform.position)
             .Damage(Damage).Build();
         attackable.RecieveAttackHandler.RecieveAttack(attack);
+        ActivateHitEffects(attack);
     }
 
 }

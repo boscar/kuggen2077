@@ -58,4 +58,9 @@ public class Utils {
 		}
 		return null;
 	}
+
+    public static Quaternion MirrorRotation (Quaternion rotation) {
+        Vector3 eulerAngles = rotation.eulerAngles;
+        return Quaternion.Euler(eulerAngles.x, eulerAngles.y - 180, eulerAngles.z);
+    }
 }

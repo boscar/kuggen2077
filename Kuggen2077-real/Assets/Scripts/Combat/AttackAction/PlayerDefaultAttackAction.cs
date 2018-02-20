@@ -14,6 +14,7 @@ public class PlayerDefaultAttack : PlayerRangedAttackAction {
         bulletObject = Resources.Load<Bullet>("simple_bullet");
 		fireSound = Resources.Load<AudioClip>("Sounds/Weapon/Pistol");
 		displayName = "Pistol";
+        HitEffectCreators.Add(new SpawnParticlesHitEffectCreator(player, "particles/VfxHitSparksSmall", 0.5f));
     }
 
     protected override void Fire() {
