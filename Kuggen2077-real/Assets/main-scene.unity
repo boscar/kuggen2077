@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -219,7 +219,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 28880092}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -200.07237, z: 0}
+  m_LocalPosition: {x: 0, y: -168.92816, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 616600142}
@@ -2433,8 +2433,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 498185954}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 691, y: 432, z: 0}
-  m_LocalScale: {x: 1.7275, y: 1.7275, z: 1.7275}
+  m_LocalPosition: {x: 438.5, y: 240, z: 0}
+  m_LocalScale: {x: 1.09625, y: 1.09625, z: 1.09625}
   m_Children:
   - {fileID: 1840221459}
   m_Father: {fileID: 0}
@@ -3238,6 +3238,11 @@ Transform:
   m_Father: {fileID: 1597948688}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &659600857 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4508791125742194, guid: 794ba9f3587458443b5db3024c17d95e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1366907722}
 --- !u!1 &660024823
 GameObject:
   m_ObjectHideFlags: 0
@@ -4189,7 +4194,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 997861700}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -350.00006, y: 210.07237, z: 0}
+  m_LocalPosition: {x: -350, y: 178.92816, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1257557952}
@@ -5940,8 +5945,8 @@ MonoBehaviour:
   - {fileID: 1279645763}
   - {fileID: 520095900}
   - {fileID: 569005506}
-  startStrength: 3
-  strengthIncrease: 3
+  startStrength: 0
+  strengthIncrease: 0
 --- !u!1001 &1537631601
 Prefab:
   m_ObjectHideFlags: 0
@@ -6296,7 +6301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targets:
-  - {fileID: 137320315}
+  - {fileID: 659600857}
   cameraSpeed: 5
 --- !u!1 &1611335889
 GameObject:
@@ -7322,7 +7327,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1840221458}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.000030517578, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 997861701}
