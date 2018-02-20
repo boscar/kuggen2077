@@ -111,8 +111,9 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable, IObservable<
             RecieveAttackHandler.RecieveAttackCreators.Add(new TemporaryColorChangeEffectCreator(this, renderer, Color.white));
         }
         AttackHandler.AttackCreators.Add(new ReduceMovementSpeedEffectCreator(this, 0.35f, 0.5f));
+        AttackHandler.AttackCreators.Add(new SpawnParticlesEffectCreator(this, "particles/VfxFireSparks", 0.25f, new Vector3(0.3f, 1.7f, 1.1f)));
 
-		RecieveAttackHandler.RecieveAttackSoundEffects.Add((new SoundEffectCreator(this,
+        RecieveAttackHandler.RecieveAttackSoundEffects.Add((new SoundEffectCreator(this,
 			Resources.Load<AudioClip>("Sounds/Player/Damaged1"),
 			Resources.Load<AudioClip>("Sounds/Player/Damaged2"),
 			Resources.Load<AudioClip>("Sounds/Player/Damaged3"),

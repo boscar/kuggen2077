@@ -14,6 +14,7 @@ public class EnemyRangeAttackAction : RangedAttackAction<RangeEnemy>
         bulletObject = Resources.Load<Bullet>("simple_bullet");
         InitCooldown(1.5f);
         HitEffectCreators.Add(new SpawnParticlesHitEffectCreator(enemy, "particles/VfxHitSparks", 0.5f));
+        HitEffectCreators.Add(new SpawnParticlesHitEffectCreator(enemy, "particles/VfxImpact", 0.8f));
     }
 
     protected override void Fire() {
