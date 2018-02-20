@@ -5945,8 +5945,8 @@ MonoBehaviour:
   - {fileID: 1279645763}
   - {fileID: 520095900}
   - {fileID: 569005506}
-  startStrength: 0
-  strengthIncrease: 0
+  startStrength: 3
+  strengthIncrease: 3
 --- !u!1001 &1537631601
 Prefab:
   m_ObjectHideFlags: 0
