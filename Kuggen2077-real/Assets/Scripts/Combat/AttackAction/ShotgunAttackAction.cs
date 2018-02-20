@@ -21,6 +21,7 @@ public class ShotgunAttackAction : PlayerRangedAttackAction {
         bulletObject = Resources.Load<Bullet>("shotgunround");
 		fireSound = Resources.Load<AudioClip>("Sounds/Weapon/Shotgun");
         displayName = "Shotgun";
+        HitEffectCreators.Add(new SpawnParticlesHitEffectCreator(gameEntity, "particles/VfxHitSparksSmall", 0.5f));
     }
 
     protected override void Fire() {

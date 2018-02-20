@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 198887356561477810}
   - component: {fileID: 199121313894320156}
   m_Layer: 0
-  m_Name: VfxHitSparks
+  m_Name: VfxFireSparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,8 +35,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1325963772890730}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.1815534, y: -2.296776e-18, z: 0.31031278}
-  m_LocalScale: {x: 0.14, y: 0.14, z: 0.14}
+  m_LocalPosition: {x: -7.3066845, y: -1.0368425e-17, z: 1.4008571}
+  m_LocalScale: {x: 0.08, y: 0.08, z: 0.08}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -101,15 +101,15 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 773934224
+  randomSeed: 917274212
   InitialModule:
     serializedVersion: 3
     enabled: 1
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.32
-      minScalar: 0.02
+      scalar: 0.24
+      minScalar: 0.015
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -137,8 +137,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 34
-      minScalar: 79
+      scalar: 37
+      minScalar: 87
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -506,7 +506,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.3
+      value: 0.13
       mode: 0
       spread: 0
       speed:

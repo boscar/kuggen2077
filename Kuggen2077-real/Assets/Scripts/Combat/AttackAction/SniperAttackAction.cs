@@ -13,6 +13,7 @@ public class SniperAttackAction : PlayerRangedAttackAction {
         bulletObject = Resources.Load<Bullet>("simple_bullet");
 		fireSound = Resources.Load<AudioClip>("Sounds/Weapon/Sniper");
 		displayName = "Sniper Rifle";
+        HitEffectCreators.Add(new SpawnParticlesHitEffectCreator(gameEntity, "particles/VfxHitSparks", 0.5f));
     }
 
     protected override void Fire() {
