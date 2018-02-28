@@ -19,6 +19,7 @@ public abstract class Enemy : GameEntity, IMovable, IAttackable, IAttacker {
         set { movementFloatiness = value; }
     }
 
+    public AnimationHandler AnimationHandler;
     public MovementHandler MovementHandler { get; set; }
     public RecieveAttackHandler RecieveAttackHandler { get; protected set; }
     public AttackHandler AttackHandler { get; protected set; }
@@ -89,6 +90,7 @@ public abstract class Enemy : GameEntity, IMovable, IAttackable, IAttacker {
         MovementHandler = new MovementHandler(this);
         RecieveAttackHandler = new RecieveAttackHandler(this);
         AttackHandler = new AttackHandler(this);
+        AnimationHandler = new AnimationHandler(GetComponent<Animator>());
     }
 
 

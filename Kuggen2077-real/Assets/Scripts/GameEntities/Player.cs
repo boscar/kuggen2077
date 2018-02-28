@@ -23,6 +23,7 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable, IObservable<
         set { movementFloatiness = value; }
     }
 
+    public AnimationHandler AnimationHandler;
     public MovementHandler MovementHandler { get; set; }
     public RecieveAttackHandler RecieveAttackHandler { get; protected set; }
     public AttackHandler AttackHandler { get; protected set; }
@@ -102,7 +103,7 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable, IObservable<
         RecieveAttackHandler = new RecieveAttackHandler(this);
         AttackHandler = new AttackHandler(this);
 		AudioHandler = new AudioHandler (this);
-
+        AnimationHandler = new AnimationHandler(GetComponent<Animator>());
     }
 
     private void InitEffects() {

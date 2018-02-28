@@ -7,7 +7,6 @@ public class EnemyController : MonoBehaviour {
 
 	public Enemy enemy;
 	public Player player;
-    public Animator anim;
 
 	private ObservableCollider attackCollider;
 
@@ -28,11 +27,6 @@ public class EnemyController : MonoBehaviour {
 		}
         if(player == null && Level.Instance != null) {
 			SetPlayer ();
-        }
-        anim = GetComponent<Animator>();
-        if (anim == null)
-        {
-            throw new KuggenException("Animator where unable to instantiate. Be sure to add an Animator Component" + this);
         }
     }
 	
