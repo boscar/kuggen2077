@@ -44,7 +44,7 @@ public class RecieveAttackHandler {
 				sound.Activate ();
 			}
 
-			Die();
+            DieDelayed();
         }
     }
 
@@ -52,4 +52,34 @@ public class RecieveAttackHandler {
         GameEntity.Destroy(Attackable.Transform.gameObject);
     }
 
+    public void DieDelayed() {
+        DestroyRenderers();
+        DestroyColliders();
+        ((MonoBehaviour)Attackable).StartCoroutine(DieCourantine(2));
+    }
+
+    private void DestroyRenderers() {
+        Renderer renderer = ((MonoBehaviour)Attackable).GetComponent<Renderer>();
+        if (renderer != null) {
+            renderer.enabled = false;
+        }
+        foreach (Renderer childRenderer in Attackable.Transform.GetComponentsInChildren<Renderer>()) {
+            childRenderer.enabled = false;
+        }
+    }
+
+    private void DestroyColliders() {
+        Collider collider = ((MonoBehaviour)Attackable).GetComponent<Collider>();
+        if (collider != null) {
+            collider.enabled = false;
+        }
+        foreach (Collider childCollider in Attackable.Transform.GetComponentsInChildren<Collider>()) {
+            childCollider.enabled = false;
+        }
+    }
+
+    private IEnumerator DieCourantine(float delay) {
+        yield return new WaitForSeconds(delay);
+        Die();
+    }
 }
