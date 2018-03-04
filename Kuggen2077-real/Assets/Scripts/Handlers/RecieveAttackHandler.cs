@@ -53,9 +53,20 @@ public class RecieveAttackHandler {
     }
 
     public void DieDelayed() {
-        DestroyRenderers();
+
+        if (Attackable is IAnimatable)
+        {
+            if (Attackable is GameEntity) {
+                ((GameEntity)Attackable).Deactivate();
+            }
+            ((IAnimatable)Attackable).AnimationHandler.Die();
+        } else
+        {
+            DestroyRenderers();
+        }
+       
         DestroyColliders();
-        ((MonoBehaviour)Attackable).StartCoroutine(DieCourantine(2));
+        ((MonoBehaviour)Attackable).StartCoroutine(DieCourantine(4));
     }
 
     private void DestroyRenderers() {

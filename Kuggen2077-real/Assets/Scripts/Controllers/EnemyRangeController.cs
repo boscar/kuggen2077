@@ -46,13 +46,17 @@ public class EnemyRangeController : MonoBehaviour {
 		}
 
         movementVector = transform.forward;
+        if(!enemy.IsActive()) movementVector = new Vector3(0,0,0);
         playerPos = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
     }
 
     protected void FixedUpdate()
     {
         HandleMovement(Time.fixedDeltaTime);
-        HandleShoot(Time.fixedDeltaTime);
+        if (enemy.IsActive())
+        {  
+            HandleShoot(Time.fixedDeltaTime);
+        }
     }
 
     private void HandleMovement(float deltaTime)

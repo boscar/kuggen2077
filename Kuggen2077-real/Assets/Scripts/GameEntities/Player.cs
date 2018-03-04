@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : GameEntity, IMovable, IAttacker, IAttackable, IObservable<Player>, IAudible {
+public class Player : GameEntity, IMovable, IAttacker, IAttackable, IObservable<Player>, IAudible, IAnimatable {
 
 	public int PLAYER_ID = 0;
 
@@ -69,6 +69,14 @@ public class Player : GameEntity, IMovable, IAttacker, IAttackable, IObservable<
 
 	private List<IObserver<Player>> observers = new List<IObserver<Player>> ();
 	public List<IObserver<Player>> Observers { get { return observers; } private set { observers = value; } }
+
+    AnimationHandler IAnimatable.AnimationHandler
+    {
+        get
+        {
+            return AnimationHandler;
+        }
+    }
 
     void Awake () {
 		InitHandlers();

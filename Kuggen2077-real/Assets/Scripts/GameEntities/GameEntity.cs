@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class GameEntity : MonoBehaviour {
 
+    private bool isActive = true;
+
     public enum EffectFrequency { FIXED_UPDATE };
 
     private List<IEffect> effects = new List<IEffect>();
@@ -33,6 +35,16 @@ public abstract class GameEntity : MonoBehaviour {
                 break;
         }
         effect.Activate();
+    }
+
+    public void Deactivate()
+    {
+        isActive = false;
+    }
+
+    public bool IsActive()
+    {
+        return isActive;
     }
 
     protected void FixedUpdate () {

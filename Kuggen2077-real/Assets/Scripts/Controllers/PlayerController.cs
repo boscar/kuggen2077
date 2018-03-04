@@ -55,15 +55,17 @@ public class PlayerController : MonoBehaviour {
 
     protected void FixedUpdate() {
         HandleMovement(Time.fixedDeltaTime);
-        if (controlScheme != ControlKeyBindings.ControlScheme.KEYBOARD) {
+        if (controlScheme != ControlKeyBindings.ControlScheme.KEYBOARD)
+        {
             //Gamepad
             HandleAttackGamepad(Time.fixedDeltaTime);
-        } else
+        }
+        else
         {
             //Keyboard
             HandleAttack(Time.fixedDeltaTime);
         }
-        
+    
     }
 
     private void HandleMovement(float deltaTime) {
@@ -83,15 +85,17 @@ public class PlayerController : MonoBehaviour {
             if (movementInput != Vector3.zero)
             {
                 player.AnimationHandler.Move();
-                //anim.SetBool("isRunning", true);
             }
             else
             {
                 player.AnimationHandler.Idle();
-             //   anim.SetBool("isRunning", false);
             }
         }
-      
+
+        if (!player.IsActive())
+        {
+            movementInput = Vector3.zero;
+        }
         player.MovementHandler.BasicMove(movementInput);
 
 
@@ -99,7 +103,6 @@ public class PlayerController : MonoBehaviour {
 
     private void HandleAttack(float deltaTime)
     {
-
         if (Input.GetKey(KeyBindings.PrimaryAbility))
         {
             player.DashAbility.Activate(player, player, movementInput);
@@ -110,7 +113,7 @@ public class PlayerController : MonoBehaviour {
             AttackAction primaryAttackAction = player.AttackActions[Player.ATTACK_PRIMARY];
             if (primaryAttackAction != null)
             {
-                primaryAttackAction.InitAttack();
+                Attack(primaryAttackAction);
             }
         }
     }
@@ -127,10 +130,19 @@ public class PlayerController : MonoBehaviour {
             AttackAction primaryAttackAction = player.AttackActions[Player.ATTACK_PRIMARY];
             if (primaryAttackAction != null)
             {
-                primaryAttackAction.InitAttack();
+
+                Attack(primaryAttackAction);
             }
         }
       
+    }
+
+    private void Attack(AttackAction primaryAttackAction)
+    {
+        if (player.IsActive())
+        {
+            primaryAttackAction.InitAttack();
+        }
     }
 
 }

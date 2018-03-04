@@ -49,7 +49,11 @@ public class EnemyController : MonoBehaviour {
 
 
 	protected void FixedUpdate() {
-		HandleMovement(Time.fixedDeltaTime);
+        if(enemy.IsActive())
+        {
+            HandleMovement(Time.fixedDeltaTime);
+        }
+		
 	}
 
 	private void HandleMovement(float deltaTime) {
@@ -58,8 +62,8 @@ public class EnemyController : MonoBehaviour {
 		if (enemy.MovementHandler == null) {
 			return;
 		}
-
-		enemy.MovementHandler.BasicMove(movementVector);
+        if (!enemy.IsActive()) movementVector = Vector3.zero;
+        enemy.MovementHandler.BasicMove(movementVector);
 	}
 
 }
