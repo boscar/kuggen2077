@@ -55,7 +55,6 @@ public class PlayerController : MonoBehaviour {
 
     protected void FixedUpdate() {
         HandleMovement(Time.fixedDeltaTime);
-
         if (controlScheme != ControlKeyBindings.ControlScheme.KEYBOARD) {
             //Gamepad
             HandleAttackGamepad(Time.fixedDeltaTime);
@@ -83,11 +82,13 @@ public class PlayerController : MonoBehaviour {
         {
             if (movementInput != Vector3.zero)
             {
-                anim.SetBool("isRunning", true);
+                player.AnimationHandler.Move();
+                //anim.SetBool("isRunning", true);
             }
             else
             {
-                anim.SetBool("isRunning", false);
+                player.AnimationHandler.Idle();
+             //   anim.SetBool("isRunning", false);
             }
         }
       
