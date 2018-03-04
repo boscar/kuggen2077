@@ -43,22 +43,29 @@ public class EnemyRangeController : MonoBehaviour {
     void Update () {
 		if (player == null || !(player.CurrentHitPoints > 0)) {
 			SetPlayer ();
+            return;
 		}
 
         movementVector = transform.forward;
+        if(!enemy.IsActive()) movementVector = new Vector3(0,0,0);
         playerPos = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
     }
 
     protected void FixedUpdate()
     {
         HandleMovement(Time.fixedDeltaTime);
-        HandleShoot(Time.fixedDeltaTime);
+        if (enemy.IsActive())
+        {  
+            HandleShoot(Time.fixedDeltaTime);
+        }
     }
 
     private void HandleMovement(float deltaTime)
     {
-        Vector3 direction = playerPos - transform.position;
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction), deltaTime * 10.0f);
+        if(enemy.IsActive()) {
+            Vector3 direction = playerPos - transform.position;
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction), deltaTime * 10.0f);
+        }
 
         if (enemy.MovementHandler == null)
         {

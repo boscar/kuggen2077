@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Enemy : GameEntity, IMovable, IAttackable, IAttacker {
+public abstract class Enemy : GameEntity, IMovable, IAttackable, IAttacker, IAnimatable {
 
     public const float DEFAULT_ENEMY_MOVEMENT_SPEED = 3;
     public const float DEFAULT_ENEMY_MOVEMENT_FLOATINESS = 3;
@@ -67,6 +67,14 @@ public abstract class Enemy : GameEntity, IMovable, IAttackable, IAttacker {
         protected set { strength = value; }
     }
 
+    AnimationHandler IAnimatable.AnimationHandler
+    {
+        get
+        {
+            return AnimationHandler;
+        }
+    }
+
     protected void Awake() {
         InitStats();
         InitHandlers();
@@ -92,7 +100,6 @@ public abstract class Enemy : GameEntity, IMovable, IAttackable, IAttacker {
         AttackHandler = new AttackHandler(this);
         AnimationHandler = new AnimationHandler(GetComponent<Animator>());
     }
-
 
     protected virtual void InitEffects() {
         RecieveAttackHandler.RecieveAttackCreators.Add(new TemporaryColorChangeEffectCreator(this, Color.white));

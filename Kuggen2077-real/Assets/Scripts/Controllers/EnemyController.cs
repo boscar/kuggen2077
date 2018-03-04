@@ -41,6 +41,7 @@ public class EnemyController : MonoBehaviour {
 	void Update () {
 		if (player == null || !(player.CurrentHitPoints > 0)) {
 			SetPlayer ();
+            return;
 		}
 
 		movementVector = transform.forward;
@@ -49,17 +50,19 @@ public class EnemyController : MonoBehaviour {
 
 
 	protected void FixedUpdate() {
-		HandleMovement(Time.fixedDeltaTime);
-	}
+        HandleMovement(Time.fixedDeltaTime);
+    }
 
 	private void HandleMovement(float deltaTime) {
-		transform.LookAt(direction);
+        if (enemy.IsActive()){
+            transform.LookAt(direction);
+        }
 
 		if (enemy.MovementHandler == null) {
 			return;
 		}
-
-		enemy.MovementHandler.BasicMove(movementVector);
+        if (!enemy.IsActive()) movementVector = Vector3.zero;
+        enemy.MovementHandler.BasicMove(movementVector);
 	}
 
 }

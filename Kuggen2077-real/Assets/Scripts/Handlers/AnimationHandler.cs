@@ -25,4 +25,5 @@ public class AnimationHandler
     {
         anim.SetTrigger("isDead");
     }
+    
 }
