@@ -66,7 +66,7 @@ public class RecieveAttackHandler {
         }
        
         DestroyColliders();
-        ((MonoBehaviour)Attackable).StartCoroutine(DieCourantine(4));
+        ((MonoBehaviour)Attackable).StartCoroutine(DieCourantine(3));
     }
 
     private void DestroyRenderers() {

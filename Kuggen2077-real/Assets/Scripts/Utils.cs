@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Utils {
 
+    private static System.Random rnd = new System.Random();
+
     public static bool Contains(IEnumerable<string> collection, string value) {
         foreach(string s in collection) {
             if(s.Equals(value)) {
@@ -15,7 +17,9 @@ public class Utils {
     }
 
     public static T GetRandom<T> (IList<T> list) {
-        System.Random rnd = new System.Random((int)(99999 * UnityEngine.Random.value));
+        if(list.Count <= 0) {
+            return default(T);
+        }
         int r = rnd.Next(list.Count);
         return list[r];
     }

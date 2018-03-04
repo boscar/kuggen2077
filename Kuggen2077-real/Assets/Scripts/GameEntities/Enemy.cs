@@ -101,7 +101,6 @@ public abstract class Enemy : GameEntity, IMovable, IAttackable, IAttacker, IAni
         AnimationHandler = new AnimationHandler(GetComponent<Animator>());
     }
 
-
     protected virtual void InitEffects() {
         RecieveAttackHandler.RecieveAttackCreators.Add(new TemporaryColorChangeEffectCreator(this, Color.white));
     }

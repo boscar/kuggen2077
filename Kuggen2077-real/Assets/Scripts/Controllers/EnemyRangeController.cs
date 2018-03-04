@@ -43,6 +43,7 @@ public class EnemyRangeController : MonoBehaviour {
     void Update () {
 		if (player == null || !(player.CurrentHitPoints > 0)) {
 			SetPlayer ();
+            return;
 		}
 
         movementVector = transform.forward;
@@ -61,8 +62,10 @@ public class EnemyRangeController : MonoBehaviour {
 
     private void HandleMovement(float deltaTime)
     {
-        Vector3 direction = playerPos - transform.position;
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction), deltaTime * 10.0f);
+        if(enemy.IsActive()) {
+            Vector3 direction = playerPos - transform.position;
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction), deltaTime * 10.0f);
+        }
 
         if (enemy.MovementHandler == null)
         {
